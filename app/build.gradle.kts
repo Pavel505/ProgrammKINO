@@ -3,6 +3,7 @@ plugins {
     id("com.google.gms.google-services")
 }
 
+
 android {
     namespace = "com.example.progkino"
     compileSdk = 34
@@ -30,8 +31,9 @@ android {
 }
 
 dependencies {
-
+//изначально было:
     implementation("androidx.appcompat:appcompat:1.6.1")
+    //implementation("com.android.support:appcompat-v7:28.0.0")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     testImplementation("junit:junit:4.13.2")
@@ -40,4 +42,10 @@ dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
     implementation("com.google.firebase:firebase-analytics")
+
+    implementation("com.google.firebase:firebase-auth:22.3.0")
+    implementation("com.google.firebase:firebase-database:20.3.0")
+    //implementation("com.android.support:design:28.0.0")
+    //implementation("com.rengwuxian.materialeditext:library:2.1.4")
+    //implementation("uk.co.chrisjenx:calligraphy:2.3.0")
 }
