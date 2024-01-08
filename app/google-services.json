@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "687306468366",
+    "project_id": "programmkino-c2b9f",
+    "storage_bucket": "programmkino-c2b9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:687306468366:android:0141bbc7250bb5356be05f",
+        "android_client_info": {
+          "package_name": "com.example.progkino"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9vU5O_XGyRLN3ir5uLejp7xyd-IoFM94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
