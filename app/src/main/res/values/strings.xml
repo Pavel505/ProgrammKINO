@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">ProgKino</string>
-    <string name="app_in_name">Proger Kino</string>
+    <string name="app_in_name">Proga Kino</string>
+    <string name="app_in_name2">For your favorite club</string>
+    <string name="app_text_bottom">Welcome in application !</string>
+    <string name="btnSignIn">Войти</string>
+    <string name="btnRegister">Зарегистрироваться</string>
 </resources>
