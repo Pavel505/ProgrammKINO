@@ -2,5 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="text_bottom">#c9c9c9</color>
+    <color name="text_bottom">#c9c9c9</color>#3316c4
+    <color name="glavna_str_effect">#191970</color>
+    <color name="btn_sign_in">#3316c4</color>
+    <color name="btn_sign_in_stroke">#250e99</color>
 </resources>
