@@ -47,6 +47,7 @@ dependencies {
     implementation("com.google.firebase:firebase-database:20.3.0")
     implementation("com.skyfishjy.ripplebackground:library:1.0.1")
     implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.cardview:cardview:1.0.0")
     //implementation("com.android.support:design:28.0.0")
     //implementation("com.rengwuxian.materialeditext:library:2.1.4")
     //implementation("uk.co.chrisjenx:calligraphy:2.3.0")
