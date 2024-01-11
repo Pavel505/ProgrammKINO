@@ -1,9 +1,11 @@
 package com.example.progkino;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.example.progkino.Models.User;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 view.startAnimation(animAlpha);
+                showSignInWindow();
             }
         });
         // Запускаем авторизацию в БД
@@ -58,6 +62,57 @@ public class MainActivity extends AppCompatActivity {
                 showRegisterWindow();
             }
         });
+    }
+    private void showSignInWindow() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Войти");
+        dialog.setMessage("Введите свои данные");
+        // Создание объекта для нужного шаблона, помещаев его в View
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View sign_in_window = inflater.inflate(R.layout.sign_in_window, null);
+        dialog.setView(sign_in_window);
+
+        EditText login = sign_in_window.findViewById(R.id.loginField);
+        EditText password = sign_in_window.findViewById(R.id.passField);
+
+        // Возвращает пользователя на начало
+        dialog.setNegativeButton("Вернуться назад", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        // Обработка данных
+        dialog.setPositiveButton("Войти", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                //Проверка на наличие данных ячеек
+                if(TextUtils.isEmpty(login.getText().toString())){
+                    Snackbar.make(root, "Введите ваш логин",Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                if(password.getText().toString().length() < 5){
+                    Snackbar.make(root, "Пароль должен иметь больше 5 символов!",Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                auth.signInWithEmailAndPassword(login.getText().toString(),password.getText().toString())
+                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                            @Override // При успешной авторизации
+                            public void onSuccess(AuthResult authResult) {
+                                startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                                finish(); // завершает данную сцену + делает переход на новую
+                            }
+                            // При ошибке
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Snackbar.make(root, "Ошибка авторизации. " + e.getMessage(), Snackbar.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
+        dialog.show();
     }
         // Функция вызова окна регистрации
         private void showRegisterWindow() {
@@ -138,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
                                     user.setBirthday(birthday.getText().toString());
                                     user.setCity(city.getText().toString());
 
-                                    users.child(user.getLogin())
+                                    users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(user)
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
