@@ -5,4 +5,5 @@
     <string name="app_text_bottom">Welcome in application !</string>
     <string name="btnSignIn">Войти</string>
     <string name="btnRegister">Зарегистрироваться</string>
+    <string name="text_bottom">g</string>
 </resources>

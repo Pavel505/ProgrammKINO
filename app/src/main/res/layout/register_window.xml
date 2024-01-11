@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
@@ -11,9 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="ExtraText">
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/nameField"
@@ -24,15 +26,8 @@
             android:textColorHint="@color/text_bottom"
             android:textSize="20sp"
 
-            app:met_floatingLabel="highlight"
-            app:met_baseColor="#0056d3"
-            app:met_primaryColor="#982360"
-            app:met_singleLineEllipsis="true"
-            app:met_minCharacters="5"
-            app:met_maxCharacters="100"
-
-            />
-        <EditText
+             />
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/lastnameField"
@@ -43,15 +38,9 @@
             android:textColorHint="@color/text_bottom"
             android:textSize="20sp"
 
-            app:met_floatingLabel="highlight"
-            app:met_baseColor="#0056d3"
-            app:met_primaryColor="#982360"
-            app:met_singleLineEllipsis="true"
-            app:met_minCharacters="5"
-            app:met_maxCharacters="100"
 
             />
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/loginField"
@@ -62,15 +51,10 @@
             android:textColorHint="@color/text_bottom"
             android:textSize="20sp"
 
-            app:met_floatingLabel="highlight"
-            app:met_baseColor="#0056d3"
-            app:met_primaryColor="#982360"
-            app:met_singleLineEllipsis="true"
-            app:met_minCharacters="5"
-            app:met_maxCharacters="100"
+
 
             />
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/passField"
@@ -81,15 +65,10 @@
             android:textColorHint="@color/text_bottom"
             android:textSize="20sp"
 
-            app:met_floatingLabel="highlight"
-            app:met_baseColor="#0056d3"
-            app:met_primaryColor="#982360"
-            app:met_singleLineEllipsis="true"
-            app:met_minCharacters="5"
-            app:met_maxCharacters="100"
+
 
             />
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/emailField"
@@ -100,16 +79,11 @@
             android:textColorHint="@color/text_bottom"
             android:textSize="20sp"
 
-            app:met_floatingLabel="highlight"
-            app:met_baseColor="#0056d3"
-            app:met_primaryColor="#982360"
-            app:met_singleLineEllipsis="true"
-            app:met_minCharacters="5"
-            app:met_maxCharacters="100"
+
 
             />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/dataField"
@@ -120,15 +94,10 @@
             android:textColorHint="@color/text_bottom"
             android:textSize="20sp"
 
-            app:met_floatingLabel="highlight"
-            app:met_baseColor="#0056d3"
-            app:met_primaryColor="#982360"
-            app:met_singleLineEllipsis="true"
-            app:met_minCharacters="4"
-            app:met_maxCharacters="100"
+
 
             />
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/cityField"
@@ -139,15 +108,11 @@
             android:textColorHint="@color/text_bottom"
             android:textSize="20sp"
 
-            app:met_floatingLabel="highlight"
-            app:met_baseColor="#0056d3"
-            app:met_primaryColor="#982360"
-            app:met_singleLineEllipsis="true"
-            app:met_maxCharacters="100"
+
 
             />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/userdescriptionField"
             android:layout_width="match_parent"
             android:layout_height="70dp"
@@ -158,12 +123,7 @@
             android:textColorHint="@color/text_bottom"
             android:textSize="20sp"
 
-            app:met_baseColor="#0056d3"
-            app:met_floatingLabel="highlight"
-            app:met_maxCharacters="100"
-            app:met_minCharacters="5"
-            app:met_primaryColor="#982360"
-            app:met_singleLineEllipsis="true"
+
 
             />
 

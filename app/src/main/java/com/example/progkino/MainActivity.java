@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
+import com.example.progkino.Models.User;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
@@ -36,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 // Анимация кнопок
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
-        Button btnSignIn = (Button)findViewById(R.id.btnSignIn);
-        Button btnRegister = (Button)findViewById(R.id.btnRegister);
+        Button btnSignIn = (Button) findViewById(R.id.btnSignIn);
+        Button btnRegister = (Button) findViewById(R.id.btnRegister);
         root = findViewById(R.id.root_element);
-        btnSignIn.setOnClickListener(new Button.OnClickListener(){
+        btnSignIn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
                 view.startAnimation(animAlpha);
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 showRegisterWindow();
             }
         });
+    }
         // Функция вызова окна регистрации
         private void showRegisterWindow() {
             AlertDialog.Builder dialog = new AlertDialog.Builder(this);
@@ -121,24 +123,36 @@ public class MainActivity extends AppCompatActivity {
                         Snackbar.make(root, "Введите ваш город проживания",Snackbar.LENGTH_SHORT).show();
                         return;
                     }
+                    // Регистрация пользователя
+                    auth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString())
+                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                                @Override
+                                public void onSuccess(AuthResult authResult) {
+                                    User user = new User() ;
+                                    user.setName(name.getText().toString());
+                                    user.setLastName(lastname.getText().toString());
+                                    user.setLogin(login.getText().toString());
+                                    user.setPassword(password.getText().toString());
+                                    user.setEmail(email.getText().toString());
+                                    user.setUserdescritpion(userdescription.getText().toString());
+                                    user.setBirthday(birthday.getText().toString());
+                                    user.setCity(city.getText().toString());
+
+                                    users.child(user.getLogin())
+                                            .setValue(user)
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void unused) {
+                                                    Snackbar.make(root, "Пользователь добавлен", Snackbar.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                }
+                            });
+
                 }
             });
+            dialog.show();
 
-            // Регистрация пользователя
-            auth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString())
-                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                        @Override
-                        public void onSuccess(AuthResult authResult) {
-                            //
-                        }
-                    });
-
-
-        }
-        /*
-        * android:layout_above="@id/text_bottom"
-        * android:id="@id/text_bottom"
-        * */
 /* <item>
         <share android:share="rectangle">
             <solid android:color="@color/btn_sign_in"></solid>
@@ -146,7 +160,14 @@ public class MainActivity extends AppCompatActivity {
             <corners android:radius="2dp"></corners>
         </share>
     </item>*/
+
+            /*
+            app:met_floatingLabel="highlight"
+            app:met_baseColor="#0056d3"
+            app:met_primaryColor="#982360"
+            app:met_singleLineEllipsis="true"
+            app:met_minCharacters="5"
+            app:met_maxCharacters="100"
+            */
     }
-
-
 }

@@ -19,8 +19,8 @@ public class User {
     public void setName(String name){this.name = name;}
     public String getName(){return name;}
 
-    public void setLastname(String lastname){this.lastname = lastname;}
-    public String getLastnameName(){return lastname;}
+    public void setLastName(String lastname){this.lastname = lastname;}
+    public String getLastName(){return lastname;}
 
     public void setLogin(String login){this.login = login;}
     public String getLogin(){return login;}
