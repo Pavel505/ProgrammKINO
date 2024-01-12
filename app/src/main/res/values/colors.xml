@@ -7,5 +7,6 @@
     <color name="btn_sign_in">#3316c4</color>
     <color name="btn_sign_in_stroke">#250e99</color>
     <color name="line_register">#3E1FD8</color>
-    <color name="panel_color">#AFA2F5</color>
+    <color name="panel_color">#5D77FB</color>
+    <color name="panel_main_scene">#2E42F6</color>
 </resources>

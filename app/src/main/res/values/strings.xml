@@ -7,4 +7,9 @@
     <string name="btnRegister">Зарегистрироваться</string>
     <string name="text_bottom">g</string>
     <string name="kinologo">kinologo</string>
+    <string name="contacts">Контакты</string>
+    <string name="tren">Тренировки</string>
+    <string name="main_scen">Главная</string>
+    <string name="main_scen_1">KINO</string>
+    <string name="main_scen_2">App</string>
 </resources>
