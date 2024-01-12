@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         View sign_in_window = inflater.inflate(R.layout.sign_in_window, null);
         dialog.setView(sign_in_window);
 
-        EditText login = sign_in_window.findViewById(R.id.loginField);
+        EditText email = sign_in_window.findViewById(R.id.emailField);
         EditText password = sign_in_window.findViewById(R.id.passField);
 
         // Возвращает пользователя на начало
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 //Проверка на наличие данных ячеек
-                if(TextUtils.isEmpty(login.getText().toString())){
+                if(TextUtils.isEmpty(email.getText().toString())){
                     Snackbar.make(root, "Введите ваш логин",Snackbar.LENGTH_SHORT).show();
                     return;
                 }
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar.make(root, "Пароль должен иметь больше 5 символов!",Snackbar.LENGTH_SHORT).show();
                     return;
                 }
-                auth.signInWithEmailAndPassword(login.getText().toString(),password.getText().toString())
+                auth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString())
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override // При успешной авторизации
                             public void onSuccess(AuthResult authResult) {
@@ -130,8 +130,8 @@ public class MainActivity extends AppCompatActivity {
             EditText password = register_window.findViewById(R.id.passField);
             EditText email = register_window.findViewById(R.id.emailField);
             EditText birthday = register_window.findViewById(R.id.dataField);
-            EditText userdescription = register_window.findViewById(R.id.userdescriptionField);
             EditText city = register_window.findViewById(R.id.cityField);
+            EditText userdescription = register_window.findViewById(R.id.userdescriptionField);
 
             // Возвращает пользователя на начало
             dialog.setNegativeButton("Вернуться назад", new DialogInterface.OnClickListener() {
@@ -170,12 +170,12 @@ public class MainActivity extends AppCompatActivity {
                         Snackbar.make(root, "Введите вашу дату рождения",Snackbar.LENGTH_SHORT).show();
                         return;
                     }
-                    if(TextUtils.isEmpty(userdescription.getText().toString())){
-                        Snackbar.make(root, "Напишите небольшое описание о себе!",Snackbar.LENGTH_SHORT).show();
-                        return;
-                    }
                     if(TextUtils.isEmpty(city.getText().toString())){
                         Snackbar.make(root, "Введите ваш город проживания",Snackbar.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if(TextUtils.isEmpty(userdescription.getText().toString())){
+                        Snackbar.make(root, "Напишите небольшое описание о себе!",Snackbar.LENGTH_SHORT).show();
                         return;
                     }
                     // Регистрация пользователя
@@ -189,18 +189,23 @@ public class MainActivity extends AppCompatActivity {
                                     user.setLogin(login.getText().toString());
                                     user.setPassword(password.getText().toString());
                                     user.setEmail(email.getText().toString());
-                                    user.setUserdescritpion(userdescription.getText().toString());
                                     user.setBirthday(birthday.getText().toString());
                                     user.setCity(city.getText().toString());
+                                    user.setUserdescritpion(userdescription.getText().toString());
 
                                     users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(user)
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void unused) {
-                                                    Snackbar.make(root, "Пользователь добавлен", Snackbar.LENGTH_SHORT).show();
+                                                    Snackbar.make(root, "Пользователь добавлен", Snackbar.LENGTH_LONG).show();
                                                 }
                                             });
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Snackbar.make(root, "Ошибка регистрации. " + e.getMessage(), Snackbar.LENGTH_SHORT).show();
                                 }
                             });
 

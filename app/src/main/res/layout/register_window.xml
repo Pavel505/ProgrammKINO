@@ -54,20 +54,20 @@
 
 
             />
+
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/passField"
+            android:fontFamily="@font/montserrat"
             android:hint="Пароль"
             android:inputType="textPassword"
             android:text=""
             android:textColor="@color/line_register"
             android:textColorHint="@color/text_bottom"
-            android:textSize="20sp"
 
 
-
-            />
+            android:textSize="20sp" />
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
