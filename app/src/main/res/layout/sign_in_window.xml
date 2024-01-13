@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/emailField"
             android:hint="Почта"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:text=""
             android:textColor="@color/line_register"
             android:textColorHint="@color/text_bottom"

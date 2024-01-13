@@ -21,8 +21,8 @@
         <TextView
             android:id="@+id/contacts"
             android:layout_width="111dp"
-            android:layout_height="150dp"
-            android:layout_marginBottom="25dp"
+            android:layout_height="130dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:rotation="-90"
             android:text="@string/contacts"
@@ -35,8 +35,8 @@
         <TextView
             android:id="@+id/tren"
             android:layout_width="121dp"
-            android:layout_height="150dp"
-            android:layout_marginBottom="5dp"
+            android:layout_height="130dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:rotation="-90"
             android:text="@string/tren"
@@ -45,38 +45,47 @@
             app:layout_constraintBottom_toTopOf="@+id/contacts"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.487"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_scen2" />
 
         <TextView
             android:id="@+id/main_scen"
             android:layout_width="111dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="5dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:rotation="-90"
             android:text="@string/main_scen"
             android:textColor="@color/white"
             android:textSize="22dp"
-            app:layout_constraintBottom_toTopOf="@+id/main_scen2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintHorizontal_bias="0.45"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView11" />
 
         <TextView
             android:id="@+id/main_scen2"
             android:layout_width="111dp"
             android:layout_height="150dp"
-            android:layout_marginBottom="5dp"
             android:gravity="center"
             android:rotation="-90"
             android:text="@string/info_teor"
             android:textColor="@color/white"
-            android:textSize="21dp"
-            app:layout_constraintBottom_toTopOf="@+id/tren"
+            android:textSize="22dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.47"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_scen" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="66dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/ic_logo_kino_foreground" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -104,6 +113,23 @@
         android:textSize="46sp"
         app:layout_constraintStart_toEndOf="@+id/main_scen_1"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="275dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+        app:layout_constraintStart_toEndOf="@+id/imageView12" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="57dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/main_scen_1"
+        app:srcCompat="@drawable/filter" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
