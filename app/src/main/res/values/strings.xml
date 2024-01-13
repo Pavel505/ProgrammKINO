@@ -10,6 +10,7 @@
     <string name="contacts">Контакты</string>
     <string name="tren">Тренировки</string>
     <string name="main_scen">Главная</string>
+    <string name="info_teor">Теория</string>
     <string name="main_scen_1">KINO</string>
     <string name="main_scen_2">App</string>
 </resources>

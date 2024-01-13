@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="80dp"
+        android:layout_width="60dp"
         android:layout_height="0dp"
         android:background="@color/panel_color"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,7 +21,7 @@
         <TextView
             android:id="@+id/contacts"
             android:layout_width="111dp"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:layout_marginBottom="25dp"
             android:gravity="center"
             android:rotation="-90"
@@ -35,8 +35,8 @@
         <TextView
             android:id="@+id/tren"
             android:layout_width="121dp"
-            android:layout_height="200dp"
-            android:layout_marginBottom="4dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
             android:rotation="-90"
             android:text="@string/tren"
@@ -50,25 +50,41 @@
         <TextView
             android:id="@+id/main_scen"
             android:layout_width="111dp"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="5dp"
             android:gravity="center"
             android:rotation="-90"
             android:text="@string/main_scen"
             android:textColor="@color/white"
             android:textSize="22dp"
-            app:layout_constraintBottom_toTopOf="@+id/tren"
+            app:layout_constraintBottom_toTopOf="@+id/main_scen2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/main_scen2"
+            android:layout_width="111dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:rotation="-90"
+            android:text="@string/info_teor"
+            android:textColor="@color/white"
+            android:textSize="21dp"
+            app:layout_constraintBottom_toTopOf="@+id/tren"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.47"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/main_scen_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat"
         android:text="@string/main_scen_1"
         android:textColor="@color/black"
@@ -80,8 +96,8 @@
         android:id="@+id/main_scen_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/merienda_one"
         android:text="@string/main_scen_2"
         android:textColor="@color/panel_main_scene"
