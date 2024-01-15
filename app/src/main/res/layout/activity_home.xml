@@ -121,7 +121,8 @@
         android:layout_marginStart="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView12"
         app:layout_constraintStart_toEndOf="@+id/imageView12"
-        app:layout_constraintTop_toTopOf="@+id/imageView12" />
+        app:layout_constraintTop_toTopOf="@+id/imageView12"
+        tools:listitem="@layout/category_item" />
 
     <ImageView
         android:id="@+id/imageView12"
@@ -132,6 +133,20 @@
         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
         app:layout_constraintTop_toBottomOf="@+id/main_scen_1"
         app:srcCompat="@drawable/filter" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/eventRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.439"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/categoryRecycler"
+        app:layout_constraintVertical_bias="0.113" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
