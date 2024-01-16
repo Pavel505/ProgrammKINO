@@ -14,4 +14,7 @@
     <string name="main_scen_1">KINO</string>
     <string name="main_scen_2">App</string>
     <string name="categoryRecycler">App</string>
+    <string name="eventumData">Date</string>
+    <string name="eventumType">Type</string>
+    <string name="eventumDescription">Описание мероприятия</string>
 </resources>

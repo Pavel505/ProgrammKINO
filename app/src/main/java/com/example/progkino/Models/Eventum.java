@@ -8,15 +8,28 @@ public class Eventum {
     int id;
     String img, color, name;
     Date dateEventum;
-    String type;
+    String type, eventumDescription;
 
-    public Eventum(int id, String img, String color, String name, Date dateEventum, String type) {
+    public Eventum(int id, String img, String color, String name, Date dateEventum, String type,String eventumDescription) {
         this.id = id;
         this.img = img;
         this.color = color;
         this.name = name;
         this.dateEventum = dateEventum;
         this.type = type;
+        this.eventumDescription = eventumDescription;
+    }
+
+    public Eventum(String eventumDescription) {
+        this.eventumDescription = eventumDescription;
+    }
+
+    public String getEventumDescription() {
+        return eventumDescription;
+    }
+
+    public void setEventumDescription(String eventumDescription) {
+        this.eventumDescription = eventumDescription;
     }
 
     public int getId() {
