@@ -22,20 +22,22 @@
             android:id="@+id/contacts"
             android:layout_width="111dp"
             android:layout_height="130dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:rotation="-90"
             android:text="@string/contacts"
             android:textColor="@color/white"
-            android:textSize="22dp"
+            android:textSize="21dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tren" />
 
         <TextView
             android:id="@+id/tren"
-            android:layout_width="121dp"
+            android:layout_width="119dp"
             android:layout_height="130dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:rotation="-90"
@@ -53,11 +55,13 @@
             android:layout_width="111dp"
             android:layout_height="130dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:rotation="-90"
             android:text="@string/main_scen"
             android:textColor="@color/white"
             android:textSize="22dp"
+            app:layout_constraintBottom_toTopOf="@+id/main_scen2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.45"
             app:layout_constraintStart_toStartOf="parent"
@@ -65,13 +69,16 @@
 
         <TextView
             android:id="@+id/main_scen2"
-            android:layout_width="111dp"
-            android:layout_height="150dp"
+            android:layout_width="101dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:rotation="-90"
             android:text="@string/info_teor"
             android:textColor="@color/white"
-            android:textSize="22dp"
+            android:textSize="21dp"
+            app:layout_constraintBottom_toTopOf="@+id/tren"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.47"
             app:layout_constraintStart_toStartOf="parent"
@@ -119,6 +126,7 @@
         android:layout_width="275dp"
         android:layout_height="47dp"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView12"
         app:layout_constraintStart_toEndOf="@+id/imageView12"
         app:layout_constraintTop_toTopOf="@+id/imageView12"
@@ -135,18 +143,19 @@
         app:srcCompat="@drawable/filter" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/eventRecycler"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/eventumRecycler"
+        android:layout_width="313dp"
+        android:layout_height="279dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginBottom="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.439"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
         app:layout_constraintTop_toBottomOf="@+id/categoryRecycler"
-        app:layout_constraintVertical_bias="0.113" />
+        app:layout_constraintVertical_bias="0.113"
+        tools:listitem="@layout/eventum_item" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

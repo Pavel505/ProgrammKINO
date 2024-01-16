@@ -6,15 +6,15 @@ public class Eventum {
 
 
     int id;
-    String img, color, name;
-    Date dateEventum;
+    String img, color, title, dateEventum;
+   // Date dateEventum;
     String type, eventumDescription;
 
-    public Eventum(int id, String img, String color, String name, Date dateEventum, String type,String eventumDescription) {
+    public Eventum(int id, String img, String color, String title, String dateEventum, String type,String eventumDescription) {
         this.id = id;
         this.img = img;
         this.color = color;
-        this.name = name;
+        this.title = title;
         this.dateEventum = dateEventum;
         this.type = type;
         this.eventumDescription = eventumDescription;
@@ -56,19 +56,19 @@ public class Eventum {
         this.color = color;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Date getDateEventum() {
+    public String getDateEventum() {
         return dateEventum;
     }
 
-    public void setDateEventum(Date dateEventum) {
+    public void setDateEventum(String dateEventum) {
         this.dateEventum = dateEventum;
     }
 
