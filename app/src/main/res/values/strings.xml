@@ -16,5 +16,8 @@
     <string name="categoryRecycler">App</string>
     <string name="eventumData">Дата</string>
     <string name="eventumType">Тип</string>
+    <string name="event">Мероприятие</string>
+    <string name="btn_add_event">Добавить в список</string>
     <string name="eventumDescription">Описание мероприятия</string>
+    <string name="test_text_mnogo">Тект \л ы ва  ыло ылво а</string>
 </resources>

@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progkino.Models.Eventum;
@@ -35,7 +36,7 @@ public class EventumAdapter extends RecyclerView.Adapter<EventumAdapter.EventumV
 
     @Override //Что подставляем дизайн
     public void onBindViewHolder(@NonNull EventumViewHolder holder, int position) {
-        holder.eventumBg.setBackgroundColor(Color.parseColor(eventumes.get(position).getColor()));
+        holder.eventumBg.setCardBackgroundColor(Color.parseColor(eventumes.get(position).getColor()));
         int imageId = context.getResources().getIdentifier( eventumes.get(position).getImg(),"drawable",context.getPackageName());
         holder.eventumImage.setImageResource(imageId);
 
@@ -51,7 +52,7 @@ public class EventumAdapter extends RecyclerView.Adapter<EventumAdapter.EventumV
 
     public static final class EventumViewHolder extends RecyclerView.ViewHolder{
 
-        LinearLayout eventumBg;
+        CardView eventumBg;
         ImageView eventumImage;
         TextView eventumTitle, eventumDate, eventumType;
         public EventumViewHolder(@NonNull View itemView) {
