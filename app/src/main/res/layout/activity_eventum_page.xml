@@ -114,7 +114,7 @@
         app:srcCompat="@drawable/chgk" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/eventumPageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -131,7 +131,7 @@
         android:id="@+id/eventumBg"
         android:layout_width="275dp"
         android:layout_height="233dp"
-        app:cardBackgroundColor="@android:color/black"
+        app:cardBackgroundColor="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
@@ -157,7 +157,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="@string/eventumData"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -167,7 +167,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="@string/eventumType"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -185,7 +185,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="@string/eventumData"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/eventumPageType"
@@ -196,7 +196,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="@string/eventumType"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -206,7 +206,9 @@
                 android:layout_height="114dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/test_text_mnogo"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:transitionName="eventumImage" />
 
         </LinearLayout>
 

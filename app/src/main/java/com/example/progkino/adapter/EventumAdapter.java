@@ -1,7 +1,12 @@
 package com.example.progkino.adapter;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.progkino.EventumPage;
 import com.example.progkino.Models.Eventum;
 import com.example.progkino.R;
 
@@ -34,6 +40,7 @@ public class EventumAdapter extends RecyclerView.Adapter<EventumAdapter.EventumV
         return new EventumAdapter.EventumViewHolder(eventumItems);
     }
 
+    @SuppressLint("RecyclerView")
     @Override //Что подставляем дизайн
     public void onBindViewHolder(@NonNull EventumViewHolder holder, int position) {
         holder.eventumBg.setCardBackgroundColor(Color.parseColor(eventumes.get(position).getColor()));
@@ -43,6 +50,26 @@ public class EventumAdapter extends RecyclerView.Adapter<EventumAdapter.EventumV
         holder.eventumTitle.setText(eventumes.get(position).getTitle());
         holder.eventumDate.setText((CharSequence) eventumes.get(position).getDateEventum());
         holder.eventumType.setText(eventumes.get(position).getType());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, EventumPage.class);
+
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity)
+                 context, new Pair<View,String>(holder.eventumImage,"eventumImage")
+                        );
+                // Dop значения
+                intent.putExtra("eventumBg", Color.parseColor(eventumes.get(position).getColor()));
+                intent.putExtra("eventumImage",imageId);
+                intent.putExtra("eventumTitle",eventumes.get(position).getTitle());
+                intent.putExtra("eventumDate",(CharSequence) eventumes.get(position).getDateEventum());
+                intent.putExtra("eventumType",eventumes.get(position).getType());
+                intent.putExtra("eventumDescription",eventumes.get(position).getEventumDescription());
+
+                context.startActivity(intent, options.toBundle());
+            }
+        });
     }
 
     @Override // С какими элементами будем работать

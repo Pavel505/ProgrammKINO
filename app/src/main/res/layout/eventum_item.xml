@@ -22,9 +22,9 @@
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:paddingBottom="18dp"
-            android:background="@color/chgk"
-            android:orientation="vertical">
+            android:transitionName="eventumImage">
 
             <ImageView
                 android:id="@+id/eventumImage"
@@ -37,39 +37,39 @@
                 android:id="@+id/eventumTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="11dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/app_name"
                 android:textColor="@color/white"
-                android:layout_margin="11dp"
                 android:textSize="20sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="11dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:text="@string/eventumData"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="11dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/eventumData"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="11dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:text="@string/eventumType"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="11dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/eventumType"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
 
-        </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
