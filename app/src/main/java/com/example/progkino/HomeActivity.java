@@ -20,13 +20,15 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
     RecyclerView categoryRecycler,eventumRecycler;
     CategoryAdapter categoryAdapter;
-    EventumAdapter eventumAdapter;
+    static EventumAdapter eventumAdapter;
+    static List<Eventum> eventumList = new ArrayList<>();
+    static List<Category> categoryList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        List<Category> categoryList = new ArrayList<>();
+
         categoryList.add(new Category(1,"Интеллект"));
         categoryList.add(new Category(2,"Настолки"));
         categoryList.add(new Category(3,"Сюжетки"));
@@ -34,12 +36,8 @@ public class HomeActivity extends AppCompatActivity {
 
         setCategoryRecycler(categoryList);
 
-
-        List<Eventum> eventumList = new ArrayList<>();
-
         eventumList.add(new Eventum(1,"chgk","#610C13","Лига вузов европы","2024-02-01" , "Интеллект","Турнир по игре ЧГК"));
         eventumList.add(new Eventum(2,"vorosh","#D3176DC8","Ворошиловский стрелок\n 5 этап", "2024-02-02", "Интеллект","Вечер настолок"));
-
 
         setEventumRecycler(eventumList);
     }
@@ -63,5 +61,24 @@ public class HomeActivity extends AppCompatActivity {
 
         categoryAdapter = new CategoryAdapter(this, categoryList);
         categoryRecycler.setAdapter(categoryAdapter);
+    }
+
+    public static void showEventumesByCategory(int category){
+        List<Eventum> filterEventumes = new ArrayList<>();
+
+
+        String secondElement = String.valueOf(categoryList.get(category));
+
+        for(Eventum ev : eventumList){
+            if(ev.getType() == secondElement) {
+                filterEventumes.add(ev);
+            }
+        }
+
+        eventumList.clear();
+        eventumList.addAll(filterEventumes);
+
+        eventumAdapter.notifyDataSetChanged();// Берет новые значения и обновляет
+
     }
 }
