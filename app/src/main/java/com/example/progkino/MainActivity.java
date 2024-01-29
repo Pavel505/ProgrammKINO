@@ -193,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
                                     user.setCity(city.getText().toString());
                                     user.setUserdescritpion(userdescription.getText().toString());
 
+                                    users.push().setValue(user);
                                     users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(user)
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {

@@ -43,7 +43,24 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomeActivity.showEventumesByCategory(categories.get(position).getId());
+               // Изначально HomeActivity.showEventumesByCategory(categories.get(position).getId());
+                int proba = categories.get(position).getId();
+                String per;
+                switch (proba) {
+                    case  (1):
+                        per = "Интеллект";
+                        break;
+                    case (2):
+                        per = "Настолки";
+                        break;
+                    case (3):
+                        per = "Сюжетки";
+                        break;
+                    default:
+                        per = "Турниры";
+                        break;
+                }
+                HomeActivity.showEventumesByCategory(per);
             }
         });
     }

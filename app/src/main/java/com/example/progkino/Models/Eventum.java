@@ -10,6 +10,7 @@ public class Eventum {
    // Date dateEventum;
     String type, eventumDescription;
 
+
     public Eventum(int id, String img, String color, String title, String dateEventum, String type,String eventumDescription) {
         this.id = id;
         this.img = img;
