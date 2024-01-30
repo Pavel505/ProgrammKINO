@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     FirebaseDatabase db;
-    DatabaseReference users;
+    DatabaseReference users,eventumes;
 
     RelativeLayout root;
     //public EditText name,editText2;
@@ -60,16 +60,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    private void init(){/*
-        name = findViewById(R.id.nameField);
-        editText2 = findViewById(R.id.lastnameField);*/
-
-
+    private void init(){
         // Запускаем авторизацию в БД
         auth = FirebaseAuth.getInstance();
         // Подключение к БД
         db = FirebaseDatabase.getInstance();
         users = db.getReference("User");
+        eventumes = db.getReference("Eventum");
     }
     private void showSignInWindow() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
@@ -206,10 +203,7 @@ public class MainActivity extends AppCompatActivity {
                                     String id = "1";
                                     String name2 = name.getText().toString();
                                     String email2 = email.getText().toString();
-
                                     User user = new User(id,name2,null,null,null,email2,null,null,null);*/
-
-
                                     //users.push().setValue(user);
                                     users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(user)
