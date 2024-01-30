@@ -4,16 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.progkino.Models.Category;
 import com.example.progkino.Models.Eventum;
 import com.example.progkino.adapter.CategoryAdapter;
 import com.example.progkino.adapter.EventumAdapter;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -46,6 +49,46 @@ public class HomeActivity extends AppCompatActivity {
         setEventumRecycler(eventumList);
     }
 
+    /*
+    View.OnClickListener(new View.OnClickListener){
+
+    }
+    TextView.setOnClickListener(new OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+
+        }
+
+    });
+    tv.setMovementMethod(LinkMovementMethod.getInstance());
+
+    Button btnSignIn2 = (Button) findViewById(R.id.button);
+    clickTutorial.setOnClickListener{
+        navigatorTutorial();
+    }*/
+    //TextView clickTutorial = (TextView) findViewById(R.id.tutorial);
+
+    public void navigatorMainScen(View view){
+        Intent intentHome = new Intent(HomeActivity.this, HomeActivity.class);
+        intentHome.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentHome);
+    }
+    public void navigatorTutorial(View view){
+        Intent intentTutorial = new Intent(HomeActivity.this, TutorialActivity.class);
+        intentTutorial.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentTutorial);
+    }
+    public void navigatorTren(View view){
+        Intent intentTren = new Intent(HomeActivity.this, TrenActivity.class);
+        intentTren.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentTren);
+    }
+    public void navigatorContact(View view){
+        Intent intentContact = new Intent(HomeActivity.this, ContactActivity.class);
+        intentContact.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentContact);
+    }
     private void setEventumRecycler(List<Eventum> eventumList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
 

@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         users = db.getReference("User");
         eventumes = db.getReference("Eventum");
     }
+
+
     private void showSignInWindow() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("Войти");

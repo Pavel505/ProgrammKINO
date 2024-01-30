@@ -24,6 +24,7 @@
             android:layout_width="120dp"
             android:layout_height="140dp"
             android:layout_marginBottom="30dp"
+            android:onClick="navigatorContact"
             android:gravity="center"
             android:rotation="-90"
             android:text="@string/contacts"
@@ -41,6 +42,7 @@
             android:layout_width="120dp"
             android:layout_height="140dp"
             android:layout_marginTop="5dp"
+            android:onClick="navigatorTren"
             android:gravity="center"
             android:rotation="-90"
             android:text="@string/tren"
@@ -50,13 +52,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_scen2" />
+            app:layout_constraintTop_toBottomOf="@+id/tutorial" />
 
         <TextView
             android:id="@+id/main_scen"
             android:layout_width="120dp"
-            android:layout_height="130dp"
-            android:layout_marginBottom="2dp"
+            android:layout_height="160dp"
             android:background="@color/bok_panel"
             android:fontFamily="@font/montserrat"
             android:gravity="center"
@@ -64,17 +65,18 @@
             android:text="@string/main_scen"
             android:textColor="@color/white"
             android:textSize="22sp"
-            app:layout_constraintBottom_toTopOf="@+id/main_scen2"
+            app:layout_constraintBottom_toTopOf="@+id/tutorial"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView11" />
 
         <TextView
-            android:id="@+id/main_scen2"
+            android:id="@+id/tutorial"
             android:layout_width="120dp"
             android:layout_height="140dp"
             android:gravity="center"
+            android:onClick="navigatorTutorial"
             android:rotation="-90"
             android:text="@string/info_teor"
             android:textColor="@color/white"

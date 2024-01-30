@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".HomeActivity">
+    tools:context=".TutorialActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -21,6 +19,7 @@
 
         <TextView
             android:id="@+id/contacts"
+            android:onClick="navigatorContact"
             android:layout_width="120dp"
             android:layout_height="140dp"
             android:layout_marginBottom="30dp"
@@ -40,6 +39,7 @@
             android:id="@+id/tren"
             android:layout_width="120dp"
             android:layout_height="140dp"
+            android:onClick="navigatorTren"
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:rotation="-90"
@@ -50,35 +50,35 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_scen2" />
+            app:layout_constraintTop_toBottomOf="@+id/tutorial" />
 
         <TextView
+            android:onClick="navigatorMainScen"
             android:id="@+id/main_scen"
             android:layout_width="120dp"
-            android:layout_height="130dp"
-            android:layout_marginBottom="2dp"
-
+            android:layout_height="160dp"
             android:fontFamily="@font/montserrat"
             android:gravity="center"
             android:rotation="-90"
             android:text="@string/main_scen"
             android:textColor="@color/white"
             android:textSize="22sp"
-            app:layout_constraintBottom_toTopOf="@+id/main_scen2"
+            app:layout_constraintBottom_toTopOf="@+id/tutorial"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView11" />
 
         <TextView
-            android:id="@+id/main_scen2"
+            android:id="@+id/tutorial"
             android:layout_width="120dp"
             android:layout_height="140dp"
             android:gravity="center"
+            android:onClick="navigatorTutorial"
+            android:background="@color/bok_panel"
             android:rotation="-90"
             android:text="@string/info_teor"
             android:textColor="@color/white"
-            android:background="@color/bok_panel"
             android:textSize="21sp"
             app:layout_constraintBottom_toTopOf="@+id/tren"
             app:layout_constraintEnd_toEndOf="parent"
@@ -98,6 +98,5 @@
             android:background="@color/kino_logo"
             app:srcCompat="@mipmap/ic_logo_kino_foreground" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
