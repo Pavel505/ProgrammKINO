@@ -1,11 +1,12 @@
 package com.example.progkino.Models;
 
 public class User {
-    private String name,lastname, login, password, email, userdescritpion, birthday, city;
+    private String id, name,lastname, login, password, email, userdescritpion, birthday, city;
     public User() {}
 
-    public User(String name,String lastname,String  login,String  password,String  email,
+    public User(String id, String name,String lastname,String  login,String  password,String  email,
                 String  birthday,String  city, String userdescritpion) {
+        this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.login = login;
@@ -14,6 +15,14 @@ public class User {
         this.birthday = birthday;
         this.city = city;
         this.userdescritpion = userdescritpion;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setName(String name){this.name = name;}

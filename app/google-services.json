@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "687306468366",
-    "project_id": "programmkino-c2b9f",
-    "storage_bucket": "programmkino-c2b9f.appspot.com"
+    "project_number": "329696884356",
+    "firebase_url": "https://appkino-39a3c-default-rtdb.firebaseio.com",
+    "project_id": "appkino-39a3c",
+    "storage_bucket": "appkino-39a3c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:687306468366:android:0141bbc7250bb5356be05f",
+        "mobilesdk_app_id": "1:329696884356:android:6793dc1b047a53c53634d1",
         "android_client_info": {
           "package_name": "com.example.progkino"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA9vU5O_XGyRLN3ir5uLejp7xyd-IoFM94"
+          "current_key": "AIzaSyApp8E_nfsaR-W_UweQPlK1bKqwJPVE2RY"
         }
       ],
       "services": {

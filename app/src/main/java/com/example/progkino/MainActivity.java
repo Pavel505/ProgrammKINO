@@ -33,9 +33,10 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference users;
 
     RelativeLayout root;
-
+    //public EditText name,editText2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        init();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 // Анимация кнопок
@@ -50,11 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 showSignInWindow();
             }
         });
-        // Запускаем авторизацию в БД
-        auth = FirebaseAuth.getInstance();
-        // Подключение к БД
-        db = FirebaseDatabase.getInstance();
-        users = db.getReference("Users");
+
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +59,17 @@ public class MainActivity extends AppCompatActivity {
                 showRegisterWindow();
             }
         });
+    }
+    private void init(){/*
+        name = findViewById(R.id.nameField);
+        editText2 = findViewById(R.id.lastnameField);*/
+
+
+        // Запускаем авторизацию в БД
+        auth = FirebaseAuth.getInstance();
+        // Подключение к БД
+        db = FirebaseDatabase.getInstance();
+        users = db.getReference("User");
     }
     private void showSignInWindow() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
@@ -124,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
             View register_window = inflater.inflate(R.layout.register_window, null);
             dialog.setView(register_window);
 
+
             EditText name = register_window.findViewById(R.id.nameField);
             EditText lastname = register_window.findViewById(R.id.lastnameField);
             EditText login = register_window.findViewById(R.id.loginField);
@@ -184,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
                                     User user = new User() ;
+                                    //String id = null;
                                     user.setName(name.getText().toString());
                                     user.setLastName(lastname.getText().toString());
                                     user.setLogin(login.getText().toString());
@@ -192,8 +202,15 @@ public class MainActivity extends AppCompatActivity {
                                     user.setBirthday(birthday.getText().toString());
                                     user.setCity(city.getText().toString());
                                     user.setUserdescritpion(userdescription.getText().toString());
+/*
+                                    String id = "1";
+                                    String name2 = name.getText().toString();
+                                    String email2 = email.getText().toString();
 
-                                    users.push().setValue(user);
+                                    User user = new User(id,name2,null,null,null,email2,null,null,null);*/
+
+
+                                    //users.push().setValue(user);
                                     users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(user)
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -213,22 +230,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
             dialog.show();
-
-/* <item>
-        <share android:share="rectangle">
-            <solid android:color="@color/btn_sign_in"></solid>
-            <stroke android:color="@color/btn_sign_in_stroke" android:width="2dp"></stroke>
-            <corners android:radius="2dp"></corners>
-        </share>
-    </item>*/
-
-            /*
-            app:met_floatingLabel="highlight"
-            app:met_baseColor="#0056d3"
-            app:met_primaryColor="#982360"
-            app:met_singleLineEllipsis="true"
-            app:met_minCharacters="5"
-            app:met_maxCharacters="100"
-            */
     }
 }
