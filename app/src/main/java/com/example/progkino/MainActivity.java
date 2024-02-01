@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
+import com.example.progkino.Models.Eventum;
 import com.example.progkino.Models.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -25,6 +26,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.core.view.EventRaiser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -200,13 +202,18 @@ public class MainActivity extends AppCompatActivity {
                                     user.setEmail(email.getText().toString());
                                     user.setBirthday(birthday.getText().toString());
                                     user.setCity(city.getText().toString());
-                                    user.setUserdescritpion(userdescription.getText().toString());
-/*
+                                    user.setUserdescritpion(userdescription.getText().toString());/*
+                                    Eventum eventum = new Eventum();
+                                    eventum.setTitle("Вечер настольных игр");
+                                    eventum.setDateEventum("29072024");
+                                    eventum.setEventumDescription("Летний вечер настольных игр. 25 штук. 3 часа игры.");
+                                    eventum.setType("Настолки");
+                                    /*
                                     String id = "1";
                                     String name2 = name.getText().toString();
                                     String email2 = email.getText().toString();
                                     User user = new User(id,name2,null,null,null,email2,null,null,null);*/
-                                    //users.push().setValue(user);
+                                    //eventumes.push().setValue(eventum);*/
                                     users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(user)
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {

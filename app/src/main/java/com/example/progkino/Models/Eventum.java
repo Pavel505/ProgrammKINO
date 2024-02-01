@@ -3,7 +3,7 @@ package com.example.progkino.Models;
 import java.util.Date;
 
 public class Eventum {
-
+    public Eventum() {}
 
     int id;
     String img, color, title, dateEventum;

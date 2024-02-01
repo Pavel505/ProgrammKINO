@@ -2,6 +2,7 @@ package com.example.progkino.Models;
 
 public class Category {
     int id;
+    public Category() {}
     String title;
 
     public Category(int id, String title) {

@@ -27,6 +27,10 @@ public class HomeActivity extends AppCompatActivity {
     static List<Eventum> eventumList = new ArrayList<>();
     static List<Eventum> fullEventumList = new ArrayList<>();
     static List<Category> categoryList = new ArrayList<>();
+    String color1 = "#E91E1E";
+    String color2 = "#4CAF50";
+    String color3 = "#0B24AF";
+    String color4 = "#9C27B0";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,10 +44,30 @@ public class HomeActivity extends AppCompatActivity {
 
         setCategoryRecycler(categoryList);
 
-        eventumList.add(new Eventum(1,"chgk","#610C13","Лига вузов европы","2024-02-01" , "Интеллект","Турнир по игре ЧГК"));
-        eventumList.add(new Eventum(2,"vorosh","#D3176DC8","Ворошиловский стрелок\n 5 этап", "2024-02-02", "Интеллект","орошиловский стрелок: 5 этап. Интрига..."));
+        eventumList.add(new Eventum(1,"chgk","#350307","Лига вузов европы","2024-02-01" , "Интеллект","Турнир по игре ЧГК"));
+        eventumList.add(new Eventum(2,"vorosh","#350307","Ворошиловский стрелок\n 5 этап", "2024-02-02", "Интеллект","орошиловский стрелок: 5 этап. Интрига..."));
         eventumList.add(new Eventum(3,"nastolki","#D300A5CD","Вечер настолок", "2024-03-02", "Настолки","Вечер настолок"));
         eventumList.add(new Eventum(4,"voroshchr","#D33D00CD","Чемпионат России", "2024-03-02", "Турниры","Соберет много команд: и Оголодавших ...."));
+
+        for(Eventum ev : eventumList){
+            switch (ev.getType()) {
+                case  ("Интеллект"):
+                    ev.setImg("chgk");
+                    ev.setColor(color1);
+                    break;
+                case ("Настолки"):
+                    ev.setImg("nastolki");
+                    ev.setColor(color2);
+                    break;
+                case ("Сюжетки"):
+                    ev.setImg("nastolki");
+                    ev.setColor(color3);
+                    break;
+                default:
+                    ev.setColor(color4);
+                    break;
+            }
+        }
 
         fullEventumList.addAll(eventumList);
         setEventumRecycler(eventumList);
