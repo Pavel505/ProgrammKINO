@@ -2,17 +2,10 @@ package com.example.progkino;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 public class TrenActivity extends AppCompatActivity {
 
@@ -38,10 +31,23 @@ public class TrenActivity extends AppCompatActivity {
         startActivity(intentContact);
     }
 
-    Button btn_tren = (Button) findViewById(R.id.btn_tren);/*
+    public void onClickRead (View view){
+        Intent intentTrening = new Intent(TrenActivity.this, TreningActivity.class);
+        intentTrening.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentTrening);
+    }
+
+    /*
+    public void navigatorTrening(View view){
+
+    }*/
 
 
 
+
+
+
+/*
     String getStringFromAssetFile(Activity activity)
     {
         AssetManager am = activity.getAssets();

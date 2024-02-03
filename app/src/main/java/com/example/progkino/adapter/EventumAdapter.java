@@ -26,11 +26,11 @@ import java.util.List;
 
 public class EventumAdapter extends RecyclerView.Adapter<EventumAdapter.EventumViewHolder> {
     Context context;
-    List<Eventum> eventumes;
+    List<Eventum> eventumesList;
 
-    public EventumAdapter(Context context, List<Eventum> eventumes) {
+    public EventumAdapter(Context context, List<Eventum> eventumesList) {
         this.context = context;
-        this.eventumes = eventumes;
+        this.eventumesList = eventumesList;
     }
 
     @NonNull
@@ -43,13 +43,13 @@ public class EventumAdapter extends RecyclerView.Adapter<EventumAdapter.EventumV
     @SuppressLint("RecyclerView")
     @Override //Что подставляем дизайн
     public void onBindViewHolder(@NonNull EventumViewHolder holder, int position) {
-        holder.eventumBg.setCardBackgroundColor(Color.parseColor(eventumes.get(position).getColor()));
-        int imageId = context.getResources().getIdentifier( eventumes.get(position).getImg(),"drawable",context.getPackageName());
+        holder.eventumBg.setCardBackgroundColor(Color.parseColor(eventumesList.get(position).getColor()));
+        int imageId = context.getResources().getIdentifier( eventumesList.get(position).getImg(),"drawable",context.getPackageName());
         holder.eventumImage.setImageResource(imageId);
 
-        holder.eventumTitle.setText(eventumes.get(position).getTitle());
-        holder.eventumDate.setText((CharSequence) eventumes.get(position).getDateEventum());
-        holder.eventumType.setText(eventumes.get(position).getType());
+        holder.eventumTitle.setText(eventumesList.get(position).getTitle());
+        holder.eventumDate.setText((CharSequence) eventumesList.get(position).getDateEventum());
+        holder.eventumType.setText(eventumesList.get(position).getType());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,12 +60,12 @@ public class EventumAdapter extends RecyclerView.Adapter<EventumAdapter.EventumV
                  context, new Pair<View,String>(holder.eventumImage,"eventumImage")
                         );
                 // Dop значения
-                intent.putExtra("eventumBg", Color.parseColor(eventumes.get(position).getColor()));
+                intent.putExtra("eventumBg", Color.parseColor(eventumesList.get(position).getColor()));
                 intent.putExtra("eventumImage",imageId);
-                intent.putExtra("eventumTitle",eventumes.get(position).getTitle());
-                intent.putExtra("eventumDate",(CharSequence) eventumes.get(position).getDateEventum());
-                intent.putExtra("eventumType",eventumes.get(position).getType());
-                intent.putExtra("eventumDescription",eventumes.get(position).getEventumDescription());
+                intent.putExtra("eventumTitle",eventumesList.get(position).getTitle());
+                intent.putExtra("eventumDate",(CharSequence) eventumesList.get(position).getDateEventum());
+                intent.putExtra("eventumType",eventumesList.get(position).getType());
+                intent.putExtra("eventumDescription",eventumesList.get(position).getEventumDescription());
 
                 context.startActivity(intent, options.toBundle());
             }
@@ -74,7 +74,7 @@ public class EventumAdapter extends RecyclerView.Adapter<EventumAdapter.EventumV
 
     @Override // С какими элементами будем работать
     public int getItemCount() {
-        return eventumes.size();
+        return eventumesList.size();
     }
 
     public static final class EventumViewHolder extends RecyclerView.ViewHolder{

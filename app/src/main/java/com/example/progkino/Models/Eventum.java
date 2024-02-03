@@ -5,25 +5,26 @@ import java.util.Date;
 public class Eventum {
     public Eventum() {}
 
-    int id;
+    long id;
     String img, color, title, dateEventum;
    // Date dateEventum;
     String type, eventumDescription;
 
 
-    public Eventum(int id, String img, String color, String title, String dateEventum, String type,String eventumDescription) {
+    public Eventum(long id, String color, String dateEventum,String eventumDescription,   String img,  String title,  String type) {
         this.id = id;
-        this.img = img;
         this.color = color;
-        this.title = title;
         this.dateEventum = dateEventum;
-        this.type = type;
         this.eventumDescription = eventumDescription;
+
+        this.img = img;
+        this.title = title;
+        this.type = type;
     }
 
-    public Eventum(String eventumDescription) {
+    /*public Eventum(String eventumDescription) {
         this.eventumDescription = eventumDescription;
-    }
+    }*/
 
     public String getEventumDescription() {
         return eventumDescription;
@@ -33,11 +34,11 @@ public class Eventum {
         this.eventumDescription = eventumDescription;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

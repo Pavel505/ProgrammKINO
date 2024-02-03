@@ -25,4 +25,16 @@
     <string name="opis2_2">Почта: pshp05@yandex.com \n Vk: https://vk.com/id499746732</string>
     <string name="opis3">Оставить отзыв можно здесь:</string>
     <string name="opis_btn">Напишите нам</string>
+    <string name="tren1">Командные тренировки</string>
+    <string name="tren2">Индивидуальные тренировки</string>
+    <string name="tren11">Что?Где?Когда?</string>
+    <string name="tren12">Своя игра</string>
+    <string name="tren21">География</string>
+    <string name="tren22">Искусство</string>
+    <string name="tren23">Праздники</string>
+    <string name="tren24">Сказки</string>
+    <string name="tren25">Достопримечательности</string>
+    <string name="tren26">Регионы России</string>
+    <string name="tren27">Мифология</string>
+    <string name="tutorial1">Списки с теорией:</string>
 </resources>

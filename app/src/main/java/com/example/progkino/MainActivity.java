@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.example.progkino.Models.Eventum;
+import com.example.progkino.Models.Question;
 import com.example.progkino.Models.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     FirebaseDatabase db;
-    DatabaseReference users,eventumes;
+    DatabaseReference users,eventumes,questions;
 
     RelativeLayout root;
     //public EditText name,editText2;
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         users = db.getReference("User");
         eventumes = db.getReference("Eventum");
+        questions = db.getReference("Question");
     }
 
 
@@ -202,7 +204,17 @@ public class MainActivity extends AppCompatActivity {
                                     user.setEmail(email.getText().toString());
                                     user.setBirthday(birthday.getText().toString());
                                     user.setCity(city.getText().toString());
-                                    user.setUserdescritpion(userdescription.getText().toString());/*
+                                    user.setUserdescritpion(userdescription.getText().toString());
+                                    Question question = new Question();
+                                    question.setAnswer("Париж");
+                                    question.setAuthor("Волков Александр");
+                                    question.setCategory("Тренировка");
+                                    question.setComment("-");
+                                    question.setContent("Назовите столицу Франции");
+                                    question.setSources("-");
+                                    question.setUserEmail("1@mail.ru");
+                                    questions.push().setValue(question);
+/*
                                     Eventum eventum = new Eventum();
                                     eventum.setTitle("Вечер настольных игр");
                                     eventum.setDateEventum("29072024");
