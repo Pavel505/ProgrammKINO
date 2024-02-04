@@ -16,7 +16,6 @@ public class Eventum {
         this.color = color;
         this.dateEventum = dateEventum;
         this.eventumDescription = eventumDescription;
-
         this.img = img;
         this.title = title;
         this.type = type;

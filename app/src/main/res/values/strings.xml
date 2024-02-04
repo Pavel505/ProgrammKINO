@@ -37,4 +37,7 @@
     <string name="tren26">Регионы России</string>
     <string name="tren27">Мифология</string>
     <string name="tutorial1">Списки с теорией:</string>
+    <string name="question">Вопрос</string>
+    <string name="answer">Ответ</string>
+    <string name="comment">Комментарий</string>
 </resources>

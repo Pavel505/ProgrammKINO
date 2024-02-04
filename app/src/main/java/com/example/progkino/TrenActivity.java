@@ -37,6 +37,12 @@ public class TrenActivity extends AppCompatActivity {
         startActivity(intentTrening);
     }
 
+    public void onClickRead2 (View view){
+        Intent intentTrening2 = new Intent(TrenActivity.this, Trening2Activity.class);
+        intentTrening2.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentTrening2);
+    }
+
     /*
     public void navigatorTrening(View view){
 

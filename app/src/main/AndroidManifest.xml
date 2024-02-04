@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ProgKino"
         tools:targetApi="31">
         <activity
+            android:name=".Trening2Activity"
+            android:exported="false" />
+        <activity
             android:name=".TreningActivity"
             android:exported="false" />
         <activity

@@ -1,5 +1,7 @@
 package com.example.progkino;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
     RecyclerView categoryRecycler,eventumRecycler;
     CategoryAdapter categoryAdapter;
     static EventumAdapter eventumAdapter;
-    static List<Eventum> eventumList = new ArrayList<>();
+    public static List<Eventum> eventumList = new ArrayList<>();
     static List<Eventum> fullEventumList = new ArrayList<>();
     static List<Category> categoryList = new ArrayList<>();
     String color1 = "#E91E1E";
@@ -45,12 +48,26 @@ public class HomeActivity extends AppCompatActivity {
     private List<String> listData;
     DatabaseReference users,eventumes;
     FirebaseDatabase db;
+    //public long id ;
+    //String dat, color ,img ,descr,type ,title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-       // init();
-        //getDataFromDB();
+        Log.w(TAG, "loadPost:onCancelled1");
+        init();
+        getDataFromDB();
+        Log.w(TAG, "loadPost:onCancelled3");
+
+        eventumList.add(new Eventum(4, "#350307","2024-02-01" ,"Турнир по игре ЧГК","chgk", "Городская студ лига", "Интеллект"));
+       /* eventumList.add(new Eventum(2,"vorosh","#350307","Ворошиловский стрелок\n 5 этап", "2024-02-02", "Интеллект","орошиловский стрелок: 5 этап. Интрига..."));
+        eventumList.add(new Eventum(3,"nastolki","#D300A5CD","Вечер настолок", "2024-03-02", "Настолки","Вечер настолок"));
+        eventumList.add(new Eventum(4,"voroshchr","#D33D00CD","Чемпионат России", "2024-03-02", "Турниры","Соберет много команд: и Оголодавших ...."));
+*/
+        Log.w(TAG, "l6" + eventumList.get(0).getTitle());
+        eventumList.add(new Eventum(7, "#370307","2025-02-01" ,
+                "Турнир по игре ЧГП","chgk", "Лига irjkjn77777777", "Интеллект"));
         categoryList.add(new Category(1,"Интеллект"));
         categoryList.add(new Category(2,"Настолки"));
         categoryList.add(new Category(3,"Сюжетки"));
@@ -58,11 +75,6 @@ public class HomeActivity extends AppCompatActivity {
 
         setCategoryRecycler(categoryList);
 
-        eventumList.add(new Eventum(1, "#350307","2024-02-01" ,"Турнир по игре ЧГК","chgk", "Лига вузов европы", "Интеллект"));
-       /* eventumList.add(new Eventum(2,"vorosh","#350307","Ворошиловский стрелок\n 5 этап", "2024-02-02", "Интеллект","орошиловский стрелок: 5 этап. Интрига..."));
-        eventumList.add(new Eventum(3,"nastolki","#D300A5CD","Вечер настолок", "2024-03-02", "Настолки","Вечер настолок"));
-        eventumList.add(new Eventum(4,"voroshchr","#D33D00CD","Чемпионат России", "2024-03-02", "Турниры","Соберет много команд: и Оголодавших ...."));
-*/
         for(Eventum ev : eventumList){
             switch (ev.getType()) {
                 case  ("Интеллект"):
@@ -94,24 +106,57 @@ public class HomeActivity extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         eventumes = db.getReference("Eventum");
     }
-    private void getDataFromDB(){
+    public void getDataFromDB(){
         ValueEventListener vlistener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.w(TAG, "loadPost:onCancelled2");
                 if(eventumList.size() > 0 )eventumList.clear();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    int i = 1;
-                    /*Eventum eventum = ds.getValue(Eventum.class);
-                    eventumList.add(new Eventum(i,null,null,eventum.getTitle().toString(),eventum.getDateEventum().toString() ,
-                          eventum.getType().toString(),eventum.getEventumDescription().toString()));
-                    eventumList.add(eventum);*/
-                    i += 1;
+                    Log.w(TAG, "loadPost:onCancelled4");
+                    Eventum eventum = ds.getValue(Eventum.class);
+                    long id = eventum.getId();String title = eventum.getTitle();
+                    String dat = eventum.getDateEventum();String color = eventum.getColor();
+                    String img = eventum.getImg();String descr = eventum.getEventumDescription();
+                    String type = eventum.getType();
+                    eventumList.add(new Eventum(id,color,dat,descr, img, title, type));
+                    eventumList.add(new Eventum(eventum.getId(),"null",eventum.getDateEventum().toString(),eventum.getEventumDescription().toString(),
+                            "null", eventum.getTitle().toString(), eventum.getType().toString()));
+                    eventumList.add(new Eventum(1, "#370307","2025-02-01" ,
+                            "Турнир по игре ЧГП","chgk", "Лига irjkjn", "Интеллект"));
+
+                    eventumList.add(eventum);
+                    Log.w(TAG, "loadPost:onCancelled5" + eventum.getTitle());
+
                 }
+                eventumList.add(new Eventum(7, "#370307","2025-02-01" ,
+                        "Турнир по игре ЧГП","chgk", "Лига irjkjn77777777", "Интеллект"));
+                adapterAr.notifyDataSetChanged();
+                Log.w(TAG, "l5" + eventumList.get(0).getTitle());
+                Log.w(TAG, "loadPost:onCancelled5" + eventumList.get(1).getTitle());
+                Log.w(TAG, "loadPost:onCancelled5" + eventumList.get(2).getTitle());
             }
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+                DatabaseError databaseError = null;
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
         };
         eventumes.addValueEventListener(vlistener);
+    }
+    private void getDataFromDB2(){/*
+        eventumes.child("Eventum").child(id).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });*/
+
     }
     /*
     View.OnClickListener(new View.OnClickListener){
