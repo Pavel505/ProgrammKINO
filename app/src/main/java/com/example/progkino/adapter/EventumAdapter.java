@@ -34,7 +34,7 @@ public class EventumAdapter extends RecyclerView.Adapter<EventumAdapter.EventumV
     }
 
     @NonNull
-    @Override // Lbpfqy
+    @Override // Дизайн
     public EventumViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View eventumItems = LayoutInflater.from(context).inflate(R.layout.eventum_item, parent , false);
         return new EventumAdapter.EventumViewHolder(eventumItems);

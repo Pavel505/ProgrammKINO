@@ -35,45 +35,44 @@ public class HomeActivity extends AppCompatActivity {
     RecyclerView categoryRecycler,eventumRecycler;
     CategoryAdapter categoryAdapter;
     static EventumAdapter eventumAdapter;
+    public ArrayList<Eventum> elist = new ArrayList<>();
+    public ArrayList<Eventum> elist2 = new ArrayList<Eventum>();
     public static List<Eventum> eventumList = new ArrayList<>();
-    static List<Eventum> fullEventumList = new ArrayList<>();
-    static List<Category> categoryList = new ArrayList<>();
-    String color1 = "#E91E1E";
-    String color2 = "#4CAF50";
-    String color3 = "#0B24AF";
-    String color4 = "#9C27B0";
+    public static List<Eventum> fullEventumList = new ArrayList<>();
+    public static List<Category> categoryList = new ArrayList<>();
+    public static String color1 = "#E91E1E";
+    public static String color2 = "#4CAF50";
+    public static String color3 = "#0B24AF";
+    public static String color4 = "#9C27B0";
     private ListView listView;
     private RecyclerView listView2;
     private ArrayAdapter<String> adapterAr;
     private List<String> listData;
-    DatabaseReference users,eventumes;
+    DatabaseReference eventumes;
     FirebaseDatabase db;
-    //public long id ;
-    //String dat, color ,img ,descr,type ,title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Log.w(TAG, "loadPost:onCancelled1");
         init();
-        getDataFromDB();
-        Log.w(TAG, "loadPost:onCancelled3");
+        //getDataFromDB();
 
         eventumList.add(new Eventum(4, "#350307","2024-02-01" ,"Турнир по игре ЧГК","chgk", "Городская студ лига", "Интеллект"));
        /* eventumList.add(new Eventum(2,"vorosh","#350307","Ворошиловский стрелок\n 5 этап", "2024-02-02", "Интеллект","орошиловский стрелок: 5 этап. Интрига..."));
         eventumList.add(new Eventum(3,"nastolki","#D300A5CD","Вечер настолок", "2024-03-02", "Настолки","Вечер настолок"));
         eventumList.add(new Eventum(4,"voroshchr","#D33D00CD","Чемпионат России", "2024-03-02", "Турниры","Соберет много команд: и Оголодавших ...."));
 */
-        Log.w(TAG, "l6" + eventumList.get(0).getTitle());
-        eventumList.add(new Eventum(7, "#370307","2025-02-01" ,
-                "Турнир по игре ЧГП","chgk", "Лига irjkjn77777777", "Интеллект"));
+
         categoryList.add(new Category(1,"Интеллект"));
         categoryList.add(new Category(2,"Настолки"));
         categoryList.add(new Category(3,"Сюжетки"));
         categoryList.add(new Category(4,"Турниры"));
 
         setCategoryRecycler(categoryList);
+
+        fullEventumList.addAll(eventumList);
+        setEventumRecycler(eventumList);
 
         for(Eventum ev : eventumList){
             switch (ev.getType()) {
@@ -94,90 +93,12 @@ public class HomeActivity extends AppCompatActivity {
                     break;
             }
         }
-
-        fullEventumList.addAll(eventumList);
-        setEventumRecycler(eventumList);
     }
     private void init(){
         eventumRecycler  = findViewById(R.id.eventumRecycler); // Ошибка может?
-        listData = new ArrayList<>();
-        adapterAr = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listData);
-        //eventumRecycler.setAdapter(adapterAr);
         db = FirebaseDatabase.getInstance();
         eventumes = db.getReference("Eventum");
     }
-    public void getDataFromDB(){
-        ValueEventListener vlistener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.w(TAG, "loadPost:onCancelled2");
-                if(eventumList.size() > 0 )eventumList.clear();
-                for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    Log.w(TAG, "loadPost:onCancelled4");
-                    Eventum eventum = ds.getValue(Eventum.class);
-                    long id = eventum.getId();String title = eventum.getTitle();
-                    String dat = eventum.getDateEventum();String color = eventum.getColor();
-                    String img = eventum.getImg();String descr = eventum.getEventumDescription();
-                    String type = eventum.getType();
-                    eventumList.add(new Eventum(id,color,dat,descr, img, title, type));
-                    eventumList.add(new Eventum(eventum.getId(),"null",eventum.getDateEventum().toString(),eventum.getEventumDescription().toString(),
-                            "null", eventum.getTitle().toString(), eventum.getType().toString()));
-                    eventumList.add(new Eventum(1, "#370307","2025-02-01" ,
-                            "Турнир по игре ЧГП","chgk", "Лига irjkjn", "Интеллект"));
-
-                    eventumList.add(eventum);
-                    Log.w(TAG, "loadPost:onCancelled5" + eventum.getTitle());
-
-                }
-                eventumList.add(new Eventum(7, "#370307","2025-02-01" ,
-                        "Турнир по игре ЧГП","chgk", "Лига irjkjn77777777", "Интеллект"));
-                adapterAr.notifyDataSetChanged();
-                Log.w(TAG, "l5" + eventumList.get(0).getTitle());
-                Log.w(TAG, "loadPost:onCancelled5" + eventumList.get(1).getTitle());
-                Log.w(TAG, "loadPost:onCancelled5" + eventumList.get(2).getTitle());
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                DatabaseError databaseError = null;
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        };
-        eventumes.addValueEventListener(vlistener);
-    }
-    private void getDataFromDB2(){/*
-        eventumes.child("Eventum").child(id).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                }
-            }
-        });*/
-
-    }
-    /*
-    View.OnClickListener(new View.OnClickListener){
-
-    }
-    TextView.setOnClickListener(new OnClickListener() {
-
-        @Override
-        public void onClick(View v) {
-
-        }
-
-    });
-    tv.setMovementMethod(LinkMovementMethod.getInstance());
-
-    Button btnSignIn2 = (Button) findViewById(R.id.button);
-    clickTutorial.setOnClickListener{
-        navigatorTutorial();
-    }*/
-    //TextView clickTutorial = (TextView) findViewById(R.id.tutorial);
-
     public void navigatorMainScen(View view){
         Intent intentHome = new Intent(HomeActivity.this, HomeActivity.class);
         intentHome.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
@@ -199,13 +120,57 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intentContact);
     }
     private void setEventumRecycler(List<Eventum> eventumList) {
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
 
-        eventumRecycler = findViewById(R.id.eventumRecycler);
+        eventumRecycler.hasFixedSize();
         eventumRecycler.setLayoutManager(layoutManager);
+       // elist2 = new ArrayList<>();
 
         eventumAdapter = new EventumAdapter(this, eventumList);
+        //eventumAdapter = new EventumAdapter(this, elist);Так было 2
         eventumRecycler.setAdapter(eventumAdapter);
+/*
+        ValueEventListener vlistener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.w(TAG, "loadPost:onCancelled2");
+                if(elist2.size() > 0 )elist2.clear();
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    Log.w(TAG, "loadPost:onCancelled4");
+                    Eventum eventum = ds.getValue(Eventum.class);
+                    elist2.add(eventum);
+                }
+                eventumList.addAll(elist2);
+                eventumAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                DatabaseError databaseError = null;
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+
+        eventumes.addValueEventListener(vlistener);*/
+        ValueEventListener vlistener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //if(eventumList.size() > 0 )eventumList.clear();
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    Eventum eventum = ds.getValue(Eventum.class);
+                    /*eventumList.add(new Eventum(eventum.getId(),"#350307",eventum.getDateEventum().toString(),eventum.getEventumDescription().toString(),
+                            "chgk", eventum.getTitle().toString(), eventum.getType().toString()));*/
+                    eventumList.add(eventum);
+                }
+
+                eventumAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                DatabaseError databaseError = null;
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        eventumes.addValueEventListener(vlistener);
     }
 
     private void setCategoryRecycler(List<Category> categoryList) {
@@ -220,7 +185,25 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public static void showEventumesByCategory(String category){
-
+       /* for(Eventum ev : eventumList){
+            switch (ev.getType()) {
+                case  ("Интеллект"):
+                    ev.setImg("chgk");
+                    ev.setColor(color1);
+                    break;
+                case ("Настолки"):
+                    ev.setImg("nastolki");
+                    ev.setColor(color2);
+                    break;
+                case ("Сюжетки"):
+                    ev.setImg("nastolki");
+                    ev.setColor(color3);
+                    break;
+                default:
+                    ev.setColor(color4);
+                    break;
+            }
+        }*/
         eventumList.clear();
         eventumList.addAll(fullEventumList);
         List<Eventum> filterEventumes = new ArrayList<>();
@@ -229,6 +212,7 @@ public class HomeActivity extends AppCompatActivity {
         for(Eventum ev : eventumList){
             if(ev.getType() == category) {
                 filterEventumes.add(ev);
+                Log.w(TAG, "loadPost:onCancelled"+ ev.getType() + category);
             }
         }
 
