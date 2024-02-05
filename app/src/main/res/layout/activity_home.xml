@@ -150,9 +150,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eventumRecycler"
-        android:layout_width="313dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="31dp"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"

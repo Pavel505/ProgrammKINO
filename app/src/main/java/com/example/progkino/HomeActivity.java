@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView listView2;
     private ArrayAdapter<String> adapterAr;
     private List<String> listData;
-    DatabaseReference eventumes;
+    DatabaseReference eventumes, categories;
     FirebaseDatabase db;
 
     @Override
@@ -56,7 +56,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         init();
-        //getDataFromDB();
 
         eventumList.add(new Eventum(4, "#350307","2024-02-01" ,"Турнир по игре ЧГК","chgk", "Городская студ лига", "Интеллект"));
        /* eventumList.add(new Eventum(2,"vorosh","#350307","Ворошиловский стрелок\n 5 этап", "2024-02-02", "Интеллект","орошиловский стрелок: 5 этап. Интрига..."));
@@ -98,6 +97,7 @@ public class HomeActivity extends AppCompatActivity {
         eventumRecycler  = findViewById(R.id.eventumRecycler); // Ошибка может?
         db = FirebaseDatabase.getInstance();
         eventumes = db.getReference("Eventum");
+        categories = db.getReference("Category");
     }
     public void navigatorMainScen(View view){
         Intent intentHome = new Intent(HomeActivity.this, HomeActivity.class);
@@ -171,6 +171,8 @@ public class HomeActivity extends AppCompatActivity {
             }
         };
         eventumes.addValueEventListener(vlistener);
+        Log.w(TAG, "loadPost:onCancelled" + eventumList.size());
+
     }
 
     private void setCategoryRecycler(List<Category> categoryList) {
@@ -182,6 +184,26 @@ public class HomeActivity extends AppCompatActivity {
 
         categoryAdapter = new CategoryAdapter(this, categoryList);
         categoryRecycler.setAdapter(categoryAdapter);
+
+        /*ValueEventListener vlistener_cat = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //if(eventumList.size() > 0 )eventumList.clear();
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    Category category = ds.getValue(Category.class);
+
+                    categoryList.add(category);
+                }
+
+                categoryAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                DatabaseError databaseError = null;
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        categories.addValueEventListener(vlistener_cat);*/
     }
 
     public static void showEventumesByCategory(String category){
