@@ -24,15 +24,15 @@
             android:layout_width="120dp"
             android:layout_height="140dp"
             android:layout_marginBottom="30dp"
-            android:onClick="navigatorContact"
             android:gravity="center"
+            android:onClick="navigatorContact"
             android:rotation="-90"
             android:text="@string/contacts"
             android:textColor="@color/white"
             android:textSize="21dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tren"
             tools:ignore="SpUsage" />
@@ -67,7 +67,7 @@
             android:textSize="22sp"
             app:layout_constraintBottom_toTopOf="@+id/tutorial"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView11" />
 
@@ -83,7 +83,7 @@
             android:textSize="21sp"
             app:layout_constraintBottom_toTopOf="@+id/tren"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_scen" />
 
