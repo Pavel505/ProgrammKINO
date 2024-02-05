@@ -35,8 +35,6 @@ public class HomeActivity extends AppCompatActivity {
     RecyclerView categoryRecycler,eventumRecycler;
     CategoryAdapter categoryAdapter;
     static EventumAdapter eventumAdapter;
-    public ArrayList<Eventum> elist = new ArrayList<>();
-    public ArrayList<Eventum> elist2 = new ArrayList<Eventum>();
     public static List<Eventum> eventumList = new ArrayList<>();
     public static List<Eventum> fullEventumList = new ArrayList<>();
     public static List<Category> categoryList = new ArrayList<>();
@@ -44,10 +42,6 @@ public class HomeActivity extends AppCompatActivity {
     public static String color2 = "#4CAF50";
     public static String color3 = "#0B24AF";
     public static String color4 = "#9C27B0";
-    private ListView listView;
-    private RecyclerView listView2;
-    private ArrayAdapter<String> adapterAr;
-    private List<String> listData;
     DatabaseReference eventumes, categories;
     FirebaseDatabase db;
 
@@ -58,15 +52,16 @@ public class HomeActivity extends AppCompatActivity {
         init();
 
         eventumList.add(new Eventum(4, "#350307","2024-02-01" ,"Турнир по игре ЧГК","chgk", "Городская студ лига", "Интеллект"));
-       /* eventumList.add(new Eventum(2,"vorosh","#350307","Ворошиловский стрелок\n 5 этап", "2024-02-02", "Интеллект","орошиловский стрелок: 5 этап. Интрига..."));
-        eventumList.add(new Eventum(3,"nastolki","#D300A5CD","Вечер настолок", "2024-03-02", "Настолки","Вечер настолок"));
-        eventumList.add(new Eventum(4,"voroshchr","#D33D00CD","Чемпионат России", "2024-03-02", "Турниры","Соберет много команд: и Оголодавших ...."));
-*/
+       // eventumList.add(new Eventum(2,"vorosh","#350307","Ворошиловский стрелок\n 5 этап", "2024-02-02", "Интеллект","орошиловский стрелок: 5 этап. Интрига..."));
+        eventumList.add(new Eventum(5,"#D300A5CD","Вечер настолок", "2024-03-02","nastolki", "Настолки","Настолки"));
+        // eventumList.add(new Eventum(4,"voroshchr","#D33D00CD","Чемпионат России", "2024-03-02", "Турниры","Соберет много команд: и Оголодавших ...."));
+
 
         categoryList.add(new Category(1,"Интеллект"));
         categoryList.add(new Category(2,"Настолки"));
         categoryList.add(new Category(3,"Сюжетки"));
         categoryList.add(new Category(4,"Турниры"));
+        categoryList.add(new Category(5,"Обновить"));
 
         setCategoryRecycler(categoryList);
 
@@ -99,6 +94,11 @@ public class HomeActivity extends AppCompatActivity {
         eventumes = db.getReference("Eventum");
         categories = db.getReference("Category");
     }
+
+    /*public void filterAll(){
+        eventumList.clear();
+        eventumList.addAll(fullEventumList);
+    }*/
     public void navigatorMainScen(View view){
         Intent intentHome = new Intent(HomeActivity.this, HomeActivity.class);
         intentHome.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
@@ -230,16 +230,17 @@ public class HomeActivity extends AppCompatActivity {
         eventumList.addAll(fullEventumList);
         List<Eventum> filterEventumes = new ArrayList<>();
        // String secondElement = String.valueOf(categoryList.get(category));
-
-        for(Eventum ev : eventumList){
-            if(ev.getType() == category) {
-                filterEventumes.add(ev);
-                Log.w(TAG, "loadPost:onCancelled"+ ev.getType() + category);
+        if (category != "Обновить") {
+            for (Eventum ev : eventumList) {
+                if (ev.getType() == category) {
+                    filterEventumes.add(ev);
+                    Log.w(TAG, "loadPost:onCancelled" + ev.getType() + category);
+                }
             }
+            eventumList.clear();
+            eventumList.addAll(filterEventumes);
         }
 
-        eventumList.clear();
-        eventumList.addAll(filterEventumes);
 
         eventumAdapter.notifyDataSetChanged();// Берет новые значения и обновляет
 

@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,6 +39,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, @SuppressLint("RecyclerView") int position) {
 // Что мы будем подставлять в конкретное поле
+
         holder.categoryTitle.setText(categories.get(position).getTitle());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -56,8 +58,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                     case (3):
                         per = "Сюжетки";
                         break;
-                    default:
+                    case (4):
                         per = "Турниры";
+                        break;
+                    default:
+                        per = "Обновить";
                         break;
                 }
                 HomeActivity.showEventumesByCategory(per);
@@ -72,6 +77,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     public static final class CategoryViewHolder extends RecyclerView.ViewHolder{
         TextView categoryTitle;
+
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
             categoryTitle = itemView.findViewById(R.id.categoryTitle);
