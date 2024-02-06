@@ -51,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         init();
 
-        eventumList.add(new Eventum(4, "#350307","2024-02-01" ,"Турнир по игре ЧГК","chgk", "Городская студ лига", "Интеллект"));
+        eventumList.add(new Eventum(4, "#350307","2024-02-01" ,"Турнир по игре ЧГК","chgk3", "Городская студ лига", "Интеллект"));
        // eventumList.add(new Eventum(2,"vorosh","#350307","Ворошиловский стрелок\n 5 этап", "2024-02-02", "Интеллект","орошиловский стрелок: 5 этап. Интрига..."));
         eventumList.add(new Eventum(5,"#D300A5CD","Вечер настолок", "2024-03-02","nastolki", "Настолки","Настолки"));
         // eventumList.add(new Eventum(4,"voroshchr","#D33D00CD","Чемпионат России", "2024-03-02", "Турниры","Соберет много команд: и Оголодавших ...."));
@@ -71,7 +71,7 @@ public class HomeActivity extends AppCompatActivity {
         for(Eventum ev : eventumList){
             switch (ev.getType()) {
                 case  ("Интеллект"):
-                    ev.setImg("chgk");
+                    ev.setImg("chgk1");
                     ev.setColor(color1);
                     break;
                 case ("Настолки"):
@@ -240,7 +240,6 @@ public class HomeActivity extends AppCompatActivity {
             eventumList.clear();
             eventumList.addAll(filterEventumes);
         }
-
 
         eventumAdapter.notifyDataSetChanged();// Берет новые значения и обновляет
 

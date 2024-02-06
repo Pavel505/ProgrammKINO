@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_marginEnd="20dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="18dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/eventumBg"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -19,7 +20,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="0dp"
@@ -30,10 +30,9 @@
 
             <ImageView
                 android:id="@+id/eventumImage"
-                android:layout_width="260dp"
-                android:layout_height="149dp"
-                android:contentDescription="@string/main_scen"
-                app:srcCompat="@drawable/chgk" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/chgk1" />
 
             <TextView
                 android:id="@+id/eventumTitle"
@@ -44,7 +43,7 @@
                 android:fontFamily="@font/montserrat"
                 android:text="@string/app_name"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="17sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,7 +53,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="11dp"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:text="@string/eventumData"
@@ -64,7 +63,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="11dp"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:text="@string/eventumType"
