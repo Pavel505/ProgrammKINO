@@ -18,13 +18,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
+
         android:id="@+id/list_quest_geo"
         android:layout_width="0dp"
-        android:layout_height="560dp"
+        android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="40dp"
+        android:scrollbarSize="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
