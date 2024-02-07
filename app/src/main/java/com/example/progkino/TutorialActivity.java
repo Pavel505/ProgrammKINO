@@ -14,7 +14,6 @@ public class TutorialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
     }
-
     public void navigatorMainScen(View view){
         Intent intentHome = new Intent(this, HomeActivity.class);
         intentHome.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
@@ -30,5 +29,9 @@ public class TutorialActivity extends AppCompatActivity {
         intentContact.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intentContact);
     }
-
+    public void tutorial_geo1(View view){
+        Intent intentGeo1 = new Intent(this, TutorialGeo1Activity.class);
+        intentGeo1.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentGeo1);
+    }
 }

@@ -51,11 +51,11 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         init();
 
-        eventumList.add(new Eventum(4, "#350307","2024-02-01" ,"Турнир по игре ЧГК","chgk3", "Городская студ лига", "Интеллект"));
+        eventumList.add(new Eventum(5, "#350307","2024-02-01" ,"Турнир по игре ЧГК","chgk3", "Городская студ лига", "Интеллект"));
        // eventumList.add(new Eventum(2,"vorosh","#350307","Ворошиловский стрелок\n 5 этап", "2024-02-02", "Интеллект","орошиловский стрелок: 5 этап. Интрига..."));
-        eventumList.add(new Eventum(5,"#D300A5CD","Вечер настолок", "2024-03-02","nastolki", "Настолки","Настолки"));
+        eventumList.add(new Eventum(6,"#D300A5CD","Вечер настолок", "2024-03-02","nastolki", "Настолки","Настолки"));
         // eventumList.add(new Eventum(4,"voroshchr","#D33D00CD","Чемпионат России", "2024-03-02", "Турниры","Соберет много команд: и Оголодавших ...."));
-
+        fullEventumList.addAll(eventumList);
 
         categoryList.add(new Category(1,"Интеллект"));
         categoryList.add(new Category(2,"Настолки"));
@@ -64,8 +64,6 @@ public class HomeActivity extends AppCompatActivity {
         categoryList.add(new Category(5,"Обновить"));
 
         setCategoryRecycler(categoryList);
-
-        fullEventumList.addAll(eventumList);
         setEventumRecycler(eventumList);
 
         for(Eventum ev : eventumList){
@@ -79,14 +77,16 @@ public class HomeActivity extends AppCompatActivity {
                     ev.setColor(color2);
                     break;
                 case ("Сюжетки"):
-                    ev.setImg("nastolki");
+                    ev.setImg("siget");
                     ev.setColor(color3);
                     break;
                 default:
+                    ev.setImg("turnir1");
                     ev.setColor(color4);
                     break;
             }
         }
+
     }
     private void init(){
         eventumRecycler  = findViewById(R.id.eventumRecycler); // Ошибка может?
@@ -154,14 +154,14 @@ public class HomeActivity extends AppCompatActivity {
         ValueEventListener vlistener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //if(eventumList.size() > 0 )eventumList.clear();
+                if(eventumList.size() > 0 )eventumList.clear();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Eventum eventum = ds.getValue(Eventum.class);
                     /*eventumList.add(new Eventum(eventum.getId(),"#350307",eventum.getDateEventum().toString(),eventum.getEventumDescription().toString(),
                             "chgk", eventum.getTitle().toString(), eventum.getType().toString()));*/
                     eventumList.add(eventum);
+                    fullEventumList.add(eventum);
                 }
-
                 eventumAdapter.notifyDataSetChanged();
             }
             @Override
@@ -171,7 +171,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         };
         eventumes.addValueEventListener(vlistener);
-        Log.w(TAG, "loadPost:onCancelled" + eventumList.size());
+        Log.w(TAG, "Размер списка мероприятий: " + eventumList.size() + fullEventumList.size());
 
     }
 

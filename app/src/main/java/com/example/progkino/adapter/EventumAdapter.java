@@ -90,6 +90,7 @@ public class EventumAdapter extends RecyclerView.Adapter<EventumAdapter.EventumV
             eventumTitle = itemView.findViewById(R.id.eventumTitle);
             eventumDate = itemView.findViewById(R.id.eventumDate);
             eventumType = itemView.findViewById(R.id.eventumType);
+
         }
     }
 
