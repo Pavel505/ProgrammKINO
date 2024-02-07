@@ -2,6 +2,7 @@ package com.example.progkino;
 
 import static com.example.progkino.Constant.GEO_CAPITAL;
 import static com.example.progkino.Constant.GEO_COUNTRY;
+import static com.example.progkino.Constant.GEO_IMAGE;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -80,6 +81,7 @@ public class TutorialGeo1Activity extends AppCompatActivity {
                 Intent i = new Intent(TutorialGeo1Activity.this, TutorialShowActivity.class);
                 i.putExtra(GEO_CAPITAL, questionTrenTutor.getCapital());
                 i.putExtra(GEO_COUNTRY, questionTrenTutor.getCountry());
+                i.putExtra(GEO_IMAGE, questionTrenTutor.getImgUrl() );
                 startActivity(i);
             }
         });

@@ -74,5 +74,11 @@
                 android:gravity="center"
                 android:textSize="20sp" />
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageViewGeo1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
