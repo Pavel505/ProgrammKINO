@@ -83,8 +83,18 @@ public class TreningActivity extends AppCompatActivity {
     }
 
     public void onAnswerOk (View view){
-        if (answer == editTextAnswer.getText().toString()){
+        String answer1 = "Vena";
+        String answer_znatok = editTextAnswer.getText().toString();
+        if (answer.equalsIgnoreCase(answer_znatok)){
             Log.w(TAG, "Правильный ответ " + id_q);
+            text_question_country.setText("12356");
+        }
+        if (answer.equalsIgnoreCase(answer1)){
+            Log.w(TAG, "Правильный ответ  2" + id_q);
+            text_question_country.setText("12356");
+        }
+        if (answer1.equalsIgnoreCase(answer_znatok)){
+            Log.w(TAG, "Правильный ответ  3" + id_q);
             text_question_country.setText("12356");
         }
         Log.w(TAG, "Другой ответ " + id_q + " " + answer + " " + editTextAnswer.getText().toString());

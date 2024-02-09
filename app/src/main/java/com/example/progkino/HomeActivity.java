@@ -207,32 +207,14 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public static void showEventumesByCategory(String category){
-       /* for(Eventum ev : eventumList){
-            switch (ev.getType()) {
-                case  ("Интеллект"):
-                    ev.setImg("chgk");
-                    ev.setColor(color1);
-                    break;
-                case ("Настолки"):
-                    ev.setImg("nastolki");
-                    ev.setColor(color2);
-                    break;
-                case ("Сюжетки"):
-                    ev.setImg("nastolki");
-                    ev.setColor(color3);
-                    break;
-                default:
-                    ev.setColor(color4);
-                    break;
-            }
-        }*/
+        Log.w(TAG, "Размер списка мероприятий2: " + eventumList.size() + fullEventumList.size());
         eventumList.clear();
         eventumList.addAll(fullEventumList);
         List<Eventum> filterEventumes = new ArrayList<>();
        // String secondElement = String.valueOf(categoryList.get(category));
         if (category != "Обновить") {
             for (Eventum ev : eventumList) {
-                if (ev.getType() == category) {
+                if (ev.getType().equalsIgnoreCase(category)) {
                     filterEventumes.add(ev);
                     Log.w(TAG, "loadPost:onCancelled" + ev.getType() + category);
                 }
