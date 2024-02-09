@@ -4,16 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TrenActivity" >
+    tools:context=".TrenActivity">
 
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_width="409dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="1dp"
+    <TextView
+        android:id="@+id/text_question_zagolovok1"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Страна:" />
+
+    <TextView
+        android:id="@+id/text_question_country"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_question_zagolovok1" />
+
+
+    <TextView
+        android:id="@+id/text_question_zagolovok2"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listCountry"
+        tools:text="Столица:" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+
+        android:id="@+id/answer_capital"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:hint="@string/answer"
+        android:inputType="text"
+        android:text=""
+        android:textColor="@color/line_register"
+        android:textColorHint="@color/text_bottom"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_question_zagolovok2"
+        app:layout_constraintVertical_bias="0.275" />
+
+    <ListView
+        android:id="@+id/listCountry"
+        android:layout_width="421dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_question_country" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_answer_ok"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="190dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="6dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/bok_panel"
+        android:fontFamily="sans-serif"
+        android:onClick="onAnswerOk"
+        android:text="@string/answer_ok"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/answer_capital"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

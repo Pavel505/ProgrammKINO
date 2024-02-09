@@ -13,11 +13,9 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
-import com.example.progkino.Models.Eventum;
 import com.example.progkino.Models.Question;
 import com.example.progkino.Models.User;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -27,7 +25,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.core.view.EventRaiser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -136,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             dialog.setView(register_window);
 
 
-            EditText name = register_window.findViewById(R.id.nameField);
+            EditText name = register_window.findViewById(R.id.answer_capital);
             EditText lastname = register_window.findViewById(R.id.lastnameField);
             EditText login = register_window.findViewById(R.id.loginField);
             EditText password = register_window.findViewById(R.id.passField);

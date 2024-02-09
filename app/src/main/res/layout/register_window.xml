@@ -18,7 +18,7 @@
         <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/nameField"
+            android:id="@+id/answer_capital"
             android:hint="Имя"
             android:inputType="text"
             android:text=""
