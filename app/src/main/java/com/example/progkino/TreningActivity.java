@@ -30,7 +30,7 @@ public class TreningActivity extends AppCompatActivity {
     String answer;
     private ArrayAdapter<String> adapterAr;
     private List<String> listData;
-    public int id_q;
+    public int id_q, counter,counter_question ;
     TextView text_question_country;
     DatabaseReference  treningGeo1;
     EditText editTextAnswer;
@@ -40,7 +40,6 @@ public class TreningActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trening);
         init();
-        id_q = 1;
         getDataFromDB();
     }
 
@@ -53,6 +52,7 @@ public class TreningActivity extends AppCompatActivity {
         listView.setAdapter(adapterAr);
         db = FirebaseDatabase.getInstance();
         treningGeo1 = db.getReference("TreningGeo1");
+        counter = 0;counter_question = 0;
     }
     private void getDataFromDB(){
         ValueEventListener vlistener = new ValueEventListener() {
@@ -61,7 +61,7 @@ public class TreningActivity extends AppCompatActivity {
                 if(listData.size() > 0 )listData.clear();
                 Random r = new Random();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    //id_q = r.nextInt(4) + 1;
+                    id_q = r.nextInt(4) + 1;
 
 
                     QuestionTrenTutor treningGeo1 = ds.getValue(QuestionTrenTutor.class);
@@ -83,23 +83,14 @@ public class TreningActivity extends AppCompatActivity {
     }
 
     public void onAnswerOk (View view){
-        String answer1 = "Vena";
         String answer_znatok = editTextAnswer.getText().toString();
         if (answer.equalsIgnoreCase(answer_znatok)){
-            Log.w(TAG, "Правильный ответ " + id_q);
-            text_question_country.setText("12356");
+            counter += 1;
+            Log.w(TAG, "Правильный ответ " + counter + "/" + counter_question );
         }
-        if (answer.equalsIgnoreCase(answer1)){
-            Log.w(TAG, "Правильный ответ  2" + id_q);
-            text_question_country.setText("12356");
-        }
-        if (answer1.equalsIgnoreCase(answer_znatok)){
-            Log.w(TAG, "Правильный ответ  3" + id_q);
-            text_question_country.setText("12356");
-        }
-        Log.w(TAG, "Другой ответ " + id_q + " " + answer + " " + editTextAnswer.getText().toString());
+        Log.w(TAG, "Другой ответ " + id_q + " " + answer + " " + answer_znatok);
         getDataFromDB();
-        id_q += 1;
+        counter_question  += 1;
+        text_question_country.setText(counter + "/" + counter_question);
     }
-
 }
