@@ -52,27 +52,23 @@ public class TreningActivity extends AppCompatActivity {
         listView.setAdapter(adapterAr);
         db = FirebaseDatabase.getInstance();
         treningGeo1 = db.getReference("TreningGeo1");
-        counter = 0;counter_question = 0;
+        counter = 0;counter_question = 0;id_q=1;
     }
     private void getDataFromDB(){
         ValueEventListener vlistener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(listData.size() > 0 )listData.clear();
-                Random r = new Random();
+                answer = "";
+                id_q = (int) (Math.random() * (15)) + 1;
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    id_q = r.nextInt(4) + 1;
-
-
                     QuestionTrenTutor treningGeo1 = ds.getValue(QuestionTrenTutor.class);
-                    String txt = treningGeo1.getCountry().toString();
                     if(id_q == treningGeo1.getId()){
                        // text_question_country.setText(txt);
+                        String txt = treningGeo1.getCountry().toString();
                         listData.add(txt);
                         answer = treningGeo1.getCapital().toString();
                     }
-                   // text_question_country = txt;
-                    //listData.add(ds.getValue().toString());
                 }
                 adapterAr.notifyDataSetChanged();
             }
@@ -83,6 +79,7 @@ public class TreningActivity extends AppCompatActivity {
     }
 
     public void onAnswerOk (View view){
+        counter_question  += 1;
         String answer_znatok = editTextAnswer.getText().toString();
         if (answer.equalsIgnoreCase(answer_znatok)){
             counter += 1;
@@ -90,7 +87,6 @@ public class TreningActivity extends AppCompatActivity {
         }
         Log.w(TAG, "Другой ответ " + id_q + " " + answer + " " + answer_znatok);
         getDataFromDB();
-        counter_question  += 1;
         text_question_country.setText(counter + "/" + counter_question);
     }
 }
