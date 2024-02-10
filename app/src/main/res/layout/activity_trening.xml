@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="43dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="43dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
 
 
     <TextView
-        android:id="@+id/text_question_zagolovok2"
+        android:id="@+id/text_time"
         android:layout_width="match_parent"
         android:layout_height="43dp"
         android:layout_marginStart="30dp"
@@ -43,8 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listCountry"
-        tools:text="Столица:" />
+        app:layout_constraintTop_toBottomOf="@+id/listCountry" />
 
     <androidx.appcompat.widget.AppCompatEditText
 
@@ -62,12 +61,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_question_zagolovok2"
+        app:layout_constraintTop_toBottomOf="@+id/text_time"
         app:layout_constraintVertical_bias="0.275" />
 
     <ListView
         android:id="@+id/listCountry"
-        android:layout_width="421dp"
+        android:layout_width="401dp"
         android:layout_height="62dp"
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
