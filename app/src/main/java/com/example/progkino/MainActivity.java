@@ -211,18 +211,7 @@ public class MainActivity extends AppCompatActivity {
                                     question.setSources("-");
                                     question.setUserEmail("1@mail.ru");
                                     questions.push().setValue(question);
-/*
-                                    Eventum eventum = new Eventum();
-                                    eventum.setTitle("Вечер настольных игр");
-                                    eventum.setDateEventum("29072024");
-                                    eventum.setEventumDescription("Летний вечер настольных игр. 25 штук. 3 часа игры.");
-                                    eventum.setType("Настолки");
-                                    /*
-                                    String id = "1";
-                                    String name2 = name.getText().toString();
-                                    String email2 = email.getText().toString();
-                                    User user = new User(id,name2,null,null,null,email2,null,null,null);*/
-                                    //eventumes.push().setValue(eventum);*/
+
                                     users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(user)
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {

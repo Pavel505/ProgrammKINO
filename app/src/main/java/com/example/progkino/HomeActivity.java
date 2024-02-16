@@ -124,33 +124,9 @@ public class HomeActivity extends AppCompatActivity {
 
         eventumRecycler.hasFixedSize();
         eventumRecycler.setLayoutManager(layoutManager);
-       // elist2 = new ArrayList<>();
 
         eventumAdapter = new EventumAdapter(this, eventumList);
-        //eventumAdapter = new EventumAdapter(this, elist);Так было 2
         eventumRecycler.setAdapter(eventumAdapter);
-/*
-        ValueEventListener vlistener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.w(TAG, "loadPost:onCancelled2");
-                if(elist2.size() > 0 )elist2.clear();
-                for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    Log.w(TAG, "loadPost:onCancelled4");
-                    Eventum eventum = ds.getValue(Eventum.class);
-                    elist2.add(eventum);
-                }
-                eventumList.addAll(elist2);
-                eventumAdapter.notifyDataSetChanged();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                DatabaseError databaseError = null;
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        };
-
-        eventumes.addValueEventListener(vlistener);*/
         ValueEventListener vlistener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -185,25 +161,6 @@ public class HomeActivity extends AppCompatActivity {
         categoryAdapter = new CategoryAdapter(this, categoryList);
         categoryRecycler.setAdapter(categoryAdapter);
 
-        /*ValueEventListener vlistener_cat = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //if(eventumList.size() > 0 )eventumList.clear();
-                for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    Category category = ds.getValue(Category.class);
-
-                    categoryList.add(category);
-                }
-
-                categoryAdapter.notifyDataSetChanged();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                DatabaseError databaseError = null;
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        };
-        categories.addValueEventListener(vlistener_cat);*/
     }
 
     public static void showEventumesByCategory(String category){
