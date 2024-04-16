@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         init();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-// Анимация кнопок
+    // Анимация кнопок
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
         Button btnSignIn = (Button) findViewById(R.id.btnSignIn);
         Button btnRegister = (Button) findViewById(R.id.btnRegister);

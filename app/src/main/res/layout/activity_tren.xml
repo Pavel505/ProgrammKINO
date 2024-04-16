@@ -19,70 +19,95 @@
 
 
         <TextView
-            android:onClick="navigatorContact"
             android:id="@+id/contacts"
             android:layout_width="120dp"
-            android:layout_height="140dp"
-            android:layout_marginBottom="30dp"
+            android:layout_height="110dp"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
+            android:onClick="navigatorContact"
             android:rotation="-90"
             android:text="@string/contacts"
             android:textColor="@color/white"
-            android:textSize="21dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/chat"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tren"
             tools:ignore="SpUsage" />
 
         <TextView
+            android:id="@+id/chat"
+            android:layout_width="120dp"
+            android:layout_height="105dp"
+            android:textSize="18sp"
+            android:layout_marginBottom="0dp"
+            android:gravity="center"
+            android:onClick="navigatorChat"
+            android:rotation="-90"
+            android:text="@string/chat"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contacts"
+            tools:ignore="SpUsage" />
+
+
+        <TextView
             android:id="@+id/tren"
             android:layout_width="120dp"
-            android:layout_height="140dp"
+            android:layout_height="110dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
+            android:onClick="navigatorTren"
+            android:background="@color/bok_panel"
             android:rotation="-90"
             android:text="@string/tren"
-            android:background="@color/bok_panel"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/contacts"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tutorial" />
+            app:layout_constraintTop_toBottomOf="@+id/contacts" />
 
         <TextView
-            android:onClick="navigatorMainScen"
             android:id="@+id/main_scen"
             android:layout_width="120dp"
-            android:layout_height="160dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="-10dp"
+
+            android:layout_marginBottom="-5dp"
             android:fontFamily="@font/montserrat"
             android:gravity="center"
             android:rotation="-90"
             android:text="@string/main_scen"
+
             android:textColor="@color/white"
-            android:textSize="22sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tutorial"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView11" />
 
         <TextView
             android:id="@+id/tutorial"
             android:layout_width="120dp"
-            android:layout_height="140dp"
+            android:layout_height="110dp"
+            android:layout_marginBottom="-5dp"
             android:gravity="center"
             android:onClick="navigatorTutorial"
             android:rotation="-90"
             android:text="@string/info_teor"
             android:textColor="@color/white"
-            android:textSize="21sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tren"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_scen" />
 

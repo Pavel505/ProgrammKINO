@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ProgKino"
         tools:targetApi="31">
         <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".TutorialGeo1Activity"
             android:exported="false" />
         <activity
@@ -45,7 +48,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.progkino.TutorialShowActivity" />
+        <activity android:name=".TutorialShowActivity" />
     </application>
 
 </manifest>

@@ -51,6 +51,11 @@ public class TrenActivity extends AppCompatActivity {
         intentContact.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intentContact);
     }
+    public void navigatorChat(View view){
+        Intent intentChat = new Intent(this, ChatActivity.class);
+        intentChat.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentChat);
+    }
 
     public void onClickRead (View view){
         Intent intentTrening = new Intent(TrenActivity.this, TreningActivity.class);

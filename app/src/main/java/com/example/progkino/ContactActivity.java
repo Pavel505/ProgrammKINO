@@ -29,5 +29,9 @@ public class ContactActivity extends AppCompatActivity {
         intentTren.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intentTren);
     }
-
+    public void navigatorChat(View view){
+        Intent intentChat = new Intent(this, ChatActivity.class);
+        intentChat.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentChat);
+    }
 }

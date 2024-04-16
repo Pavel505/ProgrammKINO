@@ -42,7 +42,7 @@ public class HomeActivity extends AppCompatActivity {
     public static String color2 = "#4CAF50";
     public static String color3 = "#0B24AF";
     public static String color4 = "#9C27B0";
-    DatabaseReference eventumes, categories;
+    DatabaseReference eventumes, categories, messages;
     FirebaseDatabase db;
 
     @Override
@@ -52,9 +52,7 @@ public class HomeActivity extends AppCompatActivity {
         init();
 
         eventumList.add(new Eventum(5, "#350307","2024-02-01" ,"Турнир по игре ЧГК","chgk3", "Городская студ лига", "Интеллект"));
-       // eventumList.add(new Eventum(2,"vorosh","#350307","Ворошиловский стрелок\n 5 этап", "2024-02-02", "Интеллект","орошиловский стрелок: 5 этап. Интрига..."));
         eventumList.add(new Eventum(6,"#D300A5CD","Вечер настолок", "2024-03-02","nastolki", "Настолки","Настолки"));
-        // eventumList.add(new Eventum(4,"voroshchr","#D33D00CD","Чемпионат России", "2024-03-02", "Турниры","Соберет много команд: и Оголодавших ...."));
         fullEventumList.addAll(eventumList);
 
         categoryList.add(new Category(1,"Интеллект"));
@@ -89,10 +87,12 @@ public class HomeActivity extends AppCompatActivity {
 
     }
     private void init(){
-        eventumRecycler  = findViewById(R.id.eventumRecycler); // Ошибка может?
+        eventumRecycler  = findViewById(R.id.eventumRecycler);
         db = FirebaseDatabase.getInstance();
         eventumes = db.getReference("Eventum");
         categories = db.getReference("Category");
+        messages = db.getReference("Message");
+        messages.setValue("Like12");
     }
 
     /*public void filterAll(){
@@ -118,6 +118,11 @@ public class HomeActivity extends AppCompatActivity {
         Intent intentContact = new Intent(HomeActivity.this, ContactActivity.class);
         intentContact.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intentContact);
+    }
+    public void navigatorChat(View view){
+        Intent intentChat = new Intent(this, ChatActivity.class);
+        intentChat.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentChat);
     }
     private void setEventumRecycler(List<Eventum> eventumList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
