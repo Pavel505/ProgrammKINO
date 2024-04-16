@@ -91,8 +91,7 @@ public class HomeActivity extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         eventumes = db.getReference("Eventum");
         categories = db.getReference("Category");
-        messages = db.getReference("Message");
-        messages.setValue("Like12");
+
     }
 
     /*public void filterAll(){

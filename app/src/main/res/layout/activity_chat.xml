@@ -7,7 +7,6 @@
     tools:context=".ChatActivity">
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="60dp"
@@ -128,35 +127,39 @@
     <Button
         android:id="@+id/btnChatSend"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="0dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="5dp"
         android:layout_weight="1"
         android:backgroundTint="@color/glavna_str_effect"
         android:fontFamily="@font/montserrat"
-        android:text="@string/btnChatSend"
+        android:src="@drawable/ic_sendbutton"
+        android:text="ОТправить"
         android:textColor="@color/white"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.968" />
+        app:layout_constraintVertical_bias="0.967"
+        />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/edMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="Сообщение"
         android:inputType="text"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnChatSend"
-        app:layout_constraintEnd_toEndOf="@+id/btnChatSend"
-        app:layout_constraintStart_toStartOf="@+id/btnChatSend" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnChatSend"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout" />
 
     <TextView
         android:id="@+id/rcView"
@@ -164,8 +167,8 @@
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/editTextText"
-        app:layout_constraintStart_toStartOf="@+id/editTextText"
+        app:layout_constraintEnd_toEndOf="@+id/edMessage"
+        app:layout_constraintStart_toStartOf="@+id/edMessage"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
