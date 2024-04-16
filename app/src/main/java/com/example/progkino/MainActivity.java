@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     // Анимация кнопок
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
         Button btnSignIn = (Button) findViewById(R.id.btnSignIn);
-        Button btnRegister = (Button) findViewById(R.id.btnRegister);
+        Button btnRegister = (Button) findViewById(R.id.btnChatSend);
         root = findViewById(R.id.root_element);
         btnSignIn.setOnClickListener(new Button.OnClickListener() {
             @Override
