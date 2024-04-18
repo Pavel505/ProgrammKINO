@@ -130,12 +130,12 @@
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/fieldMessage"
-        app:layout_constraintStart_toStartOf="@+id/fieldMessage"
+        app:layout_constraintEnd_toEndOf="@+id/editMessage"
+        app:layout_constraintStart_toStartOf="@+id/editMessage"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/fieldMessage"
+        android:id="@+id/editMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -174,7 +174,8 @@
     <ListView
         android:layout_width="349dp"
         android:layout_height="582dp"
-        app:layout_constraintBottom_toTopOf="@+id/fieldMessage"
+        android:id="@+id/listMessage"
+        app:layout_constraintBottom_toTopOf="@+id/editMessage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
         app:layout_constraintTop_toTopOf="parent"
