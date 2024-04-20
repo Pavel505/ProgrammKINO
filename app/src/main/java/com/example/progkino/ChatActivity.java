@@ -44,6 +44,8 @@ public class ChatActivity extends AppCompatActivity {
     private List<String> listData;
     private List<Message> listTemp;
     DatabaseReference quest_geo;
+    TextView mess_user, mess_time, mess_text;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +115,9 @@ public class ChatActivity extends AppCompatActivity {
         listOfMessages.setAdapter(adapterAr1);
         db = FirebaseDatabase.getInstance();
         messages = db.getReference("Message");
+        mess_time = findViewById(R.id.message_time);
+        mess_text = findViewById(R.id.message_text);
+        mess_user = findViewById(R.id.message_user);
     }
     private void getDataFromDB(){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -125,9 +130,15 @@ public class ChatActivity extends AppCompatActivity {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Message message = ds.getValue(Message.class);
                     String strDate = formatter.format(message.getmessageTime());
-                    String txt = message.getuserName() +" в "+ strDate  +" написал: "+ message.gettextMessage();
+                    String txt = message.getuserName() +"     "+ strDate  + "\n" + message.gettextMessage();
                     listData.add(txt);
-                    listTemp.add(message);
+                    //listTemp.add(message);
+
+
+
+                   // mess_time.setText("12345");// Здесь может быть ошибка
+                   // mess_text.setText(message.gettextMessage().toString());
+                    //mess_user.setText(message.getuserName().toString());
                 }
                 adapterAr1.notifyDataSetChanged();
             }
