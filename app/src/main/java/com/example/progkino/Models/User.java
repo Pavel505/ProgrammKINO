@@ -1,7 +1,7 @@
 package com.example.progkino.Models;
 
 public class User {
-    private String id, name,lastname, login, password, email, userdescritpion, birthday, city;
+    private String id, name,lastname, login, password, email, userdescritpion, birthday, city, role;
     public User() {}
 
     public User(String id, String name,String lastname,String  login,String  password,String  email,
@@ -15,8 +15,15 @@ public class User {
         this.birthday = birthday;
         this.city = city;
         this.userdescritpion = userdescritpion;
+        this.role = role;
+    }
+    public String getRole() {
+        return role;
     }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
     public String getId() {
         return id;
     }

@@ -1,5 +1,7 @@
 package com.example.progkino;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -108,8 +111,15 @@ public class MainActivity extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override // При успешной авторизации
                             public void onSuccess(AuthResult authResult) {
-                                startActivity(new Intent(MainActivity.this, HomeActivity.class));
-                                finish(); // завершает данную сцену + делает переход на новую
+                                // АЛЯ ОПРЕДЕЛНИЕ РОЛЕЙ
+                                //String r = role.getText().toString();
+                                if(email.getText().toString().equalsIgnoreCase("1@mail.ru")){
+                                    startActivity(new Intent(MainActivity.this, ChatActivity.class));
+                                    finish();
+                                }else {
+                                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                                    finish(); // завершает данную сцену + делает переход на новую
+                                }
                             }
                             // При ошибке
                         }).addOnFailureListener(new OnFailureListener() {
@@ -202,15 +212,7 @@ public class MainActivity extends AppCompatActivity {
                                     user.setBirthday(birthday.getText().toString());
                                     user.setCity(city.getText().toString());
                                     user.setUserdescritpion(userdescription.getText().toString());
-                                    Question question = new Question();
-                                    question.setAnswer("Париж");
-                                    question.setAuthor("Волков Александр");
-                                    question.setCategory("Тренировка");
-                                    question.setComment("-");
-                                    question.setContent("Назовите столицу Франции");
-                                    question.setSources("-");
-                                    question.setUserEmail("1@mail.ru");
-                                    questions.push().setValue(question);
+                                    user.setRole("user");
 
                                     users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(user)
