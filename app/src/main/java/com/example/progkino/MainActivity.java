@@ -15,10 +15,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.example.progkino.Models.Message;
 import com.example.progkino.Models.Question;
 import com.example.progkino.Models.User;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -26,14 +29,24 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     FirebaseDatabase db;
-    DatabaseReference users,eventumes,questions;
+    private ArrayAdapter<String> adapterAr1;
+    private List<String> listData;
+    String role_user;
+    DatabaseReference users,eventumes,questions, messages;
 
     RelativeLayout root;
     //public EditText name,editText2;
@@ -71,6 +84,10 @@ public class MainActivity extends AppCompatActivity {
         users = db.getReference("User");
         eventumes = db.getReference("Eventum");
         questions = db.getReference("Question");
+        //ListView listOfMessages = findViewById(R.id.listMessage);
+        listData = new ArrayList<>();
+        adapterAr1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listData);
+        //listOfMessages.setAdapter(adapterAr1);
     }
 
 
@@ -107,13 +124,42 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar.make(root, "Пароль должен иметь больше 5 символов!",Snackbar.LENGTH_SHORT).show();
                     return;
                 }
+                //Log.w(TAG, "Почта здесь юзера1" + email.getText().toString());
                 auth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString())
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override // При успешной авторизации
                             public void onSuccess(AuthResult authResult) {
                                 // АЛЯ ОПРЕДЕЛНИЕ РОЛЕЙ
+                                // Связывание с БД, поиск нужного человека и сравнение роли
                                 //String r = role.getText().toString();
-                                if(email.getText().toString().equalsIgnoreCase("1@mail.ru")){
+                                /*ValueEventListener vlistener_userRole = new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        if(listData.size() > 0 )listData.clear();
+                                        for(DataSnapshot ds: dataSnapshot.getChildren()){
+                                            User user = ds.getValue(User.class);
+                                            Log.w(TAG, "Почта здесь юзера1" + email.getText().toString());
+                                            Log.w(TAG, "Почта БД юзера1" + user.getEmail().toString());
+                                            if(email.getText().toString().equalsIgnoreCase(user.getEmail().toString())){
+                                                role_user = user.getRole().toString();
+                                                listData.add(role_user);
+                                                Log.w(TAG, "Роль юзера1" + role_user);
+                                                Log.w(TAG, "Почта здесь юзера1" + email.getText().toString());
+                                                Log.w(TAG, "Почта БД юзера1" + user.getEmail().toString());
+                                            }
+                                            Log.w(TAG, "Роль юзера" + role_user);
+                                            Log.w(TAG, "Почта здесь юзера" + email.getText().toString());
+                                            Log.w(TAG, "Почта БД юзера" + user.getEmail().toString());
+                                        }
+                                        adapterAr1.notifyDataSetChanged();
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {}
+                                };
+                                users.addValueEventListener(vlistener_userRole);*/
+
+                                //if(role_user.equalsIgnoreCase("admin")){
+                                    if(email.getText().toString().equalsIgnoreCase("1@mail.ru")){
                                     startActivity(new Intent(MainActivity.this, ChatActivity.class));
                                     finish();
                                 }else {
@@ -132,6 +178,12 @@ public class MainActivity extends AppCompatActivity {
         });
         dialog.show();
     }
+
+    private void getDataFromDB(){
+
+    }
+
+
         // Функция вызова окна регистрации
         private void showRegisterWindow() {
             AlertDialog.Builder dialog = new AlertDialog.Builder(this);
