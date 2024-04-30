@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onSuccess(AuthResult authResult) {
                                 // АЛЯ ОПРЕДЕЛНИЕ РОЛЕЙ
                                 // Связывание с БД, поиск нужного человека и сравнение роли
-                                //String r = role.getText().toString();аа
+                                //String r = role.getText().toString();ааа
                                 /*ValueEventListener vlistener_userRole = new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
