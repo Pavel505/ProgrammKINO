@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                                                 listData.add(role_user);
                                                 if(role_user.equalsIgnoreCase("admin")){
                                                     //if(email.getText().toString().equalsIgnoreCase("1@mail.ru")){
-                                                    startActivity(new Intent(MainActivity.this, ChatActivity.class));
+                                                    startActivity(new Intent(MainActivity.this, HomeActivity_Admin.class));
                                                     finish();
                                                 }else {
                                                     startActivity(new Intent(MainActivity.this, HomeActivity.class));

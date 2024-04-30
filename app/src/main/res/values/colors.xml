@@ -9,6 +9,7 @@
     <color name="btn_sign_in_stroke">#250e99</color>
     <color name="line_register">#3E1FD8</color>
     <color name="panel_color">#3B5BFD</color>
+    <color name="panel_color_admin">#2A3B95</color>
     <color name="panel_main_scene">#2E42F6</color>
     <color name="tipo_fon">#9B9BA1</color>
     <color name="panel_color_2">#5B73EC</color>
@@ -17,7 +18,9 @@
     <color name="nastolki">#D300A5CD</color>
     <color name="turnir">#D33D00CD</color>
     <color name="kino_logo">#D30C2173</color>
+    <color name="kino_logo_admin">#D3010F45</color>
     <color name="bok_panel">#D31E3DB1</color>
+    <color name="bok_panel_admin">#D30B227A</color>
     <color name="intellect">#E91E1E</color>
     <color name="nastolki_">#4CAF50</color>
     <color name="sgt">#0B24AF</color>

@@ -82,9 +82,10 @@
             android:layout_marginBottom="-5dp"
             android:fontFamily="@font/montserrat"
             android:gravity="center"
+            android:onClick="navigatorMainScen"
             android:rotation="-90"
-            android:text="@string/main_scen"
 
+            android:text="@string/main_scen"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tutorial"
