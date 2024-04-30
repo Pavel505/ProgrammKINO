@@ -129,43 +129,34 @@ public class MainActivity extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override // При успешной авторизации
                             public void onSuccess(AuthResult authResult) {
-                                // АЛЯ ОПРЕДЕЛНИЕ РОЛЕЙ
+                                // ДЛЯ ОПРЕДЕЛНИЕ РОЛЕЙ
                                 // Связывание с БД, поиск нужного человека и сравнение роли
-                                //String r = role.getText().toString();ааа
-                                /*ValueEventListener vlistener_userRole = new ValueEventListener() {
+                                ValueEventListener vlistener_userRole = new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         if(listData.size() > 0 )listData.clear();
                                         for(DataSnapshot ds: dataSnapshot.getChildren()){
                                             User user = ds.getValue(User.class);
-                                            Log.w(TAG, "Почта здесь юзера1" + email.getText().toString());
-                                            Log.w(TAG, "Почта БД юзера1" + user.getEmail().toString());
                                             if(email.getText().toString().equalsIgnoreCase(user.getEmail().toString())){
                                                 role_user = user.getRole().toString();
                                                 listData.add(role_user);
-                                                Log.w(TAG, "Роль юзера1" + role_user);
-                                                Log.w(TAG, "Почта здесь юзера1" + email.getText().toString());
-                                                Log.w(TAG, "Почта БД юзера1" + user.getEmail().toString());
+                                                if(role_user.equalsIgnoreCase("admin")){
+                                                    //if(email.getText().toString().equalsIgnoreCase("1@mail.ru")){
+                                                    startActivity(new Intent(MainActivity.this, ChatActivity.class));
+                                                    finish();
+                                                }else {
+                                                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                                                    finish(); // завершает данную сцену + делает переход на новую
+                                                }
+                                                return;
                                             }
-                                            Log.w(TAG, "Роль юзера" + role_user);
-                                            Log.w(TAG, "Почта здесь юзера" + email.getText().toString());
-                                            Log.w(TAG, "Почта БД юзера" + user.getEmail().toString());
                                         }
                                         adapterAr1.notifyDataSetChanged();
                                     }
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {}
                                 };
-                                users.addValueEventListener(vlistener_userRole);*/
-
-                                //if(role_user.equalsIgnoreCase("admin")){
-                                    if(email.getText().toString().equalsIgnoreCase("1@mail.ru")){
-                                    startActivity(new Intent(MainActivity.this, ChatActivity.class));
-                                    finish();
-                                }else {
-                                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
-                                    finish(); // завершает данную сцену + делает переход на новую
-                                }
+                                users.addValueEventListener(vlistener_userRole);
                             }
                             // При ошибке
                         }).addOnFailureListener(new OnFailureListener() {
