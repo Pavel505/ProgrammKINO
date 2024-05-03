@@ -12,6 +12,7 @@
     <string name="main_scen">Главная</string>
     <string name="info_teor">Теория</string>
     <string name="lists_users">Users</string>
+    <string name="_user">События</string>
     <string name="main_scen_1">KINO</string>
     <string name="main_scen_2">App</string>
     <string name="categoryRecycler">App</string>

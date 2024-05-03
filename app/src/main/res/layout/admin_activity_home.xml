@@ -20,59 +20,6 @@
 
 
         <TextView
-            android:id="@+id/contacts"
-            android:layout_width="120dp"
-            android:layout_height="80dp"
-            android:layout_marginBottom="5dp"
-            android:gravity="center"
-            android:onClick="navigatorContact"
-            android:rotation="-90"
-            android:text="@string/contacts"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/chat"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tren"
-            tools:ignore="SpUsage" />
-
-        <TextView
-            android:id="@+id/chat"
-            android:layout_width="120dp"
-            android:layout_height="80dp"
-            android:gravity="center"
-            android:onClick="navigatorChat"
-            android:rotation="-90"
-            android:text="@string/chat"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contacts"
-            tools:ignore="SpUsage" />
-
-
-        <TextView
-            android:id="@+id/tren"
-            android:layout_width="120dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:onClick="navigatorTren"
-            android:rotation="-90"
-            android:text="@string/tren"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/contacts"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contacts" />
-
-        <TextView
             android:id="@+id/main_scen"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -90,33 +37,31 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView11" />
 
         <TextView
-            android:id="@+id/tutorial"
-            android:layout_width="120dp"
-            android:layout_height="80dp"
-            android:gravity="center"
-            android:onClick="navigatorTutorial"
-            android:rotation="-90"
-            android:text="@string/info_teor"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_scen" />
-
-        <TextView
             android:id="@+id/tutorial2"
             android:layout_width="120dp"
             android:layout_height="80dp"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="128dp"
             android:gravity="center"
-            android:onClick="navigatorTutorial"
             android:rotation="-90"
             android:text="@string/lists_users"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintHorizontal_bias="0.45"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_scen" />
+
+        <TextView
+            android:id="@+id/tutorial3"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="320dp"
+            android:gravity="center"
+            android:rotation="-90"
+            android:text="@string/_user"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_scen" />
 
@@ -157,44 +102,6 @@
         android:textSize="46sp"
         app:layout_constraintStart_toEndOf="@+id/main_scen_1"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categoryRecycler"
-        android:layout_width="275dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewFilter"
-        app:layout_constraintStart_toEndOf="@+id/imageViewFilter"
-        app:layout_constraintTop_toTopOf="@+id/imageViewFilter"
-        tools:listitem="@layout/category_item" />
-
-    <ImageView
-        android:id="@+id/imageViewFilter"
-        android:layout_width="57dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="25dp"
-        android:contentDescription="@string/app_name"
-
-        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
-        app:layout_constraintTop_toBottomOf="@+id/main_scen_1"
-        app:srcCompat="@drawable/filter" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/eventumRecycler"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.439"
-        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
-        app:layout_constraintTop_toBottomOf="@+id/categoryRecycler"
-        app:layout_constraintVertical_bias="0.113"
-        tools:listitem="@layout/eventum_item" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
