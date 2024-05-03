@@ -28,15 +28,6 @@ import java.util.List;
 
 public class HomeActivity_Admin extends AppCompatActivity {
     RecyclerView categoryRecycler,eventumRecycler;
-    CategoryAdapter categoryAdapter;
-    static EventumAdapter eventumAdapter;
-    public static List<Eventum> eventumList = new ArrayList<>();
-    public static List<Eventum> fullEventumList = new ArrayList<>();
-    public static List<Category> categoryList = new ArrayList<>();
-    public static String color1 = "#E91E1E";
-    public static String color2 = "#4CAF50";
-    public static String color3 = "#0B24AF";
-    public static String color4 = "#9C27B0";
     DatabaseReference eventumes, categories;
     FirebaseDatabase db;
 
@@ -54,7 +45,16 @@ public class HomeActivity_Admin extends AppCompatActivity {
         categories = db.getReference("Category");
 
     }
-
+    public void navigatorUser(View view){
+        Intent intentChat3 = new Intent(this, UserActivity_Admin.class);
+        intentChat3.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentChat3);
+    }
+    public void navigatorEventum(View view){
+        Intent intentChat4 = new Intent(this, EventumActivity_Admin.class);
+        intentChat4.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentChat4);
+    }
 
 
 }

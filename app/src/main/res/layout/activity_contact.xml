@@ -76,7 +76,7 @@
             app:layout_constraintTop_toBottomOf="@+id/contacts" />
 
         <TextView
-            android:id="@+id/main_scen"
+            android:id="@+id/tutorial1"
             android:layout_width="120dp"
             android:layout_height="110dp"
             android:layout_marginTop="-10dp"
@@ -111,7 +111,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_scen" />
+            app:layout_constraintTop_toBottomOf="@+id/tutorial1" />
 
         <ImageView
             android:id="@+id/imageView11"

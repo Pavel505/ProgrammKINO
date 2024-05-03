@@ -37,6 +37,12 @@
             android:name=".EventumPage"
             android:exported="false" />
         <activity
+            android:name=".EventumActivity_Admin"
+            android:exported="false" />
+        <activity
+            android:name=".UserActivity_Admin"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
