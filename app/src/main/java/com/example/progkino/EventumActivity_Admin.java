@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,8 +40,10 @@ public class EventumActivity_Admin extends AppCompatActivity {
     private List<String> listData;
     private List<Eventum> listTemp;
     DatabaseReference ev_admin;
+    Integer positionEditDel;
     String eventum_title_pred,eventum_type_pred,eventum_date_pred,eventum_descript_pred;
     TextView ev_name_admin,ev_type_admin,ev_date_admin,ev_descript_admin;
+    Button btn_edit_eventum,btn_delete_eventum,btn_search_eventum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,21 @@ public class EventumActivity_Admin extends AppCompatActivity {
         init();
         getDataFromDB_AdminEventum();
         setOnClickItemEventum();
+        Button btn_edit_eventum = (Button) findViewById(R.id.btnChatSend);
+        btn_edit_eventum.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                eventum_from_DB();
+            }
+        });
+        Button btn_del_eventum = (Button) findViewById(R.id.btnSignIn2);
+        btn_del_eventum.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                setOnClickItemEventum();
+                eventum_delete_DB();
+            }
+        });
     }
     public void navigatorUser(View view){
         Intent intentChat = new Intent(this, UserActivity_Admin.class);
@@ -101,12 +120,13 @@ public class EventumActivity_Admin extends AppCompatActivity {
         ev_admin.addValueEventListener(vlistener_eventum1);
     }
 
-    private void setOnClickItemEventum(){
+    public void setOnClickItemEventum(){
         list_eventumes_admin.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //QuestionTrenTutor questionTrenTutor = listTemp.get(position);
+
                 Eventum eventum = listTemp.get(position);
+                positionEditDel = position;
                 eventum_title_pred = eventum.getTitle().toString();
                 eventum_type_pred = eventum.getType().toString();
                 eventum_date_pred = eventum.getDateEventum().toString();
@@ -124,5 +144,56 @@ public class EventumActivity_Admin extends AppCompatActivity {
             }
         });
     }
-
+    private void eventum_from_DB(){
+        ValueEventListener vlistener_eventum1 = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(listData.size() > 0 )listData.clear();
+                if(listTemp.size() > 0 )listTemp.clear();
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    Eventum eventum = ds.getValue(Eventum.class);
+                    if(eventum_title_pred.equalsIgnoreCase(eventum.getTitle().toString())){
+                        // Логика удаления данных
+                        //DatabaseReference itemRef = ds.getRef();
+                        //itemRef.removeValue();
+                        return;
+                    };
+                    String txt = "Название: "+ eventum.getTitle() +"\n Тип: "+ eventum.getType() + "\n Дата: " + eventum
+                            .getDateEventum() + "\n Описание: "+ eventum.getEventumDescription();
+                    listData.add(txt);
+                    listTemp.add(eventum);
+                }
+                adapterAr1.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        };
+        ev_admin.addValueEventListener(vlistener_eventum1);
+    }
+    private void eventum_delete_DB(){
+        ValueEventListener vlistener_eventum1 = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(listData.size() > 0 )listData.clear();
+                if(listTemp.size() > 0 )listTemp.clear();
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    Eventum eventum = ds.getValue(Eventum.class);
+                    if(eventum_title_pred.equalsIgnoreCase(eventum.getTitle().toString())){
+                        // Логика замены данных
+                        DatabaseReference itemRef = ds.getRef();
+                        itemRef.removeValue();
+                        return;
+                    };
+                    String txt = "Название: "+ eventum.getTitle() +"\n Тип: "+ eventum.getType() + "\n Дата: " + eventum
+                            .getDateEventum() + "\n Описание: "+ eventum.getEventumDescription();
+                    listData.add(txt);
+                    listTemp.add(eventum);
+                }
+                adapterAr1.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        };
+        ev_admin.addValueEventListener(vlistener_eventum1);
+    }
 }
