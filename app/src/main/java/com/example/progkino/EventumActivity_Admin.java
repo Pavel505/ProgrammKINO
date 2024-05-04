@@ -1,10 +1,17 @@
 package com.example.progkino;
 
+import static com.example.progkino.Constant.GEO_CAPITAL;
+import static com.example.progkino.Constant.GEO_COUNTRY;
+import static com.example.progkino.Constant.GEO_IMAGE;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +38,8 @@ public class EventumActivity_Admin extends AppCompatActivity {
     private List<String> listData;
     private List<Eventum> listTemp;
     DatabaseReference ev_admin;
+    String eventum_title_pred,eventum_type_pred,eventum_date_pred,eventum_descript_pred;
+    TextView ev_name_admin,ev_type_admin,ev_date_admin,ev_descript_admin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +47,7 @@ public class EventumActivity_Admin extends AppCompatActivity {
         setContentView(R.layout.admin_activity_eventum);
         init();
         getDataFromDB_AdminEventum();
-
+        setOnClickItemEventum();
     }
     public void navigatorUser(View view){
         Intent intentChat = new Intent(this, UserActivity_Admin.class);
@@ -52,6 +61,14 @@ public class EventumActivity_Admin extends AppCompatActivity {
     }
     private void init(){
         eventumRecycler  = findViewById(R.id.eventumRecycler);
+        ev_name_admin  = findViewById(R.id.text_title_eventum_admin);
+        ev_date_admin  = findViewById(R.id.text_date_eventum_admin);
+        ev_type_admin  = findViewById(R.id.text_type_eventum_admin);
+        ev_descript_admin  = findViewById(R.id.text_descript_eventum_admin);
+        ev_name_admin.setText(" ");
+        ev_date_admin.setText(" ");
+        ev_type_admin.setText(" ");
+        ev_descript_admin.setText(" ");
         db = FirebaseDatabase.getInstance();
         eventumes = db.getReference("Eventum");
         list_eventumes_admin = findViewById(R.id.list_quest_geo);
@@ -82,6 +99,30 @@ public class EventumActivity_Admin extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {}
         };
         ev_admin.addValueEventListener(vlistener_eventum1);
+    }
+
+    private void setOnClickItemEventum(){
+        list_eventumes_admin.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //QuestionTrenTutor questionTrenTutor = listTemp.get(position);
+                Eventum eventum = listTemp.get(position);
+                eventum_title_pred = eventum.getTitle().toString();
+                eventum_type_pred = eventum.getType().toString();
+                eventum_date_pred = eventum.getDateEventum().toString();
+                eventum_descript_pred = eventum.getEventumDescription().toString();
+                ev_name_admin.setText(eventum_title_pred);
+                ev_type_admin.setText(eventum_type_pred);
+                ev_date_admin.setText(eventum_date_pred);
+                ev_descript_admin.setText(eventum_descript_pred);
+
+                /*Intent i = new Intent(TutorialGeo1Activity.this, TutorialShowActivity.class);
+                i.putExtra(GEO_CAPITAL, questionTrenTutor.getCapital());
+                i.putExtra(GEO_COUNTRY, questionTrenTutor.getCountry());
+                i.putExtra(GEO_IMAGE, questionTrenTutor.getImgUrl() );
+                startActivity(i);*/
+            }
+        });
     }
 
 }
