@@ -46,4 +46,12 @@
     <string name="chat">Чат</string>
     <string name="btnChatSend">Отправить</string>
     <string name="geo_teor">Теория по географии</string>
+    <string name="add_eventum">Добавить/отредактировать/удалить \n событие</string>
+    <string name="title_eventum">Название</string>
+    <string name="data_eventum">Дата</string>
+    <string name="type_eventum">Тип</string>
+    <string name="descript_eventum">Описание</string>
+    <string name="search">Найти</string>
+    <string name="edit">Изменить</string>
+    <string name="delete">Удалить</string>
 </resources>
