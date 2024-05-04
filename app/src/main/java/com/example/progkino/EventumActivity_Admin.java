@@ -43,7 +43,8 @@ public class EventumActivity_Admin extends AppCompatActivity {
     Integer positionEditDel;
     String eventum_title_pred,eventum_type_pred,eventum_date_pred,eventum_descript_pred;
     TextView ev_name_admin,ev_type_admin,ev_date_admin,ev_descript_admin;
-    Button btn_edit_eventum,btn_delete_eventum,btn_search_eventum;
+    Button btn_edit_eventum,btn_del_eventum,btn_search_eventum;
+    EditText editText_Title,editText_Type,editText_Date,editText_Descript;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,14 +53,22 @@ public class EventumActivity_Admin extends AppCompatActivity {
         init();
         getDataFromDB_AdminEventum();
         setOnClickItemEventum();
-        Button btn_edit_eventum = (Button) findViewById(R.id.btnChatSend);
+        btn_edit_eventum = (Button) findViewById(R.id.btnChatSend);
         btn_edit_eventum.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                eventum_from_DB();
+                editText_Title = findViewById(R.id.text_title_eventum_admin);
+                String eventum_title_new = editText_Title.getText().toString();
+                editText_Type = findViewById(R.id.text_type_eventum_admin);
+                String eventum_type_new = editText_Type.getText().toString();
+                editText_Date = findViewById(R.id.text_date_eventum_admin);
+                String eventum_date_new = editText_Date.getText().toString();
+                editText_Descript = findViewById(R.id.text_descript_eventum_admin);
+                String eventum_descript_new = editText_Descript.getText().toString();
+                eventum_from_DB(eventum_title_new,eventum_type_new,eventum_date_new,eventum_descript_new);
             }
         });
-        Button btn_del_eventum = (Button) findViewById(R.id.btnSignIn2);
+        btn_del_eventum = (Button) findViewById(R.id.btnSignIn2);
         btn_del_eventum.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -144,7 +153,7 @@ public class EventumActivity_Admin extends AppCompatActivity {
             }
         });
     }
-    private void eventum_from_DB(){
+    private void eventum_from_DB(String title,String type,String date,String descript){
         ValueEventListener vlistener_eventum1 = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -153,9 +162,14 @@ public class EventumActivity_Admin extends AppCompatActivity {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Eventum eventum = ds.getValue(Eventum.class);
                     if(eventum_title_pred.equalsIgnoreCase(eventum.getTitle().toString())){
-                        // Логика удаления данных
-                        //DatabaseReference itemRef = ds.getRef();
+                        // Логика обновления данных
+                        DatabaseReference itemRef = ds.getRef();
                         //itemRef.removeValue();
+                        //ev_admin.child(String.valueOf(positionEditDel)).child("title").setValue("ПОИСК 2025");
+                        itemRef.child("title").setValue(title);
+                        itemRef.child("type").setValue(type);
+                        itemRef.child("dateEventum").setValue(date);
+                        itemRef.child("eventumDescription").setValue(descript);
                         return;
                     };
                     String txt = "Название: "+ eventum.getTitle() +"\n Тип: "+ eventum.getType() + "\n Дата: " + eventum
