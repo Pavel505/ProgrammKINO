@@ -124,7 +124,6 @@ public class EventumActivity_Admin extends AppCompatActivity {
         listTemp = new ArrayList<>();
         adapterAr1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listData);
         list_eventumes_admin.setAdapter(adapterAr1);
-        db = FirebaseDatabase.getInstance();
         ev_admin = db.getReference("Eventum");
     }
 
@@ -147,7 +146,7 @@ public class EventumActivity_Admin extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         };
-        ev_admin.addValueEventListener(vlistener_eventum1);
+        eventumes.addValueEventListener(vlistener_eventum1);
     }
 
     public void setOnClickItemEventum(){
@@ -223,7 +222,7 @@ public class EventumActivity_Admin extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         };
-        ev_admin.addValueEventListener(vlistener_eventum1);
+        eventumes.addValueEventListener(vlistener_eventum1);
     }
     private void eventum_delete_DB(){
         ValueEventListener vlistener_eventum1 = new ValueEventListener() {

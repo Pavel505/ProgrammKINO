@@ -54,4 +54,15 @@
     <string name="search">Добавить</string>
     <string name="edit">Изменить</string>
     <string name="delete">Удалить</string>
+    <string name="users">Пользователи</string>
+    <string name="add_edit_del_users">Добавить/Изменить/Удалить users</string>
+    <string name="user_admin_1">Имя</string>
+    <string name="user_admin_2">Фамилия</string>
+    <string name="user_admin_3">Почта</string>
+    <string name="user_admin_4">ДР</string>
+    <string name="user_admin_5">Логин</string>
+    <string name="user_admin_6">Пароль</string>
+    <string name="user_admin_7">Роль</string>
+    <string name="user_admin_8">Город</string>
+    <string name="user_admin_9">О себе</string>
 </resources>
