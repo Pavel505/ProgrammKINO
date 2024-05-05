@@ -1,8 +1,10 @@
 package com.example.progkino;
 
+import static com.example.progkino.Constant.Color_BASA_Intel;
 import static com.example.progkino.Constant.GEO_CAPITAL;
 import static com.example.progkino.Constant.GEO_COUNTRY;
 import static com.example.progkino.Constant.GEO_IMAGE;
+import static com.example.progkino.Constant.IMG_BASA;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +22,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progkino.Models.Eventum;
 import com.example.progkino.Models.QuestionTrenTutor;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +48,7 @@ public class EventumActivity_Admin extends AppCompatActivity {
     Integer positionEditDel;
     String eventum_title_pred,eventum_type_pred,eventum_date_pred,eventum_descript_pred;
     TextView ev_name_admin,ev_type_admin,ev_date_admin,ev_descript_admin;
-    Button btn_edit_eventum,btn_del_eventum,btn_search_eventum;
+    Button btn_edit_eventum,btn_del_eventum,btn_add_eventum;
     EditText editText_Title,editText_Type,editText_Date,editText_Descript;
 
     @Override
@@ -53,6 +58,21 @@ public class EventumActivity_Admin extends AppCompatActivity {
         init();
         getDataFromDB_AdminEventum();
         setOnClickItemEventum();
+        btn_add_eventum = (Button) findViewById(R.id.btnSignIn);
+        btn_add_eventum.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                editText_Title = findViewById(R.id.text_title_eventum_admin);
+                String eventum_title_new = editText_Title.getText().toString();
+                editText_Type = findViewById(R.id.text_type_eventum_admin);
+                String eventum_type_new = editText_Type.getText().toString();
+                editText_Date = findViewById(R.id.text_date_eventum_admin);
+                String eventum_date_new = editText_Date.getText().toString();
+                editText_Descript = findViewById(R.id.text_descript_eventum_admin);
+                String eventum_descript_new = editText_Descript.getText().toString();
+                eventum_add_DB(eventum_title_new,eventum_type_new,eventum_date_new, eventum_descript_new);
+            }
+        });
         btn_edit_eventum = (Button) findViewById(R.id.btnChatSend);
         btn_edit_eventum.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -108,6 +128,7 @@ public class EventumActivity_Admin extends AppCompatActivity {
         ev_admin = db.getReference("Eventum");
     }
 
+
     private void getDataFromDB_AdminEventum(){
         ValueEventListener vlistener_eventum1 = new ValueEventListener() {
             @Override
@@ -153,6 +174,26 @@ public class EventumActivity_Admin extends AppCompatActivity {
             }
         });
     }
+    public void eventum_add_DB(String title,String type,String date,String descript){
+        Eventum eventum = new Eventum();
+        eventum.setTitle(title);
+        eventum.setType(type);
+        eventum.setDateEventum(date);
+        eventum.setEventumDescription(descript);
+        eventum.setImg(IMG_BASA);
+        eventum.setColor(Color_BASA_Intel);
+        eventum.setId(42);
+
+        eventumes.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .setValue(eventum)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        //Snackbar.make(root, "Пользователь добавлен", Snackbar.LENGTH_LONG).show();
+                    }
+                });
+
+    };
     private void eventum_from_DB(String title,String type,String date,String descript){
         ValueEventListener vlistener_eventum1 = new ValueEventListener() {
             @Override

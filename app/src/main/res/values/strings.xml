@@ -51,7 +51,7 @@
     <string name="data_eventum">Дата</string>
     <string name="type_eventum">Тип</string>
     <string name="descript_eventum">Описание</string>
-    <string name="search">Найти</string>
+    <string name="search">Добавить</string>
     <string name="edit">Изменить</string>
     <string name="delete">Удалить</string>
 </resources>
