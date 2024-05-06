@@ -3,6 +3,7 @@ package com.example.progkino;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +34,7 @@ public class UserActivity_Admin extends AppCompatActivity {
     private List<String> listData;
     private List<User> listTemp;
     private ListView list_users_admin;
+    Integer positionEditDel;
     String user_name_pred,user_lastname_pred,user_email_pred,user_login_pred,user_date_pred,
             user_password_pred,user_role_pred,user_city_pred,user_descript_pred;
     TextView user_name_admin,user_lastname_admin,user_email_admin,user_login_admin,user_date_admin,
@@ -47,6 +49,7 @@ public class UserActivity_Admin extends AppCompatActivity {
         setContentView(R.layout.admin_activity_user);
         init();
         getDataFromDB_AdminUser();
+        setOnClickItemUser();
 
         btn_add_user = (Button) findViewById(R.id.btn_add_user);
         btn_add_user.setOnClickListener(new Button.OnClickListener(){
@@ -81,6 +84,24 @@ public class UserActivity_Admin extends AppCompatActivity {
         adapterAr1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listData);
         list_users_admin = findViewById(R.id.list_users);
         list_users_admin.setAdapter(adapterAr1);
+        user_name_admin  = findViewById(R.id.text_name_user_admin);
+        user_lastname_admin  = findViewById(R.id.text_lastname_user_admin);
+        user_date_admin  = findViewById(R.id.text_date_user_admin);
+        user_role_admin  = findViewById(R.id.text_role_user_admin);
+        user_login_admin  = findViewById(R.id.text_login_user_admin);
+        user_password_admin  = findViewById(R.id.text_password_user_admin);
+        user_city_admin  = findViewById(R.id.text_city_user_admin);
+        user_email_admin  = findViewById(R.id.text_email_user_admin);
+        user_descript_admin  = findViewById(R.id.text_descript_user_admin);
+        user_name_admin.setText(" ");
+        user_lastname_admin.setText(" ");
+        user_email_admin.setText(" ");
+        user_password_admin.setText(" ");
+        user_login_admin.setText(" ");
+        user_city_admin.setText(" ");
+        user_role_admin.setText(" ");
+        user_descript_admin.setText(" ");
+        user_date_admin.setText(" ");
 
     }
     public void navigatorUser(View view){
@@ -108,7 +129,9 @@ public class UserActivity_Admin extends AppCompatActivity {
                 if(listTemp.size() > 0 )listTemp.clear();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     User user = ds.getValue(User.class);
-                    String txt = "Название \n: "+ user.getName();
+                    String txt = "Имя \n : "+ user.getName() + "Фамилия \n : "+ user.getName()+ "Почта \n : "+ user.getEmail() +
+                    "Логин \n : "+ user.getLogin() + "Пароль \n : "+ user.getPassword() + "Роль \n : "+ user.getRole() +
+                            "ДР \n : "+ user.getBirthday()  + "Город \n : "+ user.getCity() + "О себе \n : "+ user.getUserdescritpion();
                     listData.add(txt);
                     listTemp.add(user);
                 }
@@ -121,5 +144,35 @@ public class UserActivity_Admin extends AppCompatActivity {
 
     }
 
+    public void setOnClickItemUser(){
+        list_users_admin.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                User user = listTemp.get(position);
+                positionEditDel = position;
+                user_name_pred = user.getName().toString();
+                user_lastname_pred = user.getLastName().toString();
+                user_city_pred = user.getCity().toString();
+                user_date_pred = user.getBirthday().toString();
+                user_email_pred = user.getEmail().toString();
+                user_password_pred = user.getPassword().toString();
+                user_role_pred = user.getRole().toString();
+                user_login_pred = user.getLogin().toString();
+                user_descript_pred = user.getUserdescritpion();
+
+                user_name_admin.setText(user_name_pred);
+                user_lastname_admin.setText(user_lastname_pred);
+                user_city_admin.setText(user_city_pred);
+                user_date_admin.setText(user_date_pred);
+                user_email_admin.setText(user_email_pred);
+                user_password_admin.setText(user_password_pred);
+                user_role_admin.setText(user_role_pred);
+                user_login_admin.setText(user_login_pred);
+                user_descript_admin.setText(user_descript_pred);
+
+            }
+        });
+    }
 
 }
