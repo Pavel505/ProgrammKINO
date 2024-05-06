@@ -129,9 +129,9 @@ public class UserActivity_Admin extends AppCompatActivity {
                 if(listTemp.size() > 0 )listTemp.clear();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     User user = ds.getValue(User.class);
-                    String txt = "Имя \n : "+ user.getName() + "Фамилия \n : "+ user.getName()+ "Почта \n : "+ user.getEmail() +
-                    "Логин \n : "+ user.getLogin() + "Пароль \n : "+ user.getPassword() + "Роль \n : "+ user.getRole() +
-                            "ДР \n : "+ user.getBirthday()  + "Город \n : "+ user.getCity() + "О себе \n : "+ user.getUserdescritpion();
+                    String txt = "Имя  : "+ user.getName() + "\n Фамилия : "+ user.getName()+ "\n Почта  : "+ user.getEmail() +
+                    "\n Логин  : "+ user.getLogin() + "\n Пароль  : "+ user.getPassword() + "\n Роль  : "+ user.getRole() +
+                            "\n ДР  : "+ user.getBirthday()  + "\n Город  : "+ user.getCity() + "\n О себе  : "+ user.getUserdescritpion();
                     listData.add(txt);
                     listTemp.add(user);
                 }
