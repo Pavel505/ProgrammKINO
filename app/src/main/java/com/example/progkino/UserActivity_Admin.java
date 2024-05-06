@@ -1,5 +1,6 @@
 package com.example.progkino;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progkino.Models.Eventum;
 import com.example.progkino.Models.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,11 +49,15 @@ public class UserActivity_Admin extends AppCompatActivity {
     Button btn_edit_user,btn_del_user,btn_add_user;
     EditText editText_Name,editText_Lastname,editText_email,editText_login,editText_password,editText_role,
             editText_city,editText_Date,editText_Descript;
+    RelativeLayout root;
+    FirebaseAuth auth;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_activity_user);
+        //root = findViewById(R.id.root_element);
         init();
         getDataFromDB_AdminUser();
         setOnClickItemUser();
@@ -56,6 +67,27 @@ public class UserActivity_Admin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                editText_Name = findViewById(R.id.text_name_user_admin);
+                String user_name_new =  editText_Name.getText().toString();
+                editText_Lastname = findViewById(R.id.text_lastname_user_admin);
+                String user_lastname_new = editText_Lastname.getText().toString();
+                editText_Date = findViewById(R.id.text_date_user_admin);
+                String user_date_new = editText_Date.getText().toString();
+                editText_login = findViewById(R.id.text_login_user_admin);
+                String user_login_new = editText_login.getText().toString();
+                editText_password = findViewById(R.id.text_password_user_admin);
+                String user_password_new = editText_password.getText().toString();
+                editText_role = findViewById(R.id.text_role_user_admin);
+                String user_role_new = editText_role.getText().toString();
+                editText_city = findViewById(R.id.text_city_user_admin);
+                String user_city_new = editText_city.getText().toString();
+                editText_email = findViewById(R.id.text_email_user_admin);
+                String user_email_new = editText_email.getText().toString();
+                editText_Descript = findViewById(R.id.text_descript_user_admin);
+                String user_descript_new = editText_Descript.getText().toString();
+
+                user_add_db(user_name_new, user_lastname_new, user_date_new , user_login_new,user_password_new,user_role_new
+                        ,user_city_new,user_email_new,user_descript_new);
             }
         });
         btn_edit_user = (Button) findViewById(R.id.btn_edit_user);
@@ -75,6 +107,7 @@ public class UserActivity_Admin extends AppCompatActivity {
 
     }
     private void init(){
+        auth = FirebaseAuth.getInstance();
         eventumRecycler  = findViewById(R.id.eventumRecycler);
         db = FirebaseDatabase.getInstance();
         eventumes = db.getReference("Eventum");
@@ -174,5 +207,30 @@ public class UserActivity_Admin extends AppCompatActivity {
             }
         });
     }
+    public void user_add_db(String name, String lastname, String date,String login ,
+                            String password ,String role,String city,String email, String descript){
+        // Регистрация пользователя
+        auth.createUserWithEmailAndPassword(email,password)
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        User user = new User() ;
+                        //String id = null;
+                        user.setName(name);
+                        user.setLastName(lastname);
+                        user.setLogin(login);
+                        user.setPassword(password);
+                        user.setEmail(email);
+                        user.setBirthday(date);
+                        user.setCity(city);
+                        user.setUserdescritpion(descript);
+                        user.setRole(role);
+
+                        users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                .setValue(user);
+                    }
+                });
+    }
+
 
 }
