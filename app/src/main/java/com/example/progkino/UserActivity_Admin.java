@@ -101,7 +101,7 @@ public class UserActivity_Admin extends AppCompatActivity {
         btn_del_user.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view) {
-
+                user_delete_DBshka();
             }
         });
 
@@ -184,6 +184,7 @@ public class UserActivity_Admin extends AppCompatActivity {
 
                 User user = listTemp.get(position);
                 positionEditDel = position;
+
                 user_name_pred = user.getName().toString();
                 user_lastname_pred = user.getLastName().toString();
                 user_city_pred = user.getCity().toString();
@@ -192,7 +193,7 @@ public class UserActivity_Admin extends AppCompatActivity {
                 user_password_pred = user.getPassword().toString();
                 user_role_pred = user.getRole().toString();
                 user_login_pred = user.getLogin().toString();
-                user_descript_pred = user.getUserdescription();
+                user_descript_pred = user.getUserdescription().toString();
 
                 user_name_admin.setText(user_name_pred);
                 user_lastname_admin.setText(user_lastname_pred);
@@ -231,6 +232,31 @@ public class UserActivity_Admin extends AppCompatActivity {
                     }
                 });
     }
-
+    public void user_delete_DBshka(){
+        ValueEventListener vlistener_user1 = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(listData.size() > 0 )listData.clear();
+                if(listTemp.size() > 0 )listTemp.clear();
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    User user = ds.getValue(User.class);
+                    if(user_email_pred.equalsIgnoreCase(user.getEmail().toString())){
+                        DatabaseReference itemRef = ds.getRef();
+                        itemRef.removeValue();
+                        return;
+                    };
+                    String txt = "Имя  : "+ user.getName() + "\n Фамилия : "+ user.getName()+ "\n Почта  : "+ user.getEmail() +
+                            "\n Логин  : "+ user.getLogin() + "\n Пароль  : "+ user.getPassword() + "\n Роль  : "+ user.getRole() +
+                            "\n ДР  : "+ user.getBirthday()  + "\n Город  : "+ user.getCity() + "\n О себе  : "+ user.getUserdescription();
+                    listData.add(txt);
+                    listTemp.add(user);
+                }
+                adapterAr1.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        };
+        users.addValueEventListener(vlistener_user1);
+    }
 
 }

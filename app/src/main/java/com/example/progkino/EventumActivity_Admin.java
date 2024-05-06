@@ -156,10 +156,12 @@ public class EventumActivity_Admin extends AppCompatActivity {
 
                 Eventum eventum = listTemp.get(position);
                 positionEditDel = position;
+
                 eventum_title_pred = eventum.getTitle().toString();
                 eventum_type_pred = eventum.getType().toString();
                 eventum_date_pred = eventum.getDateEventum().toString();
                 eventum_descript_pred = eventum.getEventumDescription().toString();
+
                 ev_name_admin.setText(eventum_title_pred);
                 ev_type_admin.setText(eventum_type_pred);
                 ev_date_admin.setText(eventum_date_pred);
