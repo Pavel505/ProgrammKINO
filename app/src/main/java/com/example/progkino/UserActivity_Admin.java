@@ -52,7 +52,7 @@ public class UserActivity_Admin extends AppCompatActivity {
     RelativeLayout root;
     FirebaseAuth auth;
 
-    @SuppressLint("MissingInflatedId")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -164,7 +164,7 @@ public class UserActivity_Admin extends AppCompatActivity {
                     User user = ds.getValue(User.class);
                     String txt = "Имя  : "+ user.getName() + "\n Фамилия : "+ user.getName()+ "\n Почта  : "+ user.getEmail() +
                     "\n Логин  : "+ user.getLogin() + "\n Пароль  : "+ user.getPassword() + "\n Роль  : "+ user.getRole() +
-                            "\n ДР  : "+ user.getBirthday()  + "\n Город  : "+ user.getCity() + "\n О себе  : "+ user.getUserdescritpion();
+                            "\n ДР  : "+ user.getBirthday()  + "\n Город  : "+ user.getCity() + "\n О себе  : "+ user.getUserdescription();
                     listData.add(txt);
                     listTemp.add(user);
                 }
@@ -192,7 +192,7 @@ public class UserActivity_Admin extends AppCompatActivity {
                 user_password_pred = user.getPassword().toString();
                 user_role_pred = user.getRole().toString();
                 user_login_pred = user.getLogin().toString();
-                user_descript_pred = user.getUserdescritpion();
+                user_descript_pred = user.getUserdescription();
 
                 user_name_admin.setText(user_name_pred);
                 user_lastname_admin.setText(user_lastname_pred);
@@ -223,7 +223,7 @@ public class UserActivity_Admin extends AppCompatActivity {
                         user.setEmail(email);
                         user.setBirthday(date);
                         user.setCity(city);
-                        user.setUserdescritpion(descript);
+                        user.setUserdescription(descript);
                         user.setRole(role);
 
                         users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())

@@ -254,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
                                     user.setEmail(email.getText().toString());
                                     user.setBirthday(birthday.getText().toString());
                                     user.setCity(city.getText().toString());
-                                    user.setUserdescritpion(userdescription.getText().toString());
+                                    user.setUserdescription(userdescription.getText().toString());
                                     user.setRole("user");
 
                                     users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())

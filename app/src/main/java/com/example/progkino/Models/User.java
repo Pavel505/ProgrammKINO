@@ -1,11 +1,11 @@
 package com.example.progkino.Models;
 
 public class User {
-    private String id, name,lastname, login, password, email, userdescritpion, birthday, city, role;
+    private String id, name,lastname, login, password, email, userdescription, birthday, city, role;
     public User() {}
 
     public User(String id, String name,String lastname,String  login,String  password,String  email,
-                String  birthday,String  city, String userdescritpion) {
+                String  birthday,String  city, String userdescription) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -14,7 +14,7 @@ public class User {
         this.email = email;
         this.birthday = birthday;
         this.city = city;
-        this.userdescritpion = userdescritpion;
+        this.userdescription = userdescription;
         this.role = role;
     }
     public String getRole() {
@@ -52,6 +52,6 @@ public class User {
 
     public void setCity(String city){this.city = city;}
     public String getCity(){return city;}
-    public void setUserdescritpion(String userdescritpion){this.userdescritpion = userdescritpion;}
-    public String getUserdescritpion(){return userdescritpion;}
+    public void setUserdescription(String userdescription){this.userdescription = userdescription;}
+    public String getUserdescription(){return userdescription;}
 }
