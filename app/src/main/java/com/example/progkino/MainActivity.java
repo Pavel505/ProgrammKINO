@@ -40,7 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    Boolean proverka = true;
     FirebaseAuth auth;
     FirebaseDatabase db;
     private ArrayAdapter<String> adapterAr1;
@@ -124,35 +124,40 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar.make(root, "Пароль должен иметь больше 5 символов!",Snackbar.LENGTH_SHORT).show();
                     return;
                 }
+                Log.w(TAG, "точка 4");
                 //Log.w(TAG, "Почта здесь юзера1" + email.getText().toString());
                 auth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString())
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override // При успешной авторизации
                             public void onSuccess(AuthResult authResult) {
                                 // ДЛЯ ОПРЕДЕЛНИЕ РОЛЕЙ
+                                Log.w(TAG, "точка 5");
                                 // Связывание с БД, поиск нужного человека и сравнение роли
                                 ValueEventListener vlistener_userRole = new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        if(listData.size() > 0 )listData.clear();
-                                        for(DataSnapshot ds: dataSnapshot.getChildren()){
-                                            User user = ds.getValue(User.class);
-                                            if(email.getText().toString().equalsIgnoreCase(user.getEmail().toString())){
-                                                role_user = user.getRole().toString();
-                                                listData.add(role_user);
-                                                if(role_user.equalsIgnoreCase("admin")){
-                                                    //if(email.getText().toString().equalsIgnoreCase("1@mail.ru")){
-                                                    startActivity(new Intent(MainActivity.this, HomeActivity_Admin.class));
-                                                    finish();
-                                                }else {
-                                                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
-                                                    finish(); // завершает данную сцену + делает переход на новую
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            if(!proverka) {return;}else{proverka = false;};
+                                            Log.w(TAG, "точка 6");
+                                            if(listData.size() > 0 )listData.clear();
+                                            for(DataSnapshot ds: dataSnapshot.getChildren()){
+                                                Log.w(TAG, "точка 7");
+                                                User user = ds.getValue(User.class);
+                                                if(email.getText().toString().equalsIgnoreCase(user.getEmail().toString())){
+                                                    role_user = user.getRole().toString();
+                                                    Log.w(TAG, "точка 8");
+                                                    listData.add(role_user);
+                                                    if(role_user.equalsIgnoreCase("admin")){
+                                                        startActivity(new Intent(MainActivity.this, UserActivity_Admin.class));
+                                                        finish();
+                                                    }else {
+                                                        startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                                                        finish(); // завершает данную сцену + делает переход на новую
+                                                    }
+                                                    return;
                                                 }
-                                                return;
                                             }
+                                            adapterAr1.notifyDataSetChanged();
                                         }
-                                        adapterAr1.notifyDataSetChanged();
-                                    }
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {}
                                 };

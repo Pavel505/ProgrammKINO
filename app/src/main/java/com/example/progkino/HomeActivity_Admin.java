@@ -27,8 +27,7 @@ import java.util.List;
 
 
 public class HomeActivity_Admin extends AppCompatActivity {
-    RecyclerView categoryRecycler,eventumRecycler;
-    DatabaseReference eventumes, categories;
+    DatabaseReference eventumes;
     FirebaseDatabase db;
 
     @Override
@@ -39,11 +38,8 @@ public class HomeActivity_Admin extends AppCompatActivity {
 
     }
     private void init(){
-        eventumRecycler  = findViewById(R.id.eventumRecycler);
         db = FirebaseDatabase.getInstance();
         eventumes = db.getReference("Eventum");
-        categories = db.getReference("Category");
-
     }
     public void navigatorUser(View view){
         Intent intentChat3 = new Intent(this, UserActivity_Admin.class);
@@ -55,6 +51,4 @@ public class HomeActivity_Admin extends AppCompatActivity {
         intentChat4.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intentChat4);
     }
-
-
 }
