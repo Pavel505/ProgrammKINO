@@ -284,10 +284,8 @@ public class UserActivity_Admin extends AppCompatActivity {
                 if(listTemp2.size() > 0 )listTemp2.clear();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     User user = ds.getValue(User.class);
-                    if(user_date_pred.equalsIgnoreCase(user.getBirthday())){
-                        // Логика обновления данных одноразка
-                        DatabaseReference itemRef2 = ds.getRef();
-                        //itemRef.removeValue();
+                    DatabaseReference itemRef2 = ds.getRef();
+                    if(user_email_pred.equalsIgnoreCase(user.getEmail())){
                         itemRef2.child("name").setValue(name);
                         itemRef2.child("lastName").setValue(lastname);
                         itemRef2.child("email").setValue(email);
