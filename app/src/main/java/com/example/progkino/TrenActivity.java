@@ -70,7 +70,9 @@ public class TrenActivity extends AppCompatActivity {
         startActivity(intentTrening2);
     }
 
-    public void onClickRead3 (View view) throws IOException {
-
+    public void onClickReadChGK (View view) throws IOException {
+        Intent intentTreningChGK = new Intent(this, TreningActivity_ChGK.class);
+        intentTreningChGK.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentTreningChGK);
     }
 }

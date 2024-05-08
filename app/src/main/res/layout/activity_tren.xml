@@ -161,6 +161,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/btn_sign_in_stroke"
             android:fontFamily="sans-serif"
+            android:onClick="onClickReadChGK"
             android:text="@string/tren11"
             android:textColor="@color/white"
             app:cornerRadius="10dp"

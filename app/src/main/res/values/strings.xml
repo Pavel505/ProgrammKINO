@@ -66,4 +66,6 @@
     <string name="user_admin_8">Город</string>
     <string name="user_admin_9">О себе</string>
     <string name="ost_time">Осталось: </string>
+    <string name="chgk">Что? Где? Когда?</string>
+    <string name="q">q</string>
 </resources>
