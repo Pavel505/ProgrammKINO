@@ -71,7 +71,6 @@ public class TreningActivity extends AppCompatActivity {
                 if(listData.size() > 0 )listData.clear();
                 answer = "";
                 id_q = (int) (Math.random() * (15)) + 1;
-                
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     QuestionTrenTutor treningGeo1 = ds.getValue(QuestionTrenTutor.class);
                     if(id_q == treningGeo1.getId()){
