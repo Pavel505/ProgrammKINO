@@ -137,14 +137,14 @@ public class MainActivity extends AppCompatActivity {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                             if(!proverka) {return;}else{proverka = false;};
-                                            Log.w(TAG, "точка 6");
+                                            //Log.w(TAG, "точка 6");
                                             if(listData.size() > 0 )listData.clear();
                                             for(DataSnapshot ds: dataSnapshot.getChildren()){
-                                                Log.w(TAG, "точка 7");
+
                                                 User user = ds.getValue(User.class);
                                                 if(email.getText().toString().equalsIgnoreCase(user.getEmail().toString())){
                                                     role_user = user.getRole().toString();
-                                                    Log.w(TAG, "точка 8");
+
                                                     listData.add(role_user);
                                                     if(role_user.equalsIgnoreCase("admin")){
                                                         startActivity(new Intent(MainActivity.this, UserActivity_Admin.class));
