@@ -37,7 +37,7 @@ public class TreningActivity extends AppCompatActivity {
     DatabaseReference  treningGeo1;
     EditText editTextAnswer;
     FirebaseDatabase db;
-    Timer timer;
+    Timer timer2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,13 +89,20 @@ public class TreningActivity extends AppCompatActivity {
         Log.w(TAG, "точка 8");
         treningGeo1.addValueEventListener(vlistener);
 
-        tableTime();
-        Log.i("Info", "Value_3: " + ost_time);
+        tableTime(true);
+        //Log.i("Info", "Value_3: " + ost_time);
 
     }
-    private void tableTime() {
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
+    Timer timer4 = new Timer();
+    private void tableTime(Boolean vkl_time) {
+        if(!vkl_time)
+        {
+            timer4.cancel();
+            return;
+        }else{
+            timer4 = new Timer();
+        }
+        timer4.scheduleAtFixedRate(new TimerTask() {
 
             @Override
             public void run() {
@@ -109,7 +116,7 @@ public class TreningActivity extends AppCompatActivity {
                         Log.i("Info", "Value2: " + ost_time);
                         if(ost_time < 0)
                         {
-                            timer.cancel();
+                            timer4.cancel();
                             text_time.setText("Время вышло");
                         }
                         else {
@@ -124,7 +131,7 @@ public class TreningActivity extends AppCompatActivity {
 
 
     public void onAnswerOk (View view){
-        //timer.cancel();
+        tableTime(false);
         counter_question  += 1;
         String answer_znatok = editTextAnswer.getText().toString();
         if (answer.equalsIgnoreCase(answer_znatok)){
@@ -143,13 +150,7 @@ public class TreningActivity extends AppCompatActivity {
         } else {
             no_answer+=1;
         }
-        /*if (ost_time<0){
-            counter -= 0.5;
-            Toast toast2 = Toast.makeText(getApplicationContext(), "Верно, но время вышло!",
-                    Toast.LENGTH_SHORT);
-            toast2.show();
-        }*/
-        //no_answer = counter_question - Integer.valueOf((int) counter);
+
         Log.w(TAG, "Другой ответ " + id_q + " " + answer + " " + answer_znatok);
         getDataFromDB();
         String counterS = Float.toString(counter);
