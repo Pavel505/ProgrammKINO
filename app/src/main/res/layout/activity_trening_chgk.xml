@@ -216,7 +216,7 @@
     <TextView
         android:id="@+id/textView_comment"
         android:layout_width="240dp"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView_com"
@@ -225,7 +225,7 @@
     <TextView
         android:id="@+id/textView_ist"
         android:layout_width="240dp"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
@@ -259,7 +259,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:text="@string/author"
         android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"

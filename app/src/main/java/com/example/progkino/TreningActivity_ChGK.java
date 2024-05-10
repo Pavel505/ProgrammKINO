@@ -28,7 +28,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class TreningActivity_ChGK extends AppCompatActivity {
-
+    Boolean refren_action_send_answer;
     TextView text_counter_vern_answers,text_counter_nevern_answers,text_time_chgk,text_question_chgk,
             text_comment_chgk,text_sources_chgk,text_author_chgk;
     EditText editTextAnswer;
@@ -75,6 +75,7 @@ public class TreningActivity_ChGK extends AppCompatActivity {
         counter = 0;counter_question = 0;id_q=1;no_answer=0;
     }
     private void getDataFromDB_ChGK(){
+        refren_action_send_answer = false;
         text_author_chgk.setText(" ");
         text_sources_chgk.setText(" ");
         text_comment_chgk.setText(" ");
@@ -92,7 +93,7 @@ public class TreningActivity_ChGK extends AppCompatActivity {
                         // text_question_country.setText(txt);
                         String txt = question_chgk.getContent();
                         author_chgk = question_chgk.getAuthor();
-                        comment_chgk = question_chgk.getComment();
+                        comment_chgk = "Ответ: "+ question_chgk.getAnswer() + "\n " + question_chgk.getComment();
                         sources_chgk = question_chgk.getSources();
                         listData.add(txt);
                         text_question_chgk.setText(txt);
@@ -148,6 +149,12 @@ public class TreningActivity_ChGK extends AppCompatActivity {
 
 
     public void onAnswerOk_ChGK (View view){
+        if (refren_action_send_answer){
+            Toast toast_answer = Toast.makeText(getApplicationContext(), "Вы уже ответили на этот вопрос!",
+                    Toast.LENGTH_SHORT);
+            toast_answer.show();
+            return;
+        };
         tableTime(false);
         counter_question  += 1;
         String answer_znatok = editTextAnswer.getText().toString();
@@ -175,6 +182,8 @@ public class TreningActivity_ChGK extends AppCompatActivity {
         text_comment_chgk.setText(comment_chgk);
         text_sources_chgk.setText(sources_chgk);
         text_author_chgk.setText(author_chgk);
+
+        refren_action_send_answer = true;
     }
     public void nextQuestion(View view){
         getDataFromDB_ChGK();
