@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -178,10 +179,16 @@ public class TreningActivity_ChGK extends AppCompatActivity {
     public void nextQuestion(View view){
         getDataFromDB_ChGK();
     }
+    public void navigatorTren(View view){
+        Intent intentTren = new Intent(this, TrenActivity.class);
+        intentTren.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentTren);
+    }
 
-
-    public void stopActivityChGK(){
-
+    public void stopActivityChGK(View view){
+        Intent intentTren = new Intent(this, TrenActivity.class);
+        intentTren.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intentTren);
     }
 
 
