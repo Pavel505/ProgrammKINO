@@ -23,7 +23,7 @@
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_ist2"
+        app:layout_constraintTop_toBottomOf="@+id/textView_author"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.button.MaterialButton
@@ -43,7 +43,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_next_question"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_ist2"
+        app:layout_constraintTop_toBottomOf="@+id/textView_author"
         app:layout_constraintVertical_bias="0.515"
         tools:ignore="MissingConstraints" />
 
@@ -233,7 +233,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_comment" />
 
     <TextView
-        android:id="@+id/textView_ist2"
+        android:id="@+id/textView_author"
         android:layout_width="280dp"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"

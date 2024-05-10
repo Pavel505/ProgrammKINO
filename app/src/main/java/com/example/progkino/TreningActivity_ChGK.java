@@ -28,7 +28,8 @@ import java.util.TimerTask;
 
 public class TreningActivity_ChGK extends AppCompatActivity {
 
-    TextView text_counter_vern_answers,text_counter_nevern_answers,text_time_chgk,text_question_chgk;
+    TextView text_counter_vern_answers,text_counter_nevern_answers,text_time_chgk,text_question_chgk,
+            text_comment_chgk,text_sources_chgk,text_author_chgk;
     EditText editTextAnswer;
     FirebaseDatabase db;
     private ArrayAdapter<String> adapterAr;
@@ -36,7 +37,7 @@ public class TreningActivity_ChGK extends AppCompatActivity {
     DatabaseReference treningChGK;
     public int id_q, counter_question, ost_time,no_answer ;
     public float counter;
-    String answer;
+    String answer,author_chgk,sources_chgk,comment_chgk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,11 +54,17 @@ public class TreningActivity_ChGK extends AppCompatActivity {
         // Попробовать сделать без костыля с TextView
         //listView = findViewById(R.id.listCountry);
         text_question_chgk = findViewById(R.id.text_question_chgk);
+        text_comment_chgk = findViewById(R.id.textView_comment);
+        text_sources_chgk = findViewById(R.id.textView_ist);
+        text_author_chgk = findViewById(R.id.textView_author);
         text_counter_vern_answers = findViewById(R.id.text_answers_vern);
         text_counter_nevern_answers = findViewById(R.id.text_answers_nevern);
         text_counter_vern_answers.setText("0");
         text_counter_nevern_answers.setText("0");
         text_question_chgk.setText(" ");
+        text_author_chgk.setText(" ");
+        text_sources_chgk.setText(" ");
+        text_comment_chgk.setText(" ");
         text_time_chgk.setText("70");
         listData = new ArrayList<>();
         adapterAr = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listData);
@@ -67,6 +74,9 @@ public class TreningActivity_ChGK extends AppCompatActivity {
         counter = 0;counter_question = 0;id_q=1;no_answer=0;
     }
     private void getDataFromDB_ChGK(){
+        text_author_chgk.setText(" ");
+        text_sources_chgk.setText(" ");
+        text_comment_chgk.setText(" ");
         ost_time = 70;
         ValueEventListener vlistener = new ValueEventListener() {
             @Override
@@ -79,7 +89,10 @@ public class TreningActivity_ChGK extends AppCompatActivity {
                     // QuestionTrenTutor treningGeo1 = ds.getValue(QuestionTrenTutor.class);
                     if(id_q == question_chgk.getId()){
                         // text_question_country.setText(txt);
-                        String txt = question_chgk.getContent().toString();
+                        String txt = question_chgk.getContent();
+                        author_chgk = question_chgk.getAuthor();
+                        comment_chgk = question_chgk.getComment();
+                        sources_chgk = question_chgk.getSources();
                         listData.add(txt);
                         text_question_chgk.setText(txt);
                         answer = question_chgk.getAnswer().toString();
@@ -93,8 +106,8 @@ public class TreningActivity_ChGK extends AppCompatActivity {
         Log.w(TAG, "точка 8");
         treningChGK.addValueEventListener(vlistener);
 
-        //tableTime(true);
-        //Log.i("Info", "Value_3: " + ost_time);
+        tableTime(true);
+
     }
 
     Timer timer_chgk = new Timer();
@@ -110,7 +123,6 @@ public class TreningActivity_ChGK extends AppCompatActivity {
 
             @Override
             public void run() {
-                //final float value = Utils.randInt(-10, 35);
 
                 runOnUiThread(new Runnable() {
                     @Override
@@ -153,21 +165,23 @@ public class TreningActivity_ChGK extends AppCompatActivity {
         } else {
             no_answer+=1;
         }
-
         Log.w(TAG, "Другой ответ " + id_q + " " + answer + " " + answer_znatok);
         String counterS = Float.toString(counter);
         String no_answerS = Integer.toString(no_answer);
         text_counter_vern_answers.setText(counterS);
         text_counter_nevern_answers.setText(no_answerS);
+
+        text_comment_chgk.setText(comment_chgk);
+        text_sources_chgk.setText(sources_chgk);
+        text_author_chgk.setText(author_chgk);
     }
     public void nextQuestion(View view){
         getDataFromDB_ChGK();
     }
 
 
-    private void stopActivityChGK(){
-        //Проверить работоспособность
-        super.finish();
+    public void stopActivityChGK(){
+
     }
 
 
