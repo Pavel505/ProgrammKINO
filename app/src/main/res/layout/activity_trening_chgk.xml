@@ -17,6 +17,7 @@
         android:layout_weight="1"
         android:backgroundTint="@color/glavna_str_effect"
         android:fontFamily="sans-serif"
+        android:onClick="nextQuestion"
         android:text="@string/next_question"
         android:textColor="@color/white"
         app:cornerRadius="10dp"
@@ -57,6 +58,7 @@
         android:layout_weight="1"
         android:backgroundTint="@color/glavna_str_effect"
         android:fontFamily="@font/montserrat"
+        android:onClick="onAnswerOk_ChGK"
         android:src="@drawable/ic_sendbutton"
         android:text="ОТправить"
         android:textColor="@color/white"
@@ -103,7 +105,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toEndOf="@+id/textView_answer"
-        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+        app:layout_constraintTop_toBottomOf="@+id/text_question_chgk" />
 
     <TextView
         android:id="@+id/text_answers_vern"
@@ -179,7 +181,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_title_chgk" />
 
     <TextView
-        android:id="@+id/textView29"
+        android:id="@+id/text_question_chgk"
         android:layout_width="300dp"
         android:layout_height="150dp"
         android:layout_marginTop="20dp"
@@ -198,7 +200,7 @@
         android:text="@string/answer"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+        app:layout_constraintTop_toBottomOf="@+id/text_question_chgk" />
 
     <TextView
         android:id="@+id/textView_com"

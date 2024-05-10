@@ -7,9 +7,8 @@ public class Question {
     int id;
     String userEmail, category, content,answer,comment,sources,author;
 
-    public Question(int id, String userEmail, String category, String content, String answer, String comment, String sources, String author) {
+    public Question(int id, String category, String content, String answer, String comment, String sources, String author) {
         this.id = id;
-        this.userEmail = userEmail;
         this.category = category;
         this.content = content;
         this.answer = answer;
@@ -24,14 +23,6 @@ public class Question {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
     }
 
     public String getCategory() {
