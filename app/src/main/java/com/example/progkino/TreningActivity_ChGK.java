@@ -85,7 +85,7 @@ public class TreningActivity_ChGK extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(listData.size() > 0 )listData.clear();
                 answer = "";
-                id_q = (int) (Math.random() * (2)) + 1;
+                id_q = (int) (Math.random() * (5)) + 1;
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Question question_chgk = ds.getValue(Question.class);
                     // QuestionTrenTutor treningGeo1 = ds.getValue(QuestionTrenTutor.class);

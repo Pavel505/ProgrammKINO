@@ -4,10 +4,16 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -84,13 +90,35 @@ public class HomeActivity extends AppCompatActivity {
                     break;
             }
         }
-
     }
     private void init(){
         eventumRecycler  = findViewById(R.id.eventumRecycler);
         db = FirebaseDatabase.getInstance();
         eventumes = db.getReference("Eventum");
         categories = db.getReference("Category");
+
+    }
+
+    private void makeNotification(){
+       /* String chanelID = "CHANNEL_ID_NOTIFICATION";
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(getApplicationContext(),chanelID);
+
+        builder.setContentTitle("Notification Title");
+        builder.setContentText("Some text for");
+        builder.setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        Intent i = new Intent(getApplicationContext(),
+                NotificationActivity.Class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.putExtra("data","Some value to be passed");
+
+        PendingIntent pendingIntent =
+                PendingIntent.getActivity(getApplicationContext(),
+                        0, i, PendingIntent.FLAG_MUTABLE);
+        builder.setContentIntent(pendingIntent);
+        NotificationManager notificationManager = */
 
     }
 

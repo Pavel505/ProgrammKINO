@@ -47,6 +47,8 @@
     <string name="quit">Завершить</string>
     <string name="next_question">Следующий вопрос</string>
     <string name="answer_ok">Отправить ответ</string>
+    <string name="tema">Тема</string>
+    <string name="nominal">Номинал</string>
     <string name="chat">Чат</string>
     <string name="btnChatSend">Отправить</string>
     <string name="geo_teor">Теория по географии</string>

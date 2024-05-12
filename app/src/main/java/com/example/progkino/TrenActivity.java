@@ -75,4 +75,10 @@ public class TrenActivity extends AppCompatActivity {
         intentTreningChGK.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intentTreningChGK);
     }
+    public void onClickReadSvoyak (View view) throws IOException {
+        Intent intentTreningSvoyak = new Intent(this, TreningActivity_Svoyak.class);
+        intentTreningSvoyak.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentTreningSvoyak);
+    }
+
 }
