@@ -195,6 +195,7 @@
         android:layout_weight="1"
         android:backgroundTint="@color/glavna_str_effect"
         android:fontFamily="@font/montserrat"
+        android:onClick="onAnswerOk_Svoyak"
         android:src="@drawable/ic_sendbutton"
         android:text="ОТправить"
         android:textColor="@color/white"
@@ -202,12 +203,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/texttime_ost"
         app:layout_constraintTop_toBottomOf="@+id/answer_chgk2" />
+
     <TextView
         android:id="@+id/textView_question_svoyak"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
-        android:text=" "
+        android:text="q"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView_question_title"
         app:layout_constraintTop_toBottomOf="@+id/textView_title_nominal" />
@@ -225,7 +227,7 @@
 
     <TextView
         android:id="@+id/texttime_ost"
-        android:layout_width="wrap_content"
+        android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"

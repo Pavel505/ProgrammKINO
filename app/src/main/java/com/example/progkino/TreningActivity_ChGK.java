@@ -52,8 +52,6 @@ public class TreningActivity_ChGK extends AppCompatActivity {
     private void init(){
         text_time_chgk = findViewById(R.id.text_time_ost);
         editTextAnswer = findViewById(R.id.answer_chgk);
-        // Попробовать сделать без костыля с TextView
-        //listView = findViewById(R.id.listCountry);
         text_question_chgk = findViewById(R.id.text_question_chgk);
         text_comment_chgk = findViewById(R.id.textView_comment);
         text_sources_chgk = findViewById(R.id.textView_ist);
