@@ -76,6 +76,11 @@ public class TreningActivity_Svoyak extends AppCompatActivity {
 
     public void getDataFromDB_Svoyak(){
         refren_action_send_answer = false;
+
+        text_question_svoyak.setText(" ");
+        text_author_svoyak.setText(" ");
+        text_comment_svoyak.setText(" ");
+
         text_author_svoyak.setText(" ");
         text_comment_svoyak.setText(" ");
         ost_time = 20;
@@ -85,6 +90,7 @@ public class TreningActivity_Svoyak extends AppCompatActivity {
                 if(listData.size() > 0 )listData.clear();
                 answer = "";
                 id_q = (int) (Math.random() * (20)) % 5 + 1;
+               // Boolean kon = !replay_tema && real_nominal_question==100;
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Question question_chgk = ds.getValue(Question.class);
                     replay_tema = false;
@@ -106,6 +112,7 @@ public class TreningActivity_Svoyak extends AppCompatActivity {
                     }else{
                          uslovie = tema_question.equalsIgnoreCase(question_chgk.getTema()) && real_nominal_question == question_chgk.getNominal();
                     }
+
                     Log.w(TAG, "точка 18" + uslovie + replay_tema + real_nominal_question + tema_question + list_tems.size());
                     if(uslovie){
                         String txt = question_chgk.getContent();
@@ -121,7 +128,16 @@ public class TreningActivity_Svoyak extends AppCompatActivity {
                         answer = question_chgk.getAnswer().toString();
                         return;
                     }
+
                 }
+                if (text_question_svoyak.getText().equals(" ")){
+                    Toast toast_answer = Toast.makeText(getApplicationContext(), "Темы закончились!Рекомендуем нажать *Завершить*",
+                            Toast.LENGTH_LONG);
+                    toast_answer.show();
+                    return;
+                }
+
+
                 adapterAr.notifyDataSetChanged();
             }
             @Override
@@ -166,6 +182,7 @@ public class TreningActivity_Svoyak extends AppCompatActivity {
     }
 
     public void onAnswerOk_Svoyak (View view){
+        counter_question  += 1;
         if (refren_action_send_answer){
             Toast toast_answer = Toast.makeText(getApplicationContext(), "Вы уже ответили на этот вопрос!",
                     Toast.LENGTH_SHORT);
@@ -175,12 +192,15 @@ public class TreningActivity_Svoyak extends AppCompatActivity {
         if(real_nominal_question == 500){
             list_tems.add(tema_question);
             real_nominal_question = 100;
+            Toast toast3 = Toast.makeText(getApplicationContext(), "Отыграно тем:" + counter_question/5 + " !",
+                    Toast.LENGTH_SHORT);
+            toast3.show();
         }else{
             real_nominal_question+=100;
         }
         Log.w(TAG, "точка 28" + real_nominal_question);
         tableTime_Svoyak(false);
-        counter_question  += 1;
+
         String answer_znatok = editTextAnswer.getText().toString();
         if (answer.equalsIgnoreCase(answer_znatok)){
             if (ost_time>0) {
