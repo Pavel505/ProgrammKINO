@@ -4,10 +4,11 @@ public class Question {
 
     public Question() {}
 
-    int id;
-    String userEmail, category, content,answer,comment,sources,author;
+    int id, nominal;
+    String userEmail, category, content,answer,comment,sources,author,tema;
 
-    public Question(int id, String category, String content, String answer, String comment, String sources, String author) {
+    public Question(int id, String category, String content, String answer, String comment, String sources, String author, int nominal,
+    String tema) {
         this.id = id;
         this.category = category;
         this.content = content;
@@ -15,8 +16,23 @@ public class Question {
         this.comment = comment;
         this.sources = sources;
         this.author = author;
+        this.nominal = nominal;
+        this.tema = tema;
+    }
+    public String getTema() {
+        return tema;
     }
 
+    public void setTema(String tema) {
+        this.tema = tema;
+    }
+    public int getNominal() {
+        return nominal;
+    }
+
+    public void setNominal(int nominal) {
+        this.nominal = nominal;
+    }
     public int getId() {
         return id;
     }

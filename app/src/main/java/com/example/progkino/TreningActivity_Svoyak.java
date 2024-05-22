@@ -27,17 +27,18 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class TreningActivity_Svoyak extends AppCompatActivity {
-    Boolean refren_action_send_answer;
+    Boolean refren_action_send_answer, ignor_answer, uslovie,replay_tema,question_one;
     TextView text_counter_svoyak,text_counter_nevern_answers,text_time_svoyak,text_question_svoyak,
-            text_comment_svoyak, text_author_svoyak;
+            text_comment_svoyak, text_author_svoyak,textView_nominal,textView_tema;
     EditText editTextAnswer;
     FirebaseDatabase db;
+    int nominal_question, real_nominal_question;
     private ArrayAdapter<String> adapterAr;
-    private List<String> listData;
+    private List<String> listData, list_tems;
     DatabaseReference treningSvoyak;
     public int id_q, counter_question, ost_time,no_answer ;
     public float counter;
-    String answer,author_chgk,sources_chgk,comment_chgk;
+    String answer,author_chgk,sources_chgk,comment_chgk, tema_question;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,10 @@ public class TreningActivity_Svoyak extends AppCompatActivity {
         getDataFromDB_Svoyak();
     }
     public void init(){
+        replay_tema = false;tema_question = " ";question_one = true;
+        ignor_answer = true;real_nominal_question=100;
+        textView_tema = findViewById(R.id.textView_tema);
+        textView_nominal = findViewById(R.id.textView_nominal);
         text_time_svoyak = findViewById(R.id.texttime_ost);
         editTextAnswer = findViewById(R.id.answer_chgk2);
         text_question_svoyak = findViewById(R.id.textView_question_svoyak);
@@ -58,10 +63,11 @@ public class TreningActivity_Svoyak extends AppCompatActivity {
         text_counter_svoyak.setText("0");
         text_time_svoyak.setText("15");
         listData = new ArrayList<>();
+        list_tems = new ArrayList<>();
         adapterAr = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listData);
         // listView.setAdapter(adapterAr);
         db = FirebaseDatabase.getInstance();
-        treningSvoyak = db.getReference("TreningChGK");
+        treningSvoyak = db.getReference("TreningSvoyak");
         counter = 0;counter_question = 0;id_q=1;no_answer=0; ost_time=30;
 
 
@@ -78,19 +84,42 @@ public class TreningActivity_Svoyak extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(listData.size() > 0 )listData.clear();
                 answer = "";
-                id_q = (int) (Math.random() * (5)) + 1;
+                id_q = (int) (Math.random() * (20)) % 5 + 1;
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Question question_chgk = ds.getValue(Question.class);
-                    // QuestionTrenTutor treningGeo1 = ds.getValue(QuestionTrenTutor.class);
-                    if(id_q == question_chgk.getId()){
-                        // text_question_country.setText(txt);
+                    replay_tema = false;
+                    if(real_nominal_question == 100){
+                        // Доделать выход при отыгрывании всех тем
+
+                        Log.w(TAG, "точка 12" + replay_tema);
+                        for(int i = 0; i < list_tems.size(); i++) {
+                            if(list_tems.get(i).equalsIgnoreCase(question_chgk.getTema())){
+                                replay_tema = true;
+                                Log.w(TAG, "точка 14" + list_tems.get(i)+ " " + list_tems.size());
+                               // return;
+                            }
+                        }
+                        Log.w(TAG, "точка 16" + replay_tema + real_nominal_question + tema_question + list_tems.size());
+                        boolean df = tema_question.equalsIgnoreCase(question_chgk.getTema());
+                        uslovie = question_chgk.getNominal() == 100 && !replay_tema;
+
+                    }else{
+                         uslovie = tema_question.equalsIgnoreCase(question_chgk.getTema()) && real_nominal_question == question_chgk.getNominal();
+                    }
+                    Log.w(TAG, "точка 18" + uslovie + replay_tema + real_nominal_question + tema_question + list_tems.size());
+                    if(uslovie){
                         String txt = question_chgk.getContent();
+                        tema_question = question_chgk.getTema();
+                        nominal_question = question_chgk.getNominal();
                         author_chgk = question_chgk.getAuthor();
                         comment_chgk = "Ответ: "+ question_chgk.getAnswer() + "\n " + question_chgk.getComment();
                         sources_chgk = question_chgk.getSources();
                         listData.add(txt);
                         text_question_svoyak.setText(txt);
+                        textView_nominal.setText(Integer.toString(nominal_question));
+                        textView_tema.setText(tema_question);
                         answer = question_chgk.getAnswer().toString();
+                        return;
                     }
                 }
                 adapterAr.notifyDataSetChanged();
@@ -98,10 +127,10 @@ public class TreningActivity_Svoyak extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         };
-        Log.w(TAG, "точка 8");
         treningSvoyak.addValueEventListener(vlistener_svoyak);
 
         tableTime_Svoyak(true);
+
     }
     Timer timer_svoyak = new Timer();
     private void tableTime_Svoyak(Boolean vkl_time) {
@@ -120,17 +149,14 @@ public class TreningActivity_Svoyak extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Log.i("Info", "Value: " + ost_time);
                         ost_time-=1;
-                        Log.i("Info", "Value2: " + ost_time);
-                        if(ost_time < 0)
+                        if(ost_time < 1)
                         {
                             timer_svoyak.cancel();
                             text_time_svoyak.setText("Время вышло");
                         }
                         else {
-                            // Почему-то возникает ошибка, перевпроверить!
-                            // + переход на след.стр.
+
                             text_time_svoyak.setText(String.valueOf(ost_time));
                         };
                     }
@@ -146,12 +172,19 @@ public class TreningActivity_Svoyak extends AppCompatActivity {
             toast_answer.show();
             return;
         };
+        if(real_nominal_question == 500){
+            list_tems.add(tema_question);
+            real_nominal_question = 100;
+        }else{
+            real_nominal_question+=100;
+        }
+        Log.w(TAG, "точка 28" + real_nominal_question);
         tableTime_Svoyak(false);
         counter_question  += 1;
         String answer_znatok = editTextAnswer.getText().toString();
         if (answer.equalsIgnoreCase(answer_znatok)){
             if (ost_time>0) {
-                counter += 1;
+                counter += nominal_question;
                 Toast toast3 = Toast.makeText(getApplicationContext(), "Верно!",
                         Toast.LENGTH_SHORT);
                 toast3.show();
@@ -162,7 +195,7 @@ public class TreningActivity_Svoyak extends AppCompatActivity {
                 toast4.show();
             }
         } else {
-            no_answer+=1;
+            counter -= nominal_question;
         }
         Log.w(TAG, "Другой ответ " + id_q + " " + answer + " " + answer_znatok);
 
@@ -176,9 +209,17 @@ public class TreningActivity_Svoyak extends AppCompatActivity {
         text_author_svoyak.setText(author_chgk);
 
         refren_action_send_answer = true;
+        ignor_answer = false;
     }
     public void nextQuestion_Svoyak(View view){
-        getDataFromDB_Svoyak();
+        if(ignor_answer){
+            Toast toast37 = Toast.makeText(getApplicationContext(), "Вы не ввели свой и не узнали правильный ответ!",
+                    Toast.LENGTH_SHORT);
+            toast37.show();
+        }else {
+            getDataFromDB_Svoyak();
+            ignor_answer = true;
+        }
     }
 
     public void stopActivitySvoyak(View view){
