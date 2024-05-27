@@ -32,7 +32,6 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:hint="Отзыв"
-            android:inputType="textPassword"
             android:text=""
             android:textColor="@color/line_register"
             android:textColorHint="@color/text_bottom"

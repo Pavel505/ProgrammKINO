@@ -1,10 +1,11 @@
 package com.example.progkino;
 
 import static android.content.ContentValues.TAG;
-
+import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,22 +16,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.example.progkino.Models.Message;
+import com.example.progkino.Models.Review;
 import com.example.progkino.Models.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ContactActivity extends AppCompatActivity {
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+public class ContactActivity extends AppCompatActivity {
+   // ConstraintLayout root;
+    RelativeLayout root2;
+    DatabaseReference reviews;
+    FirebaseDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
+        db = FirebaseDatabase.getInstance();
+        reviews = db.getReference("Review");
 
         Button btnCreateReview = (Button) findViewById(R.id.otzv);
         btnCreateReview.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +81,7 @@ public class ContactActivity extends AppCompatActivity {
     public void createReview() {
         AlertDialog.Builder dialog_rev = new AlertDialog.Builder(this);
         dialog_rev.setTitle("Что вы хотели написать?");
-        dialog_rev.setMessage("Это могут быть замечания по интерфейсу, работоспособности приложения и т.п.");
+        dialog_rev.setMessage("Это могут быть замечания по интерфейсу, работоспособности приложения и т.п. Обращаем внимание, что отзыв должен быть не менее 5 симоволов");
         // Создание объекта для нужного шаблона, помещаев его в View
         LayoutInflater inflater = LayoutInflater.from(this);
         View review_window = inflater.inflate(R.layout.review_window, null);
@@ -80,65 +96,51 @@ public class ContactActivity extends AppCompatActivity {
                 dialogInterface.dismiss();
             }
         });
-       /* dialog_rev.setPositiveButton("Отправить", new DialogInterface.OnClickListener() {
+        dialog_rev.setPositiveButton("Отправить", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 //Проверка на наличие данных ячеек
 
-                if(TextUtils.isEmpty(email.getText().toString())){
-                    Snackbar.make(root, "Введите ваш логин",Snackbar.LENGTH_SHORT).show();
+                if(TextUtils.isEmpty(temaReview.getText().toString())){
+                    Toast toast_answer2 = Toast.makeText(getApplicationContext(), "Заполните поле темы сообщения",
+                            Toast.LENGTH_LONG);
+                    toast_answer2.show();
                     return;
                 }
-                if(password.getText().toString().length() < 5){
-                    Snackbar.make(root, "Пароль должен иметь больше 5 символов!",Snackbar.LENGTH_SHORT).show();
+                if(contextReview.getText().toString().length() < 5){
+                    Toast toast_answer = Toast.makeText(getApplicationContext(), "Отзыв должен иметь меньше 5 символов!",
+                            Toast.LENGTH_LONG);
+                    toast_answer.show();
                     return;
                 }
-                //Log.w(TAG, "Почта здесь юзера1" + email.getText().toString());
-                auth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString())
-                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                            @Override // При успешной авторизации
-                            public void onSuccess(AuthResult authResult) {
-                                // ДЛЯ ОПРЕДЕЛНИЕ РОЛЕЙ
-                                // Связывание с БД, поиск нужного человека и сравнение роли
-                                ValueEventListener vlistener_userRole = new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        if(!proverka) {return;}else{proverka = false;};
-                                        if(listData.size() > 0 )listData.clear();
-                                        for(DataSnapshot ds: dataSnapshot.getChildren()){
-                                            User user = ds.getValue(User.class);
-                                            if(email.getText().toString().equalsIgnoreCase(user.getEmail().toString())){
-                                                role_user = user.getRole().toString();
+                String temRev = temaReview.getText().toString();
+                String rev = contextReview.getText().toString();
+                String author = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                newReview(temRev, rev,author);
 
-                                                listData.add(role_user);
-                                                if(role_user.equalsIgnoreCase("admin")){
-                                                    startActivity(new Intent(MainActivity.this, UserActivity_Admin.class));
-                                                    finish();
-                                                }else {
-                                                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
-                                                    finish();
-                                                }
-                                                return;
-                                            }
-                                        }
-                                        adapterAr1.notifyDataSetChanged();
-                                    }
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {}
-                                };
-                                users.addValueEventListener(vlistener_userRole);
-                            }
-                            // При ошибке
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Snackbar.make(root, "Ошибка авторизации. " + e.getMessage(), Snackbar.LENGTH_SHORT).show();
-                            }
-                        });
             }
-        });*/
+        });
 
         dialog_rev.show();
+    }
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    public void newReview(String temaReview, String reviewtxt, String email){
+        Review review = new Review();
+        review.setTemaReview(temaReview);
+        review.setAuthorReview(email);
+        review.setReview(reviewtxt);
+        Date data_now = new Date();
+        review.setScan(false);
+        String strDate = formatter.format(data_now);
+        review.setTimeReview(strDate);
+
+        db.getReference().child("Review").push().setValue(
+                new Review(reviewtxt,temaReview,email,strDate,false
+                )
+        );
+        Toast toast_answer3 = Toast.makeText(getApplicationContext(), "Отзыв отправлен",
+                Toast.LENGTH_LONG);
+        toast_answer3.show();
     }
 
 }
