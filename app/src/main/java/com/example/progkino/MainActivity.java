@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     // Анимация кнопок
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
         Button btnSignIn = (Button) findViewById(R.id.btnSignIn);
-        Button btnRegister = (Button) findViewById(R.id.btnChatSend);
+
         root = findViewById(R.id.root_element);
         btnSignIn.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        Button btnRegister = (Button) findViewById(R.id.btnChatSend);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,16 +131,13 @@ public class MainActivity extends AppCompatActivity {
                             @Override // При успешной авторизации
                             public void onSuccess(AuthResult authResult) {
                                 // ДЛЯ ОПРЕДЕЛНИЕ РОЛЕЙ
-                                Log.w(TAG, "точка 5");
                                 // Связывание с БД, поиск нужного человека и сравнение роли
                                 ValueEventListener vlistener_userRole = new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                             if(!proverka) {return;}else{proverka = false;};
-                                            //Log.w(TAG, "точка 6");
                                             if(listData.size() > 0 )listData.clear();
                                             for(DataSnapshot ds: dataSnapshot.getChildren()){
-
                                                 User user = ds.getValue(User.class);
                                                 if(email.getText().toString().equalsIgnoreCase(user.getEmail().toString())){
                                                     role_user = user.getRole().toString();
@@ -151,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                                                         finish();
                                                     }else {
                                                         startActivity(new Intent(MainActivity.this, HomeActivity.class));
-                                                        finish(); // завершает данную сцену + делает переход на новую
+                                                        finish();
                                                     }
                                                     return;
                                                 }
@@ -173,10 +170,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         dialog.show();
-    }
-
-    private void getDataFromDB(){
-
     }
 
 
