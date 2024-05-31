@@ -5,6 +5,10 @@ import static android.content.ContentValues.TAG;
 import static com.example.progkino.Constant.GEO_CAPITAL;
 import static com.example.progkino.Constant.GEO_COUNTRY;
 import static com.example.progkino.Constant.GEO_IMAGE;
+import static com.example.progkino.Constant.REVIEW_AUTHOR;
+import static com.example.progkino.Constant.REVIEW_CONTENT;
+import static com.example.progkino.Constant.REVIEW_TEMA;
+import static com.example.progkino.Constant.REVIEW_TIME;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -106,11 +110,13 @@ public class HomeActivity_Admin extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Review review = listTemp.get(position);
-                /*Intent i = new Intent(TutorialGeo1Activity.this, TutorialShowActivity.class);
-                i.putExtra(GEO_CAPITAL, questionTrenTutor.getCapital());
-                i.putExtra(GEO_COUNTRY, questionTrenTutor.getCountry());
-                i.putExtra(GEO_IMAGE, questionTrenTutor.getImgUrl() );
-                startActivity(i);*/
+               // Intent i = new Intent(TutorialGeo1Activity.this, TutorialShowActivity.class);
+                Intent i = new Intent(HomeActivity_Admin.this, ReviewShowActivity_Admin.class);
+                i.putExtra(REVIEW_AUTHOR, review.getAuthorReview());
+                i.putExtra(REVIEW_TEMA, review.getTemaReview());
+                i.putExtra(REVIEW_TIME, review.getTimeReview());
+                i.putExtra(REVIEW_CONTENT, review.getReview());
+                startActivity(i);
             }
         });
     }

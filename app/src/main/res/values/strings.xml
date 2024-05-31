@@ -44,6 +44,7 @@
     <string name="answer_user">Сообщения пользователей</string>
     <string name="comment">Комментарий</string>
     <string name="ist">Источники</string>
+    <string name="otzv">Сообщения</string>
     <string name="author">Автор</string>
     <string name="quit">Завершить</string>
     <string name="next_question">Следующий вопрос</string>
@@ -75,4 +76,8 @@
     <string name="ost_time">Осталось: </string>
     <string name="chgk">Что? Где? Когда?</string>
     <string name="q">q</string>
+    <string name="user">Пользователь</string>
+    <string name="time">Время</string>
+    <string name="predupreg">Предупреждение</string>
+    <string name="qwertty">К списку</string>
 </resources>

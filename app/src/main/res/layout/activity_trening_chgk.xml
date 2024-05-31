@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/answer_chgk" />
 
     <TextView
-        android:id="@+id/textView31"
+        android:id="@+id/textView31_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
@@ -87,7 +87,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textView31"
+        app:layout_constraintStart_toEndOf="@+id/textView31_user"
         app:layout_constraintTop_toBottomOf="@+id/answer_chgk" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -240,7 +240,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.309"
-        app:layout_constraintStart_toEndOf="@+id/textView35"
+        app:layout_constraintStart_toEndOf="@+id/textView31_tema"
         app:layout_constraintTop_toBottomOf="@+id/textView_ist" />
 
     <TextView
@@ -255,7 +255,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_comment" />
 
     <TextView
-        android:id="@+id/textView35"
+        android:id="@+id/textView31_tema"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"

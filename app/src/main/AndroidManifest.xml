@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ProgKino"
         tools:targetApi="31">
         <activity
+            android:name=".ReviewShowActivity_Admin"
+            android:exported="false" />
+        <activity
             android:name=".TreningActivity_Svoyak"
             android:exported="false" />
         <activity
