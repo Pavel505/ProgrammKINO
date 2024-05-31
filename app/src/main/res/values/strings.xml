@@ -41,6 +41,7 @@
     <string name="tutorial1">Списки с теорией:</string>
     <string name="question">Вопрос</string>
     <string name="answer">Ответ</string>
+    <string name="answer_user">Сообщения пользователей</string>
     <string name="comment">Комментарий</string>
     <string name="ist">Источники</string>
     <string name="author">Автор</string>
