@@ -42,10 +42,11 @@ public class ReviewShowActivity_Admin extends AppCompatActivity {
     private TextView text_author, text_time,text_tema,text_review;
     String author,otzv_ves;
     private ArrayAdapter<String> adapterAr3;
-    private List<String> listData4;
+    private List<String> listData4,listData432;
     FirebaseAuth auth;
     DatabaseReference reviews;
     FirebaseDatabase db;
+    Integer plus_one;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,6 @@ public class ReviewShowActivity_Admin extends AppCompatActivity {
     }
     public void review_reading(){
         ValueEventListener vlistener_user1 = new ValueEventListener() {
-
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(listData4.size() > 0 )listData4.clear();
@@ -80,12 +80,12 @@ public class ReviewShowActivity_Admin extends AppCompatActivity {
                     DatabaseReference itemRef4 = ds.getRef();
                     Boolean author_b = author.equalsIgnoreCase(review.getAuthorReview());
                     Boolean content_b = otzv_ves.equalsIgnoreCase(review.getReview());
-                    Log.w(TAG, "точка 4" + author_b );
+                   /* Log.w(TAG, "точка 4" + author_b );
                     Log.w(TAG, "точка 5" + content_b);
                     Log.w(TAG, "точка 6" + author );
                     Log.w(TAG, "точка 7" + review.getAuthorReview());
                     Log.w(TAG, "точка 8" + otzv_ves );
-                    Log.w(TAG, "точка 9" + review.getReview().toString());
+                    Log.w(TAG, "точка 9" + review.getReview().toString());*/
                     if(author_b && content_b){
                         itemRef4.child("scan").setValue(true);
                         return;
@@ -99,6 +99,7 @@ public class ReviewShowActivity_Admin extends AppCompatActivity {
         reviews.addValueEventListener(vlistener_user1);
         //finishActivity(UserActivity_Admin);
     }
+
     public void getIntentMain_Review(){
 
         Intent i2 = getIntent();
@@ -135,7 +136,7 @@ public class ReviewShowActivity_Admin extends AppCompatActivity {
         dialog_rev.setPositiveButton("Дать предупреждение", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
-
+                noticePlusUser();
 
                 intentTren43.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intentTren43);
@@ -143,4 +144,36 @@ public class ReviewShowActivity_Admin extends AppCompatActivity {
         });
         dialog_rev.show();
     }
+
+    public void noticePlusUser(){/*
+        ValueEventListener vlistener_user34 = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(listData432.size() > 0 )listData432.clear();
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    User user = ds.getValue(User.class);
+                    Review review = ds.getValue(Review.class);
+                    DatabaseReference itemRef4 = ds.getRef();
+                    Boolean author_b = author.equalsIgnoreCase(user.getEmail());
+                    //Boolean content_b = otzv_ves.equalsIgnoreCase(review.getReview());
+                   /* Log.w(TAG, "точка 4" + author_b );
+                    Log.w(TAG, "точка 5" + content_b);
+                    Log.w(TAG, "точка 6" + author );
+                    Log.w(TAG, "точка 7" + review.getAuthorReview());
+                    Log.w(TAG, "точка 8" + otzv_ves );
+                    Log.w(TAG, "точка 9" + review.getReview().toString());*/
+                    /*if(author_b){
+                        //plus_one = user.get;
+                        itemRef4.child("scan").setValue(true);
+                        return;
+                    };
+                }
+                adapterAr3.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        };
+        reviews.addValueEventListener(vlistener_user34);*/
+    }
+
 }
