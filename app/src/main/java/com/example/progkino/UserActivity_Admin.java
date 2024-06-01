@@ -243,6 +243,7 @@ public class UserActivity_Admin extends AppCompatActivity {
                         user.setCity(city);
                         user.setUserdescription(descript);
                         user.setRole(role);
+                        user.setCounter_notice(0);
 
                         users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                 .setValue(user);

@@ -41,12 +41,13 @@ import java.util.List;
 public class ReviewShowActivity_Admin extends AppCompatActivity {
     private TextView text_author, text_time,text_tema,text_review;
     String author,otzv_ves;
-    private ArrayAdapter<String> adapterAr3;
+    private ArrayAdapter<String> adapterAr3,adapterAr39;
     private List<String> listData4,listData432;
     FirebaseAuth auth;
-    DatabaseReference reviews;
+    DatabaseReference reviews,users;
     FirebaseDatabase db;
     Integer plus_one;
+    Boolean f = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +64,14 @@ public class ReviewShowActivity_Admin extends AppCompatActivity {
 
     private void init(){
         listData4 = new ArrayList<>();
+        listData432 = new ArrayList<>();
         adapterAr3 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listData4);
         text_time = findViewById(R.id.textView31_time);
         text_tema = findViewById(R.id.textView31_tema);
-
+        adapterAr39 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listData432);
         db = FirebaseDatabase.getInstance();
         reviews = db.getReference("Review");
+        users = db.getReference("User");
     }
     public void review_reading(){
         ValueEventListener vlistener_user1 = new ValueEventListener() {
@@ -137,7 +140,7 @@ public class ReviewShowActivity_Admin extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 noticePlusUser();
-
+                f = true;
                 intentTren43.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intentTren43);
             }
@@ -145,35 +148,31 @@ public class ReviewShowActivity_Admin extends AppCompatActivity {
         dialog_rev.show();
     }
 
-    public void noticePlusUser(){/*
+    public void noticePlusUser(){
         ValueEventListener vlistener_user34 = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(listData432.size() > 0 )listData432.clear();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     User user = ds.getValue(User.class);
-                    Review review = ds.getValue(Review.class);
                     DatabaseReference itemRef4 = ds.getRef();
-                    Boolean author_b = author.equalsIgnoreCase(user.getEmail());
-                    //Boolean content_b = otzv_ves.equalsIgnoreCase(review.getReview());
-                   /* Log.w(TAG, "точка 4" + author_b );
-                    Log.w(TAG, "точка 5" + content_b);
-                    Log.w(TAG, "точка 6" + author );
-                    Log.w(TAG, "точка 7" + review.getAuthorReview());
-                    Log.w(TAG, "точка 8" + otzv_ves );
-                    Log.w(TAG, "точка 9" + review.getReview().toString());*/
-                    /*if(author_b){
-                        //plus_one = user.get;
-                        itemRef4.child("scan").setValue(true);
+                    Boolean author_f = author.equalsIgnoreCase(user.getEmail());
+                    if(author_f && f){
+                        Log.w(TAG, "точка 4" + plus_one);
+                        Log.w(TAG, "точка 4" + author);
+                        Log.w(TAG, "точка 4" + user.getEmail());
+                        plus_one = user.getCounter_notice() + 1;
+                        itemRef4.child("counter_notice").setValue(plus_one);
+                        f = false;
                         return;
                     };
                 }
-                adapterAr3.notifyDataSetChanged();
+                adapterAr39.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         };
-        reviews.addValueEventListener(vlistener_user34);*/
+        users.addValueEventListener(vlistener_user34);
     }
 
 }

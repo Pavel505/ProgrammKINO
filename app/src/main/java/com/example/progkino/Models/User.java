@@ -2,10 +2,11 @@ package com.example.progkino.Models;
 
 public class User {
     private String id, name,lastname, login, password, email, userdescription, birthday, city, role;
+    Integer counter_notice;
     public User() {}
 
     public User(String id, String name,String lastname,String  login,String  password,String  email,
-                String  birthday,String  city, String userdescription) {
+                String  birthday,String  city, String userdescription, int counter_notice) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
@@ -16,7 +17,13 @@ public class User {
         this.city = city;
         this.userdescription = userdescription;
         this.role = role;
+        this.counter_notice = counter_notice;
     }
+    public Integer getCounter_notice(){return counter_notice;}
+    public void setCounter_notice(Integer counter_notice) {
+        this.counter_notice = counter_notice;
+    }
+
     public String getRole() {
         return role;
     }

@@ -124,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar.make(root, "Пароль должен иметь больше 5 символов!",Snackbar.LENGTH_SHORT).show();
                     return;
                 }
-                Log.w(TAG, "точка 4");
                 //Log.w(TAG, "Почта здесь юзера1" + email.getText().toString());
                 auth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString())
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -254,6 +253,7 @@ public class MainActivity extends AppCompatActivity {
                                     user.setCity(city.getText().toString());
                                     user.setUserdescription(userdescription.getText().toString());
                                     user.setRole("user");
+                                    user.setCounter_notice(0);
 
                                     users.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(user)
