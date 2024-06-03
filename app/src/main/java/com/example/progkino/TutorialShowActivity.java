@@ -6,7 +6,6 @@ import static com.example.progkino.Constant.GEO_IMAGE;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 

@@ -1,10 +1,5 @@
 package com.example.progkino;
 
-import static android.content.ContentValues.TAG;
-
-import static com.example.progkino.Constant.GEO_CAPITAL;
-import static com.example.progkino.Constant.GEO_COUNTRY;
-import static com.example.progkino.Constant.GEO_IMAGE;
 import static com.example.progkino.Constant.REVIEW_AUTHOR;
 import static com.example.progkino.Constant.REVIEW_CONTENT;
 import static com.example.progkino.Constant.REVIEW_TEMA;
@@ -12,7 +7,6 @@ import static com.example.progkino.Constant.REVIEW_TIME;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,15 +14,8 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.progkino.Models.Category;
-import com.example.progkino.Models.Eventum;
-import com.example.progkino.Models.QuestionTrenTutor;
 import com.example.progkino.Models.Review;
-import com.example.progkino.adapter.CategoryAdapter;
-import com.example.progkino.adapter.EventumAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

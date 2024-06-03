@@ -1,7 +1,5 @@
 package com.example.progkino.Models;
 
-import java.util.Date;
-
 public class Eventum {
     public Eventum() {}
 
@@ -9,9 +7,10 @@ public class Eventum {
     String img, color, title, dateEventum;
    // Date dateEventum;
     String type, eventumDescription;
+    int like;
 
 
-    public Eventum(long id, String color, String dateEventum,String eventumDescription,   String img,  String title,  String type) {
+    public Eventum(long id, String color, String dateEventum,String eventumDescription,   String img,  String title,  String type, int like) {
         this.id = id;
         this.color = color;
         this.dateEventum = dateEventum;
@@ -19,11 +18,16 @@ public class Eventum {
         this.img = img;
         this.title = title;
         this.type = type;
+        this.like = like;
     }
 
-    /*public Eventum(String eventumDescription) {
-        this.eventumDescription = eventumDescription;
-    }*/
+    public Integer getLike() {
+        return like;
+    }
+
+    public void setLike(Integer like) {
+        this.like = like;
+    }
 
     public String getEventumDescription() {
         return eventumDescription;

@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import com.example.progkino.Models.Eventum;
 import com.example.progkino.Models.QuestionTrenTutor;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,7 +24,6 @@ import android.widget.ListView;
 import com.google.firebase.database.DatabaseReference;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TutorialGeo1Activity extends AppCompatActivity {

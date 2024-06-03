@@ -4,24 +4,13 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.progkino.Models.Category;
 import com.example.progkino.Models.Eventum;
@@ -57,8 +46,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         init();
 
-        eventumList.add(new Eventum(5, "#350307","2024-02-01" ,"Турнир по игре ЧГК","chgk3", "Городская студ лига", "Интеллект"));
-        eventumList.add(new Eventum(6,"#D300A5CD","Вечер настолок", "2024-03-02","nastolki", "Настолки","Настолки"));
+       /* eventumList.add(new Eventum(5, "#350307","2024-02-01" ,"Турнир по игре ЧГК","chgk3", "Городская студ лига", "Интеллект"));
+        eventumList.add(new Eventum(6,"#D300A5CD","Вечер настолок", "2024-03-02","nastolki", "Настолки","Настолки"));*/
         fullEventumList.addAll(eventumList);
 
         categoryList.add(new Category(1,"Интеллект"));

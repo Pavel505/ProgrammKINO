@@ -1,6 +1,5 @@
 package com.example.progkino.Models;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Message {

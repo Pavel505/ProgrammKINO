@@ -1,7 +1,5 @@
 package com.example.progkino.Models;
 
-import java.util.Date;
-
 public class Review {
     public Review(){}
     String review, temaReview,  authorReview;

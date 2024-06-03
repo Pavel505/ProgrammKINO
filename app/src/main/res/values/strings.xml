@@ -19,7 +19,8 @@
     <string name="eventumData">Дата</string>
     <string name="eventumType">Тип</string>
     <string name="event">Мероприятие</string>
-    <string name="btn_add_event">Добавить в список</string>
+    <string name="btn_add_event">Поставить лайк</string>
+    <string name="btn_add_event2">Поставить лайк2</string>
     <string name="eventumDescription">Описание мероприятия</string>
     <string name="test_text_mnogo">Тект \л ы ва  ыло ылво а</string>
     <string name="opis1">Мобильное приложение для клуба КИНО </string>

@@ -1,9 +1,6 @@
 package com.example.progkino;
 
 import static android.content.ContentValues.TAG;
-import static com.example.progkino.Constant.GEO_CAPITAL;
-import static com.example.progkino.Constant.GEO_COUNTRY;
-import static com.example.progkino.Constant.GEO_IMAGE;
 import static com.example.progkino.Constant.REVIEW_AUTHOR;
 import static com.example.progkino.Constant.REVIEW_CONTENT;
 import static com.example.progkino.Constant.REVIEW_TEMA;
@@ -16,14 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.progkino.Models.Review;
 import com.example.progkino.Models.User;
@@ -33,7 +27,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;

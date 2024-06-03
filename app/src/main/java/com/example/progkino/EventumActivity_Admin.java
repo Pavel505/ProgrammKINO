@@ -1,9 +1,6 @@
 package com.example.progkino;
 
 import static com.example.progkino.Constant.Color_BASA_Intel;
-import static com.example.progkino.Constant.GEO_CAPITAL;
-import static com.example.progkino.Constant.GEO_COUNTRY;
-import static com.example.progkino.Constant.GEO_IMAGE;
 import static com.example.progkino.Constant.IMG_BASA;
 
 import android.content.Intent;
@@ -21,9 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progkino.Models.Eventum;
-import com.example.progkino.Models.QuestionTrenTutor;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

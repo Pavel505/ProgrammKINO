@@ -202,8 +202,8 @@
 
             <TextView
                 android:id="@+id/eventumPageText"
-                android:layout_width="match_parent"
-                android:layout_height="114dp"
+                android:layout_width="255dp"
+                android:layout_height="match_parent"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/test_text_mnogo"
                 android:textColor="@color/white"

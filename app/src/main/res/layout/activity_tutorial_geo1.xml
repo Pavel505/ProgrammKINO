@@ -14,12 +14,13 @@
         android:layout_marginTop="25dp"
         android:text="@string/geo_teor"
         android:textSize="25sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-
+        android:textColor="@color/black"
         android:id="@+id/list_quest_geo"
         android:layout_width="0dp"
         android:layout_height="0dp"
