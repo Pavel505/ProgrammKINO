@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class TutorialActivity extends AppCompatActivity {
 
@@ -38,4 +39,15 @@ public class TutorialActivity extends AppCompatActivity {
         intentGeo1.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intentGeo1);
     }
+
+    public void onClickRead4 (View view){
+
+        Toast toast4 = Toast.makeText(getApplicationContext(), "Раздел в разработке!",
+                Toast.LENGTH_SHORT);
+        toast4.show();
+       /* Intent intentTrening2 = new Intent(TrenActivity.this, Trening2Activity.class);
+        intentTrening2.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intentTrening2);*/
+    }
+
 }

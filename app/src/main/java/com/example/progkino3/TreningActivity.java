@@ -46,7 +46,7 @@ public class TreningActivity extends AppCompatActivity {
     private List<String> listData_capital;
     public int id_q, counter_question, ost_time,no_answer ;
     public float counter;
-    TextView text_answers,text_answers_all,text_time;
+    TextView text_answers,text_answers_all,text_time,text_zagolovok ;
     DatabaseReference  treningGeo1,  ratings;
     EditText editTextAnswer;
     FirebaseDatabase db;
@@ -60,11 +60,13 @@ public class TreningActivity extends AppCompatActivity {
     }
 
     private void init(){
+        text_zagolovok = findViewById(R.id.text_question_zagolovok1);
         text_time = findViewById(R.id.text_time);
         editTextAnswer = findViewById(R.id.answer_capital);
         listView = findViewById(R.id.listCountry);
         text_answers = findViewById(R.id.text_answers);
         text_answers_all = findViewById(R.id.text_answers_all);
+        text_zagolovok.setText("Готовы проверить себя в географии? Назовите столицу страны:");
         text_answers.setText("0");
         text_answers_all.setText("0");
         text_time.setText("10");
@@ -78,7 +80,7 @@ public class TreningActivity extends AppCompatActivity {
     }
     private void getDataFromDB(){
         
-        ost_time = 17;
+        ost_time = 15;
         ValueEventListener vlistener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -162,12 +164,13 @@ public class TreningActivity extends AppCompatActivity {
             }
         } else {
             no_answer+=1;
+            Toast toastProverka = Toast.makeText(getApplicationContext(), " Правильный ответ: " + answer,
+                    Toast.LENGTH_SHORT);
+            toastProverka.show();
         }
         editTextAnswer.setText("");
         Log.w(TAG, "Другой ответ " + id_q + " " + answer + " " + answer_znatok);
-        Toast toastProverka = Toast.makeText(getApplicationContext(), "id "+id_q+ " Твой ответ:" + answer_znatok + " Ответ БД: " + answer,
-                Toast.LENGTH_LONG);
-        toastProverka.show();
+
         String counterS = Float.toString(counter);
         String no_answerS = Integer.toString(no_answer);
         text_answers.setText(counterS);
