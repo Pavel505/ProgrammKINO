@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:onClick="navigatorMainScen"
+    android:background="@drawable/fon_main2"
     tools:context=".ChatActivity">
 
 

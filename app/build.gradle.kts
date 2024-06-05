@@ -7,11 +7,11 @@ plugins {
 
 
 android {
-    namespace = "com.example.progkino"
+    namespace = "com.example.progkino3"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.progkino"
+        applicationId = "com.example.progkino3"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

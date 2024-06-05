@@ -120,13 +120,32 @@
         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
         app:layout_constraintTop_toBottomOf="@+id/main_scen_1" />
 
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_in_user"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/glavna_str_effect"
+        android:fontFamily="sans-serif"
+        android:onClick="inUserStr"
+        android:text="@string/in_user"
+        android:textColor="@color/white"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/list_user_otzv"
+        tools:ignore="MissingConstraints" />
+
     <ListView
         android:id="@+id/list_user_otzv"
         android:layout_width="319dp"
-        android:layout_height="477dp"
+        android:layout_height="457dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout" />

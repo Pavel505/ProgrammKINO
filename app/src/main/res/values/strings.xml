@@ -35,6 +35,8 @@
     <string name="tren21">География</string>
     <string name="tren22">Искусство</string>
     <string name="tren23">Праздники</string>
+    <string name="in_user">Режим пользователя</string>
+    <string name="in_admin">Режим администратора</string>
     <string name="tren24">Сказки</string>
     <string name="tren25">Достопримечательности</string>
     <string name="tren26">Регионы России</string>
