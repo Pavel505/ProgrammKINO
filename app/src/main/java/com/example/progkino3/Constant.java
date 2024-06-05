@@ -11,5 +11,5 @@ public class Constant {
     public final static String IMG_BASA = "chgk3";
     public final static String Color_BASA_Intel = "#D30C2173";
     public final static String Color_BASA_Nastolki = "#D33D00CD";
-    public static String no_const_role;
+
 }

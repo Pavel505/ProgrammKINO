@@ -1,7 +1,7 @@
 package com.example.progkino3;
 
 import static android.content.ContentValues.TAG;
-import static com.example.progkino3.Constant.no_const_role;
+import static com.example.progkino3.InformationUser.no_const_role;
 
 import android.util.Log;
 import android.view.View;
@@ -37,10 +37,8 @@ public class ContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if(no_const_role.equalsIgnoreCase("admin")){
             setContentView(R.layout.activity_contact_admin);
-            Log.w(TAG, "1 " + no_const_role);
         }else {
             setContentView(R.layout.activity_contact);
-            Log.w(TAG, "2 " + no_const_role);
             Button btnCreateReview = (Button) findViewById(R.id.otzv);
             btnCreateReview.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -51,9 +49,6 @@ public class ContactActivity extends AppCompatActivity {
         }
         db = FirebaseDatabase.getInstance();
         reviews = db.getReference("Review");
-
-
-
     }
 
     public void navigatorMainScen(View view){

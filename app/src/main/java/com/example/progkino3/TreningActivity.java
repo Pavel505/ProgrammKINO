@@ -2,6 +2,14 @@ package com.example.progkino3;
 
 import static android.content.ContentValues.TAG;
 
+import static com.example.progkino3.Constant.Color_BASA_Intel;
+import static com.example.progkino3.Constant.GEO_CAPITAL;
+import static com.example.progkino3.Constant.IMG_BASA;
+import static com.example.progkino3.InformationUser.counter_minus;
+import static com.example.progkino3.InformationUser.counter_plus;
+import static com.example.progkino3.InformationUser.namerealuser;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +22,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.progkino3.Models.Eventum;
+import com.example.progkino3.Models.Message;
 import com.example.progkino3.Models.QuestionTrenTutor;
+import com.example.progkino3.Models.Rating;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,7 +47,7 @@ public class TreningActivity extends AppCompatActivity {
     public int id_q, counter_question, ost_time,no_answer ;
     public float counter;
     TextView text_answers,text_answers_all,text_time;
-    DatabaseReference  treningGeo1;
+    DatabaseReference  treningGeo1,  ratings;
     EditText editTextAnswer;
     FirebaseDatabase db;
     Timer timer2;
@@ -60,6 +73,7 @@ public class TreningActivity extends AppCompatActivity {
         listView.setAdapter(adapterAr);
         db = FirebaseDatabase.getInstance();
         treningGeo1 = db.getReference("TreningGeo1");
+        ratings = db.getReference("Rating");
         counter = 0;counter_question = 0;id_q=1;no_answer=0;
     }
     private void getDataFromDB(){
@@ -149,7 +163,7 @@ public class TreningActivity extends AppCompatActivity {
         } else {
             no_answer+=1;
         }
-
+        editTextAnswer.setText("");
         Log.w(TAG, "Другой ответ " + id_q + " " + answer + " " + answer_znatok);
         getDataFromDB();
         String counterS = Float.toString(counter);
@@ -157,4 +171,25 @@ public class TreningActivity extends AppCompatActivity {
         text_answers.setText(counterS);
         text_answers_all.setText(no_answerS);
     }
+
+    public void stopActivity_TrenGeo(View view){
+
+        counter_plus = text_answers.getText().toString();
+        counter_minus = text_answers_all.getText().toString();
+        String tema_testi = "География: столицы";
+
+        db.getReference().child("Rating").push().setValue(
+                new Rating(/*FirebaseAuth.getInstance().getCurrentUser().getEmail(),*/
+                        counter_plus, counter_minus, tema_testi,namerealuser
+                )
+        );
+        Toast toast244 = Toast.makeText(getApplicationContext(), "Данные о тренировке сохранены!",
+                Toast.LENGTH_SHORT);
+        toast244.show();
+
+        Intent intentTren = new Intent(this, TrenActivity.class);
+        intentTren.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intentTren);
+    }
+
 }

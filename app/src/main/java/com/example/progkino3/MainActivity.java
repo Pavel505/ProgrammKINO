@@ -1,6 +1,7 @@
 package com.example.progkino3;
 
-import static com.example.progkino3.Constant.no_const_role;
+import static com.example.progkino3.InformationUser.namerealuser;
+import static com.example.progkino3.InformationUser.no_const_role;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase db;
     private ArrayAdapter<String> adapterAr1;
     private List<String> listData;
-    String role_user;
+    String role_user, name_user;
     DatabaseReference users,eventumes,questions, messages;
 
     RelativeLayout root;
@@ -136,6 +137,8 @@ public class MainActivity extends AppCompatActivity {
                                                 if(email.getText().toString().equalsIgnoreCase(user.getEmail().toString())){
                                                     role_user = user.getRole().toString();
                                                     no_const_role = role_user;
+                                                    name_user = user.getName() + " " + user.getLastName();
+                                                    namerealuser = name_user;
                                                     listData.add(role_user);
                                                     if(role_user.equalsIgnoreCase("admin")){
                                                         startActivity(new Intent(MainActivity.this, UserActivity_Admin.class));

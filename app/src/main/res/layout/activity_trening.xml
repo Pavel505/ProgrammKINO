@@ -14,22 +14,23 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
-        android:textSize="20sp"
         android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Страна:" />
+        tools:text="@string/qweqwe" />
 
 
     <TextView
         android:id="@+id/text_answers"
         android:layout_width="80dp"
         android:layout_height="43dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="2dp"
-        android:textSize="25sp"
 
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
@@ -39,10 +40,11 @@
         android:id="@+id/text_answers_all"
         android:layout_width="80dp"
         android:layout_height="43dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="28dp"
-        android:textSize="25sp"
 
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
@@ -68,10 +70,10 @@
         android:layout_width="290dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:textColor="@color/black"
         android:hint="@string/answer"
         android:inputType="text"
         android:text=""
+        android:textColor="@color/black"
         android:textColorHint="@color/text_bottom"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -79,7 +81,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_time"
-        app:layout_constraintVertical_bias="0.275" />
+        app:layout_constraintVertical_bias="0.181" />
 
     <ListView
         android:id="@+id/listCountry"
@@ -109,6 +111,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answer_capital"
+        tools:ignore="MissingConstraints" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_exit_geo"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="190dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="15dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/bok_panel"
+        android:fontFamily="sans-serif"
+        android:onClick="stopActivity_TrenGeo"
+        android:text="@string/quit"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_answer_ok"
         tools:ignore="MissingConstraints" />
 
     <ImageView
