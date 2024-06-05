@@ -42,8 +42,8 @@ import java.util.TimerTask;
 public class TreningActivity extends AppCompatActivity {
     private ListView listView;
     String answer;
-    private ArrayAdapter<String> adapterAr;
-    private List<String> listData;
+    private ArrayAdapter<String> adapterAr_capital;
+    private List<String> listData_capital;
     public int id_q, counter_question, ost_time,no_answer ;
     public float counter;
     TextView text_answers,text_answers_all,text_time;
@@ -68,9 +68,9 @@ public class TreningActivity extends AppCompatActivity {
         text_answers.setText("0");
         text_answers_all.setText("0");
         text_time.setText("10");
-        listData = new ArrayList<>();
-        adapterAr = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listData);
-        listView.setAdapter(adapterAr);
+        listData_capital = new ArrayList<>();
+        adapterAr_capital = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,listData_capital);
+        listView.setAdapter(adapterAr_capital);
         db = FirebaseDatabase.getInstance();
         treningGeo1 = db.getReference("TreningGeo1");
         ratings = db.getReference("Rating");
@@ -82,19 +82,19 @@ public class TreningActivity extends AppCompatActivity {
         ValueEventListener vlistener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(listData.size() > 0 )listData.clear();
+                if(listData_capital.size() > 0 )listData_capital.clear();
                 answer = "";
-                id_q = (int) (Math.random() * (15)) + 1;
+                id_q = (int) (Math.random() * (23)) + 1;
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     QuestionTrenTutor treningGeo1 = ds.getValue(QuestionTrenTutor.class);
                     if(id_q == treningGeo1.getId()){
                        // text_question_country.setText(txt);
                         String txt = treningGeo1.getCountry().toString();
-                        listData.add(txt);
+                        listData_capital.add(txt);
                         answer = treningGeo1.getCapital().toString();
                     }
                 }
-                adapterAr.notifyDataSetChanged();
+                adapterAr_capital.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
@@ -165,11 +165,15 @@ public class TreningActivity extends AppCompatActivity {
         }
         editTextAnswer.setText("");
         Log.w(TAG, "Другой ответ " + id_q + " " + answer + " " + answer_znatok);
-        getDataFromDB();
+        Toast toastProverka = Toast.makeText(getApplicationContext(), "id "+id_q+ " Твой ответ:" + answer_znatok + " Ответ БД: " + answer,
+                Toast.LENGTH_LONG);
+        toastProverka.show();
         String counterS = Float.toString(counter);
         String no_answerS = Integer.toString(no_answer);
         text_answers.setText(counterS);
         text_answers_all.setText(no_answerS);
+
+        getDataFromDB();
     }
 
     public void stopActivity_TrenGeo(View view){
@@ -180,7 +184,7 @@ public class TreningActivity extends AppCompatActivity {
 
         db.getReference().child("Rating").push().setValue(
                 new Rating(/*FirebaseAuth.getInstance().getCurrentUser().getEmail(),*/
-                        counter_plus, counter_minus, tema_testi,namerealuser
+                        counter_plus, counter_minus, tema_testi, FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()
                 )
         );
         Toast toast244 = Toast.makeText(getApplicationContext(), "Данные о тренировке сохранены!",

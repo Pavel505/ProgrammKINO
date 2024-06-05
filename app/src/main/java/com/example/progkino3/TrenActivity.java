@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -45,9 +46,13 @@ public class TrenActivity extends AppCompatActivity {
     }
 
     public void onClickRead2 (View view){
-        Intent intentTrening2 = new Intent(TrenActivity.this, Trening2Activity.class);
+
+        Toast toast2 = Toast.makeText(getApplicationContext(), "Раздел в разработке!",
+                Toast.LENGTH_SHORT);
+        toast2.show();
+       /* Intent intentTrening2 = new Intent(TrenActivity.this, Trening2Activity.class);
         intentTrening2.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivity(intentTrening2);
+        startActivity(intentTrening2);*/
     }
 
     public void onClickReadChGK (View view) throws IOException {

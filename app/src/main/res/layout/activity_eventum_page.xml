@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/eventumPageBack"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
     android:scrollbarSize="25dp"
@@ -104,8 +103,8 @@
 
     <ImageView
         android:id="@+id/eventumPageImage"
-        android:layout_width="354dp"
-        android:layout_height="255dp"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,14 +114,15 @@
 
     <TextView
         android:id="@+id/eventumPageTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="0dp"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/montserrat"
         android:gravity="center"
         android:text="@string/event"
         android:textColor="@color/white"
         android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/eventumBg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
         app:layout_constraintTop_toBottomOf="@+id/eventumPageImage" />
@@ -139,8 +139,8 @@
 
         <LinearLayout
 
-            android:layout_width="276dp"
-            android:layout_height="258dp"
+            android:layout_width="match_parent"
+            android:layout_height="251dp"
             android:orientation="vertical"
             android:paddingBottom="18dp">
 
@@ -152,7 +152,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="11dp"
+                    android:layout_margin="15dp"
+                    android:layout_marginStart="18dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:text="@string/eventumData"
@@ -162,7 +163,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="11dp"
+                    android:layout_margin="15dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:text="@string/eventumType"
@@ -180,7 +181,7 @@
                     android:id="@+id/eventumPageDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="15dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:text="@string/eventumData"
@@ -191,7 +192,7 @@
                     android:id="@+id/eventumPageType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="15dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:text="@string/eventumType"
@@ -202,8 +203,10 @@
 
             <TextView
                 android:id="@+id/eventumPageText"
-                android:layout_width="255dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="14dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/test_text_mnogo"
                 android:textColor="@color/white"
@@ -218,8 +221,6 @@
         android:id="@+id/btn_add_event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginEnd="144dp"
         android:layout_marginBottom="3dp"
         android:backgroundTint="@color/glavna_str_effect"
         android:fontFamily="@font/montserrat"
