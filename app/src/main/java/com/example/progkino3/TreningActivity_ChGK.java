@@ -49,6 +49,7 @@ public class TreningActivity_ChGK extends AppCompatActivity {
 
 
     private void init(){
+        id_q = 0;
         text_time_chgk = findViewById(R.id.text_time_ost);
         editTextAnswer = findViewById(R.id.answer_chgk);
         text_question_chgk = findViewById(R.id.text_question_chgk);
@@ -69,7 +70,7 @@ public class TreningActivity_ChGK extends AppCompatActivity {
         // listView.setAdapter(adapterAr);
         db = FirebaseDatabase.getInstance();
         treningChGK = db.getReference("TreningChGK");
-        counter = 0;counter_question = 0;id_q=1;no_answer=0;
+        counter = 0;counter_question = 0;no_answer=0;
     }
     private void getDataFromDB_ChGK(){
         refren_action_send_answer = false;
@@ -82,7 +83,8 @@ public class TreningActivity_ChGK extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(listData.size() > 0 )listData.clear();
                 answer = "";
-                id_q = (int) (Math.random() * (5)) + 1;
+                //id_q = (int) (Math.random() * (6)) + 1;
+                id_q+=1;
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Question question_chgk = ds.getValue(Question.class);
                     // QuestionTrenTutor treningGeo1 = ds.getValue(QuestionTrenTutor.class);

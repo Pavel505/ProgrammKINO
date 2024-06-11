@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -113,6 +114,11 @@ public class UserActivity_Admin extends AppCompatActivity {
                         ,user_city_new,user_email_new,user_descript_new);
                 init();
                 getDataFromDB_AdminUser();
+
+
+                Toast toast4 = Toast.makeText(getApplicationContext(), "Пользователь изменён!",
+                        Toast.LENGTH_SHORT);
+                toast4.show();
             }
         });
         btn_del_user = (Button) findViewById(R.id.btn_del_user);
@@ -245,6 +251,10 @@ public class UserActivity_Admin extends AppCompatActivity {
                                 .setValue(user);
                     }
                 });
+        Toast toast2 = Toast.makeText(getApplicationContext(), "Пользователь добавлен!",
+                Toast.LENGTH_SHORT);
+        toast2.show();
+
     }
     public void user_delete_DBshka(){
         ValueEventListener vlistener_user1 = new ValueEventListener() {
@@ -271,6 +281,9 @@ public class UserActivity_Admin extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {}
         };
         users.addValueEventListener(vlistener_user1);
+        Toast toast3 = Toast.makeText(getApplicationContext(), "Пользователь удален!",
+                Toast.LENGTH_SHORT);
+        toast3.show();
     }
     public void user_edit_DBshka(String name, String lastname, String date,String login ,
                                  String password ,String role,String city,String email, String descript){

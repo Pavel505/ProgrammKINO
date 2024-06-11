@@ -139,5 +139,8 @@ public class ContactActivity extends AppCompatActivity {
     public void inAdminStr (View view){
         startActivity(new Intent(this, UserActivity_Admin.class));
         finish();
+        Toast toast5 = Toast.makeText(getApplicationContext(), "Режим администратора",
+                Toast.LENGTH_SHORT);
+        toast5.show();
     }
 }

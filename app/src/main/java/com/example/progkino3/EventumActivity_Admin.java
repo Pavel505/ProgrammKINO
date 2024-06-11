@@ -81,6 +81,8 @@ public class EventumActivity_Admin extends AppCompatActivity {
                 editText_Descript = findViewById(R.id.text_descript_eventum_admin);
                 String eventum_descript_new = editText_Descript.getText().toString();
                 eventum_from_DB(eventum_title_new,eventum_type_new,eventum_date_new,eventum_descript_new);
+                startActivity(new Intent(EventumActivity_Admin.this, EventumActivity_Admin.class));
+                finish();
             }
         });
         btn_del_eventum = (Button) findViewById(R.id.btnSignIn2);
@@ -132,7 +134,7 @@ public class EventumActivity_Admin extends AppCompatActivity {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Eventum eventum = ds.getValue(Eventum.class);
                     String txt = "Название: "+ eventum.getTitle() +"\n Тип: "+ eventum.getType() + "\n Дата: " + eventum
-                            .getDateEventum() + "\n Описание: "+ eventum.getEventumDescription();
+                            .getDateEventum() + "\n Описание: "+ eventum.getEventumDescription() + "Лайки : " + eventum.getLike();
                     listData.add(txt);
                     listTemp.add(eventum);
                 }
@@ -179,6 +181,7 @@ public class EventumActivity_Admin extends AppCompatActivity {
         eventum.setImg(IMG_BASA);
         eventum.setColor(Color_BASA_Intel);
         eventum.setId(42);
+        eventum.setLike(0);
 
         eventumes.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .setValue(eventum)

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -140,6 +141,9 @@ public class HomeActivity_Admin extends AppCompatActivity {
     public void inUserStr(View view){
         startActivity(new Intent(this, HomeActivity.class));
         finish();
+        Toast toast5 = Toast.makeText(getApplicationContext(), "Пользовательский режим",
+                Toast.LENGTH_SHORT);
+        toast5.show();
     }
 
 }
